@@ -10,9 +10,13 @@
 	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 	done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
 	whatadded = log --diff-filter=A
-	standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since=\"4 weeks ago\" --author="Blaed"
+	standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since=\"24 hours ago\" --author="blaedj"
 	co = checkout
 [core]
 	excludesfile = /Users/blaed/.gitignore_global
 [push]
 	default = current
+[github]
+	user = blaedj
+[ghi]
+	token = !security find-internet-password -a blaedj -s github.com -l 'ghi token' -w

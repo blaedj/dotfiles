@@ -40,9 +40,12 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 # defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-defaults write -g com.apple.trackpad.scaling -float 5.0
+#defaults write -g com.apple.trackpad.scaling -float 5.0
 
 
 ## Apply my keybindings
 mkdir ~/Library/KeyBindings/
 cp ~/.dotfiles/osx/DefaultKeyBinding.dict ~/Library/KeyBindings/
+
+## add the ~/.dotfiles/bin/ to the path
+cp ~/.dotfiles/bin/* /usr/local/bin/
