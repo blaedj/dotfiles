@@ -20,4 +20,4 @@
 #   exec $EDITOR "$1"
 # fi
 
-exec /usr/bin/env emacsclient -c -a "" $*
+exec /usr/local/opt/emacs/bin/emacsclient -c -a "" $*
