@@ -120,6 +120,11 @@ install_dotfiles () {
   done
 }
 
+# install_bin_links() {
+#     for file in `find $DOTFILES_ROOT/bin`
+
+# }
+
 setup_gitconfig
 install_dotfiles
 
