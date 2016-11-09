@@ -20,4 +20,5 @@
 #   exec $EDITOR "$1"
 # fi
 
-exec /usr/local/opt/emacs/bin/emacsclient -c -a "" $*
+exec /usr/local/cellar/emacs/25.1/bin/emacsclient -c -a "" $*
+# exec /usr/local/opt/emacs/bin/emacsclient -c -a "" $*
