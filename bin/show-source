@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# passes the given file through pygmentize (http://pygments.org/) for
+# syntax-highlighting, then dumps to stdout.
+
+cat $1 | pygmentize -f terminal
