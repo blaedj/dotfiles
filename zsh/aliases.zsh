@@ -7,3 +7,5 @@ alias gls="git ls"
 alias rpsec="rspec"
 
 alias acorn="/Applications/Acorn.app/Contents/MacOS/Acorn"
+
+alias octave="octave --no-gui"
