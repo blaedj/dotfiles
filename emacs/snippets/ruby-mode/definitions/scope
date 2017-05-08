@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: Blaed Johnston <blaedj@gmail.com>
+# name: scope :..
+# key: scope
+# --
+scope :${scopename}, ->(${2}) {
+  $0
+}

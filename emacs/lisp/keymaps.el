@@ -32,7 +32,7 @@
     (mac-switch-meta)
  )
 (setq smartscan-symbol-selector "symbol")
-(global-set-key (kbd "M-n") 'smartscan-symbol-go-forward)
+(global-set-key (kbd "M-n") 'smartscan-symbol-go-forward )
 (global-set-key (kbd "M-p") 'smartscan-symbol-go-backward)
 
 (global-set-key (kbd "C-x i") 'ace-window)

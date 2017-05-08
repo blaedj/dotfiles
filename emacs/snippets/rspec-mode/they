@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: they "do something" do ... end
+# key: they
+# --
+they '${1:do something}' do
+  $0
+end

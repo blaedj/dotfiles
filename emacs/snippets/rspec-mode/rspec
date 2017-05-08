@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: rspec boilerplate
+# key: rspec
+# --
+require 'rails_helper'
+
+RSpec.describe ${1:`(let ((fn (replace-regexp-in-string "Spec$" "" (capitalize (file-name-nondirectory
+		       (file-name-sans-extension
+			(or (buffer-file-name)
+			    (buffer-name (current-buffer)))))))
+	  ))
+  (cond
+   ( (string-match "_" fn) (replace-regexp-in-string "\\(_\\)" "" fn nil nil 1))
+   
+   (t fn)))`} do 
+  $0
+end

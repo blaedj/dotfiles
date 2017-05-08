@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Blaed Johnston <blaedj@gmail.com>
+# name: pink
+# key: pink
+# --
+puts "\033[35m#{$0}\033[0m"

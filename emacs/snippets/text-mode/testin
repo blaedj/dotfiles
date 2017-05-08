@@ -1,0 +1,7 @@
+# name : example
+# key : exr
+# --
+
+if(${1:enumerate}) {
+ $0
+} // $1

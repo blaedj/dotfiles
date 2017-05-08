@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: Blaed Johnston <blaedj@gmail.com>
+# name: transaction
+# key: trans
+# --
+ActiveRecord::Base.transaction do
+  $0
+end

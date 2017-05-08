@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: org-table column sum
+# key: columnsum
+# --
+#+TBLFM: @>$${1:columnnumber}=vsum(@2..@-1)

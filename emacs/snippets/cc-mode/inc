@@ -1,0 +1,4 @@
+# name: #include "..."
+# key: cinc
+# --
+#include "$1.h"

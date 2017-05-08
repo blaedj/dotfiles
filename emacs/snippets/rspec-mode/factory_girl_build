@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Blaed Johnston <blaedj@gmail.com>
+# name: FactoryGirl.build(...)
+# key: fgb
+# --
+FactoryGirl.build(:${1:factory})$0
