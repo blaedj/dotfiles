@@ -3,6 +3,7 @@
 
 ;;; Code:
 
+(with-eval-after-load 'org
 (setq org-log-done t)
 (setq org-directory "~/Dropbox/org" )
 (setq org-agenda-files (list (concat org-directory "/todo.org")
@@ -142,6 +143,6 @@
 	  (lambda ()
 	    (flyspell-mode 1)
 	    (yas-minor-mode 1)
-	    ))
+	    )))
 (provide 'org-mode-settings)
 ;;; org-mode-settings.el ends here
