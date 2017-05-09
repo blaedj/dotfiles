@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      yaml
      html
      ruby
@@ -40,25 +41,27 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; helm
-     ivy
+     helm
+     ;; ivy
      auto-completion
      ;; better-defaults
      emacs-lisp
      git
+     (version-control
+      :variables
+      version-control-diff-tool 'git-gutter+)
      org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
-     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(rvm ample-zen-theme smartscan)
+   dotspacemacs-additional-packages '(rvm ample-zen-theme smartscan rainbow-mode ag vue-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -197,7 +200,7 @@ values."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-resize t
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
    dotspacemacs-helm-no-header nil
@@ -329,6 +332,9 @@ you should place your code here."
       (around keyboard-escape-quit-dont-close-windows activate)
     (let ((buffer-quit-function (lambda () ())))
       ad-do-it))
+ ;; helm-buffers-fuzzy-matching and helm-recentf-fuzzy-match to t.
+  (setq helm-buffers-fuzzy-matching t)
+  (setq helm-recentf-fuzzy-matching t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
