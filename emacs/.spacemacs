@@ -319,14 +319,17 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (add-to-load-path "~/.dotfiles/emacs/lisp")
-
+  (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
   (require 'mydefuns)
   (require 'bcj-layouts)
   (require 'magit-config)
   (require 'org-mode-settings)
   (require 'keymaps)
   (require 'prog-modes-config)
+  (require 'web-mode-config)
   (rvm-use-default)
+  (setq-default js2-basic-offset 2)
+
   ;; I don't want <bleeping> ESC-ESC-ESC to close all my windows!
   (defadvice keyboard-escape-quit
       (around keyboard-escape-quit-dont-close-windows activate)
@@ -335,6 +338,7 @@ you should place your code here."
  ;; helm-buffers-fuzzy-matching and helm-recentf-fuzzy-match to t.
   (setq helm-buffers-fuzzy-matching t)
   (setq helm-recentf-fuzzy-matching t)
+  (setq js-indent-level 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
