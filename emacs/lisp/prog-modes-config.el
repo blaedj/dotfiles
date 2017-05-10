@@ -6,7 +6,7 @@
     "Custom configuration for programming modes."
     (fci-mode t)
   )
-(add-hook 'prog-mode-hook bcj/prog-mode-hook)
+(add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
 
 (provide 'prog-modes-config)
