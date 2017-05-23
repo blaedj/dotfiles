@@ -5,6 +5,8 @@
 (defun bcj/prog-mode-hook ()
     "Custom configuration for programming modes."
     (fci-mode t)
+    (require 'idle-highlight)
+    (idle-highlight t)
   )
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
