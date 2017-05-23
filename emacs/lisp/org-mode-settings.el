@@ -49,13 +49,18 @@
 	(sequence "ON-HOLD")
 	))
 
+(setq org-todo-keyword-faces
+      '(
+        ("IN-PROGRESS" .
+         (:background "lime green"  :foreground "#002b36" :weight bold))
+        ("ON-HOLD" .
+         (:background "#427"  :foreground "#ddd" :weight normal))
+        ))
 
-;; (eval-after-load 'org
-;;   (progn
-;;     ;; (define-key org-mode-map (kbd "<f8>") 'org-todo)
-;;     ;; (define-key org-mode-map (kbd "<f7>") 'org-schedule)
-;;     )
-;;  )
+(evil-define-key 'global org-mode-map
+  (kbd "<f8>") 'org-todo
+  (kbd "<f7>") 'org-schedule
+  )  ;;
 
 ;; custom org-agenda commands
 (setq org-agenda-custom-commands
