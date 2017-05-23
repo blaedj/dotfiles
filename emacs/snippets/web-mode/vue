@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: vue single file component
+# key: vue
+# --
+<template>
+  <div id="$1">
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "$1",
+    data: function() {
+      return { }
+    },
+  }
+</script>
+
+<style scoped>
+</style>
