@@ -348,6 +348,9 @@ you should place your code here."
   (setq helm-recentf-fuzzy-matching t)
   (setq js-indent-level 2)
   (setq projectile-switch-project-action 'projectile-dired)
+  (with-eval-after-load 'dumb-jump
+    (add-to-list 'dumb-jump-language-file-exts '((:language "ruby" :ext "erb" :agtype "ruby" :rgtype "ruby")))
+    )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
