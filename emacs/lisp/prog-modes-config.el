@@ -7,6 +7,7 @@
     (fci-mode t)
     (require 'idle-highlight)
     (idle-highlight t)
+    (linum-relative-on)
   )
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
