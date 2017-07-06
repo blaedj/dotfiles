@@ -350,7 +350,12 @@ you should place your code here."
   (setq helm-recentf-fuzzy-matching t)
   (setq js-indent-level 2)
   (setq projectile-switch-project-action 'projectile-dired)
+
+  (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
+  (spacemacs|disable-company web-mode)
   )
+
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
