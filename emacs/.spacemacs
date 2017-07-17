@@ -39,9 +39,7 @@ values."
      ( ruby :variables ruby-test-runner 'rspec )
      markdown
      pandoc
-     finance
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
+
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
@@ -365,6 +363,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#2e2e2e")
  '(flycheck-display-errors-function (quote flycheck-display-error-messages))
