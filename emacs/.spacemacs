@@ -343,13 +343,15 @@ you should place your code here."
       (around keyboard-escape-quit-dont-close-windows activate)
     (let ((buffer-quit-function (lambda () ())))
       ad-do-it))
- ;; helm-buffers-fuzzy-matching and helm-recentf-fuzzy-match to t.
+  ;; helm-buffers-fuzzy-matching and helm-recentf-fuzzy-match to t.
   (setq helm-mode-fuzzy-match t)
   (setq helm-buffers-fuzzy-matching t)
   (setq helm-recentf-fuzzy-matching t)
   (setq js-indent-level 2)
   (setq projectile-switch-project-action 'projectile-dired)
-
+  (with-eval-after-load 'dumb-jump
+    (add-to-list 'dumb-jump-language-file-exts '((:language "ruby" :ext "erb" :agtype "ruby" :rgtype "ruby")))
+    )
   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
   (spacemacs|disable-company web-mode)
   (setq rspec-spec-command "rspec") ;;should change per-project...
@@ -357,8 +359,6 @@ you should place your code here."
   (setq rspec-use-bundler-when-possible nil)
   (setq rspec-use-rvm t) ;
   )
-
-
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
