@@ -18,6 +18,9 @@
 
 (global-set-key (kbd "M-l") 'expand-region)
 
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C-M-=") 'text-scale-decrease)
+
 ;; mac switch meta key
 (defun mac-switch-meta nil
   "Switch meta between Option and Command."
