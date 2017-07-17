@@ -352,6 +352,10 @@ you should place your code here."
 
   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
   (spacemacs|disable-company web-mode)
+  (setq rspec-spec-command "rspec") ;;should change per-project...
+  (setq rspec-use-spring-when-possible t) ;
+  (setq rspec-use-bundler-when-possible nil)
+  (setq rspec-use-rvm t) ;
   )
 
 
