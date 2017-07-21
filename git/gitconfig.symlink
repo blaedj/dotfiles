@@ -26,3 +26,17 @@
 	token = !security find-internet-password -a blaedj -s github.com -l 'ghi token' -w
 [merge]
 	ff = only
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
