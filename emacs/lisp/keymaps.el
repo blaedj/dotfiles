@@ -45,6 +45,19 @@
 
 (global-set-key (kbd "C-x i") 'ace-window)
 
+(spacemacs/set-leader-keys
+  "bt" 'bcj/switch-to-todo-buffer
+  )
+
+;; Mode-specific keybinds
+
+;; TODO: need to set this to evaluate after helm loads
+;; (define-key helm-map
+;;   (kbd "C-w") 'backward-kill-word)
+
+;; (evil-define-key 'hybrid global-map
+;;   (kbd "C-]")
+;;   )
 
 (provide 'keymaps)
 ;;; keymaps.el ends here.

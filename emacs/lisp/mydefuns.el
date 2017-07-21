@@ -189,5 +189,15 @@ terminal buffer will be 'terminal-PROJECTNAME'."
      "Window '%s' is normal")
    (current-buffer)))
 
+
+(defun bcj/switch-to-todo-buffer ()
+  "Switch to the TODO.org buffer"
+  (interactive)
+  (let ((exists (get-buffer "todo.org")))
+    (if exists
+        (switch-to-buffer (get-buffer "todo.org"))
+      (message "couldn't find the todo.org buffer"))))
+
+
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
