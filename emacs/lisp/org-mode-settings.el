@@ -68,6 +68,9 @@
 	("b" "Agenda and In-progress todos"
 	 ((todo "IN-PROGRESS") (tags-todo "next") (agenda "" ((org-agenda-ndays 1)))))
 
+	("o" "Today's todos"
+	 ((todo "IN-PROGRESS") (tags-todo "ti") ))
+
 	("w" "Weekly review"
 	 agenda ""
 	 ((org-agenda-span 'week)
