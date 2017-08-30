@@ -283,7 +283,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers '(:relative t)
+   dotspacemacs-line-numbers nil ;;'(:relative t)
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'origami
@@ -366,6 +366,9 @@ you should place your code here."
   (setq rspec-use-spring-when-possible t) ;
   (setq rspec-use-bundler-when-possible nil)
   (setq rspec-use-rvm t) ;
+
+  (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-version-control-on)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
