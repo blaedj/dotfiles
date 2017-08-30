@@ -5,7 +5,7 @@ else
   echo "Homebrew is installed ✅"
 fi
 
-brew install ag curl nodejs
+brew install ag curl nodejs diff-so-fancy ispell
 
 brew cask install dropbox iterm2 1password dash firefox alfred bartender
 brew cask install spectacle tripmode flux slack emacs bitbar
