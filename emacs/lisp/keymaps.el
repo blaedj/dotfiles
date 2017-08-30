@@ -36,9 +36,9 @@
       )
     )
   )
- (if (eq system-type 'darwin)
+(if (eq system-type 'darwin)
     (mac-switch-meta)
- )
+  )
 (setq smartscan-symbol-selector "symbol")
 (global-set-key (kbd "M-n") 'smartscan-symbol-go-forward )
 (global-set-key (kbd "M-p") 'smartscan-symbol-go-backward)
@@ -51,13 +51,20 @@
 
 ;; Mode-specific keybinds
 
-;; TODO: need to set this to evaluate after helm loads
-;; (define-key helm-map
-;;   (kbd "C-w") 'backward-kill-word)
+(spacemacs/set-leader-keys-for-major-mode 'ruby-mode "tt" 'rspec-verify-single)
 
-;; (evil-define-key 'hybrid global-map
-;;   (kbd "C-]")
-;;   )
+(with-eval-after-load 'helm
+  (define-key helm-map (kbd "C-w") 'backward-kill-word)
+  )
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "C-w") 'backward-kill-word)
+  )
+
+;; Unset default keybinds
+
+;;sick of accidentally downcasing regions instead of commenting them.
+(global-set-key (kbd "C-x C-l") 'comment-dwim)
 
 (provide 'keymaps)
 ;;; keymaps.el ends here.
