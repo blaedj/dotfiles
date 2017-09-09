@@ -5,6 +5,8 @@
 
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-code-indent-offset   2)
+(setq web-mode-script-padding 0)
+
 (defun bcj/web-mode-hook ()
   (company-mode nil)
   (fci-mode 0)
