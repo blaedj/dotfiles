@@ -6,4 +6,4 @@ if [ ! -d "~/.emacs.d/" ]; then
     ln -s ~/code/elisp/spacemacs ~/.emacs.d
 fi
 ln -s ~/.dotfiles/emacs/.spacemacs ~/.spacemacs
-ln -s ~/.dotfiles/emacs/ ~/.emacs.d/private/
+ln -s ~/.dotfiles/emacs/ ~/.emacs.d/private

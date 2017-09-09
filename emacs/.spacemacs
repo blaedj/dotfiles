@@ -49,7 +49,7 @@ values."
      ;; ivy
      ( auto-completion :disabled-for org git web
                        :variables
-                       auto-completion-private-snippets-directory "~/.emacs.d/private/emacs/snippets/")
+                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
      ;; better-defaults
      emacs-lisp
      git
