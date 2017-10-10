@@ -5,3 +5,9 @@ AllCops:
 
 Style/FrozenStringLiteralComment:
     Enabled: false
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
