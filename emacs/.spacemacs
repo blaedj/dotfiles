@@ -352,6 +352,7 @@ you should place your code here."
   (rvm-use-default)
   (setq-default js2-basic-offset 2)
   (setq flycheck-display-errors-function 'flycheck-display-error-messages)
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
   ;; I don't want <bleeping> ESC-ESC-ESC to close all my windows!
   (defadvice keyboard-escape-quit
       (around keyboard-escape-quit-dont-close-windows activate)
