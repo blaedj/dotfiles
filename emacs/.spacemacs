@@ -163,7 +163,7 @@ values."
    ;;                             :width normal
    ;;                             :powerline-scale 1.5)
    dotspacemacs-default-font '("Share Tech Mono"
-                               :size 16
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)
