@@ -13,6 +13,7 @@
   )
 
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (add-hook 'web-mode-hook 'bcj/web-mode-hook)
 
 (provide 'web-mode-config)
