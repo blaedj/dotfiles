@@ -389,7 +389,6 @@ you should place your code here."
    (quote
     ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
  '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#616d9f")
  '(fci-rule-width 1)
  '(flycheck-display-errors-function (quote flycheck-display-error-messages))
  '(flycheck-emacs-lisp-load-path (quote inherit))
