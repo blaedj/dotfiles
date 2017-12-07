@@ -26,10 +26,12 @@
 
   (setq org-return-follows-link t)
 
-  (add-hook 'org-mode-hook
-            '(lambda ()
-               (turn-on-auto-fill)
-               (set-fill-column 80)))
+  (defun bcj/org-mode-hook ()
+    (turn-on-auto-fill)
+    (hl-line-mode -1)
+    )
+
+  (add-hook 'org-mode-hook 'bcj/org-mode-hook)
 
 
   (defun open-todo ()
@@ -121,6 +123,7 @@
           ((string= todo "DONE") 5)
           (t 4) ; default
           ))
+
   (defun bcj/org-sort-key ()
     "Return the sorting key for the todo at point."
     (let* ( (todo-max (+ (apply #'max (mapcar #'length org-todo-keywords)) 1))

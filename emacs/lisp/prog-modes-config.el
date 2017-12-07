@@ -19,7 +19,7 @@
     "Custom configuration for programming modes."
     (fci-mode t)
     (setq fci-rule-color "#616d9f")
-
+    (hl-line-mode)
     (use-package nlinum
       :init
       (global-nlinum-mode t))
