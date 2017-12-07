@@ -362,6 +362,9 @@ you should place your code here."
   (setq helm-mode-fuzzy-match t)
   (setq helm-buffers-fuzzy-matching t)
   (setq helm-recentf-fuzzy-matching t)
+  (setq helm-always-two-windows nil)
+
+
   (setq js-indent-level 2)
   (setq projectile-switch-project-action 'projectile-dired)
   (with-eval-after-load 'dumb-jump
