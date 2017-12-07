@@ -392,7 +392,7 @@ you should place your code here."
    (quote
     ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
  '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-width 1 t)
+ '(fci-rule-width 1)
  '(flycheck-display-errors-function (quote flycheck-display-error-messages))
  '(flycheck-emacs-lisp-load-path (quote inherit))
  '(flycheck-global-modes
@@ -409,13 +409,13 @@ you should place your code here."
  '(org-default-priority 68)
  '(org-directory "~/Dropbox/org")
  '(org-ellipsis "↴")
- '(org-image-actual-width nil t)
- '(org-imenu-depth 8 t)
+ '(org-image-actual-width nil)
+ '(org-imenu-depth 8)
  '(org-link-translation-function (quote toc-org-unhrefify))
- '(org-log-done t t)
+ '(org-log-done t)
  '(org-projectile:per-repo-filename "TODOs.org")
  '(org-return-follows-link t)
- '(org-startup-with-inline-images t t)
+ '(org-startup-with-inline-images t)
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "IN-PROGRESS" "DONE")
@@ -427,7 +427,7 @@ you should place your code here."
  '(ruby-align-chained-calls t)
  '(spacemacs-theme-org-agenda-height nil)
  '(spacemacs-theme-org-height nil)
- '(toc-org-max-depth 10 t)
+ '(toc-org-max-depth 10)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
    (quote
