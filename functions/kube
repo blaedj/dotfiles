@@ -1,0 +1,19 @@
+#!/bin/bash
+dcu() {
+    LOCALHOST=`ipconfig getifaddr en0` docker-compose up
+}
+
+# kpod pr-867
+kpod() {
+    kubectl get pods -l app="cloud-$1" -o name
+}
+
+# kexec pr-867 cloud /bin/bash
+kexec() {
+    kubectl exec -it `kpod $1` -c $2 $3
+}
+
+# klog pr-867 cloud
+klog() {
+    kubectl logs -f `kpod $1` -c $2
+}

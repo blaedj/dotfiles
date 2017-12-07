@@ -1,0 +1,4 @@
+#!/bin/sh
+# Usage: git-conflicts
+# Show a list of files in a conflicted state
+git ls-files -u | awk '{print $4}' | sort -u
