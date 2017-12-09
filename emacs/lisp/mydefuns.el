@@ -13,7 +13,7 @@
   (goto-char (point-min))
   (dired-next-line 2))
 
-;;(define-key dired-mode-map [remap beginning-of-buffer] 'dired-back-to-top)
+(define-key dired-mode-map [remap beginning-of-buffer] 'dired-back-to-top)
 
 (defun dired-jump-to-bottom ()
   "Move the cursor to the last 'file' line in a dired buffer."
