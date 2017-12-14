@@ -21,7 +21,7 @@
   (goto-char (point-max))
   (dired-next-line -1))
 
-;;(define-key dired-mode-map [remap end-of-buffer] 'dired-jump-to-bottom)
+(define-key dired-mode-map [remap end-of-buffer] 'dired-jump-to-bottom)
 
 ;; ;; from seeing-is-believing: https://github.com/JoshCheek/seeing_is_believing
 ;; (defun seeing-is-believing ()
