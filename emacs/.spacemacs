@@ -50,7 +50,7 @@ values."
      ;; ivy
      ( auto-completion :disabled-for org git web
                        :variables
-                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
+                       auto-completion-private-snippets-directory "~/.dotfiles/emacs/snippets/")
      ;; better-defaults
      emacs-lisp
      git
@@ -364,6 +364,7 @@ you should place your code here."
   (setq helm-recentf-fuzzy-matching t)
   (setq helm-always-two-windows nil)
 
+  ;;(yas/load-directory "~/.dotfiles/emacs/snippets/")
 
   (setq js-indent-level 2)
   (setq projectile-switch-project-action 'projectile-dired)
