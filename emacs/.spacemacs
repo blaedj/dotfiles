@@ -353,11 +353,15 @@ you should place your code here."
   (setq-default js2-basic-offset 2)
   (setq flycheck-display-errors-function 'flycheck-display-error-messages)
   (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+  (setq powerline-default-separator 'bar)
+
   ;; I don't want <bleeping> ESC-ESC-ESC to close all my windows!
   (defadvice keyboard-escape-quit
       (around keyboard-escape-quit-dont-close-windows activate)
     (let ((buffer-quit-function (lambda () ())))
       ad-do-it))
+
   ;; helm-buffers-fuzzy-matching and helm-recentf-fuzzy-match to t.
   (setq helm-mode-fuzzy-match t)
   (setq helm-buffers-fuzzy-matching t)

@@ -49,6 +49,10 @@
   "bt" 'bcj/switch-to-todo-buffer
   )
 
+(spacemacs/set-leader-keys
+  "gg" 'dumb-jump-go
+  )
+
 ;; Mode-specific keybinds
 
 (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "tt" 'rspec-verify-single)
