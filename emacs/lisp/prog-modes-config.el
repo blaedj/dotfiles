@@ -29,7 +29,7 @@
   ) ;
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
-(setq go-tab-width 8)
+(setq go-tab-width 4)
 
 (provide 'prog-modes-config)
 ;;; prog-modes-config.el ends here
