@@ -40,3 +40,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
