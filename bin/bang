@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# on macos, sends a native notification if the following command fails
+# needs the 'terminal-notifier' gem installed globally
+
+# example usage:
+# bang rspec spec/models/post_spec.rb
+#
+# if rspec exits with a non-zero code, then you'll see a macos notification
+# alerting you of the fact.
+
+command="$1"
+shift
+args="$@"
+
+if $command $args ; then
+else
+    terminal-notifier -message "$command $args" -title "A command failed before completion"
+fi
