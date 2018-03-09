@@ -4,5 +4,6 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rakr/vim-one'
 
 call plug#end()
