@@ -198,6 +198,10 @@ terminal buffer will be 'terminal-PROJECTNAME'."
         (switch-to-buffer (get-buffer "todo.org"))
       (message "couldn't find the todo.org buffer"))))
 
+(defun bcj/date (&optional arg)
+  (insert (if arg
+              (format-time-string "%d.%m.%Y")
+            (format-time-string "%Y-%m-%d"))))
 
 (provide 'mydefuns)
 ;;; mydefuns.el ends here

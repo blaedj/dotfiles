@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: daily standup
+# key: standup
+# --
+ `(shell-command-to-string "echo -n $(date +%Y-%m-%d)")` Daily Standup Notes
+   * Yesterday
+   * Today
+   * Blockers
