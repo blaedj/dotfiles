@@ -360,7 +360,6 @@ you should place your code here."
   (setq flycheck-display-errors-function 'flycheck-display-error-messages)
   (flycheck-add-mode 'javascript-eslint 'web-mode)
 
-  (setq powerline-default-separator 'bar)
 
   ;; I don't want <bleeping> ESC-ESC-ESC to close all my windows!
   (defadvice keyboard-escape-quit
@@ -388,6 +387,8 @@ you should place your code here."
   (setq rspec-use-bundler-when-possible nil)
   (setq rspec-use-rvm t) ;
 
+
+  (setq powerline-default-separator 'bar)
   (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-version-control-on)
 

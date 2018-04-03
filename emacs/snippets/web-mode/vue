@@ -3,13 +3,14 @@
 # key: vue
 # --
 <template>
-  <div id="$1">
+  <div>
   </div>
 </template>
 
 <script>
   export default {
     name: "$1",
+    props: {},
     data: function() {
       return { }
     },
