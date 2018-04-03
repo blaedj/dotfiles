@@ -5,5 +5,6 @@ Plug 'janko-m/vim-test'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rakr/vim-one'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 call plug#end()
