@@ -11,3 +11,9 @@ Layout/SpaceAroundEqualsInParameterDefault:
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/WordArray:
+  EnforcedStyle: brackets
