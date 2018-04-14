@@ -60,9 +60,12 @@
           ))
 
   (evil-define-key 'global org-mode-map
-    (kbd "<f8>") 'org-todo
     (kbd "<f7>") 'org-schedule
-    )  ;;
+    )
+
+  (evil-define-key 'normal org-mode-map
+    (kbd "<f8>") 'bcj/org-sort-entries
+    )
 
   ;; custom org-agenda commands
   (setq org-agenda-custom-commands
