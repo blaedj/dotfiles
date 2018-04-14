@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: rails debug logger
+# key: debug
+# --
+Rails.logger.debug(
+  event: 'BCJ_',
+  $0
+)
