@@ -8,3 +8,5 @@
 #   alias ll="gls -l --color"
 #   alias la='gls -A --color'
 # fi
+
+alias git-head='git log --oneline --no-color | head -n 1 | awk '{print $1}'
