@@ -356,6 +356,8 @@ you should place your code here."
   (require 'prog-modes-config)
   (require 'web-mode-config)
   (require 'css-mode-config)
+  (require 'js-mode-config)
+
   (rvm-use-default)
   (setq-default js2-basic-offset 2)
   (setq flycheck-display-errors-function 'flycheck-display-error-messages)
