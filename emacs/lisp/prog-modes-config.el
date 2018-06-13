@@ -20,14 +20,26 @@
     (fci-mode t)
     (setq fci-rule-color "#616d9f")
     (hl-line-mode)
-    (use-package nlinum
-      :init
-      (global-nlinum-mode t))
+
+    ;; (use-package nlinum
+    ;;   :init
+    ;;   (global-nlinum-mode t))
+
     ;; (require 'idle-highlight)
     ;; (idle-highlight t)
     ;(linum-relative-on) ;;makes 400+ line files so laggy to scroll/move!!
   ) ;
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
+
+(add-hook 'elixir-format-hook
+          (lambda ()
+            (if (projectile-project-p)
+                (setq elixir-format-arguments
+                      (list "--dot-formatter"
+                            (concat
+                             (locate-dominating-file buffer-file-name ".formatter.exs")
+                             ".formatter.exs")))
+              (setq elixir-format-arguments nil))))
 
 (setq go-tab-width 4)
 
