@@ -346,6 +346,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
   (add-to-load-path "~/.dotfiles/emacs/lisp")
   (add-to-load-path "~/.dotfiles/emacs/vendor")
   (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
@@ -394,7 +395,7 @@ you should place your code here."
   (setq rspec-use-spring-when-possible t) ;
   (setq rspec-use-bundler-when-possible nil)
   (setq rspec-use-rvm t) ;
-
+  (global-hl-line-mode -1)
 
   (setq powerline-default-separator 'bar)
   (spaceline-toggle-minor-modes-off)
