@@ -2,7 +2,7 @@
 # name: rspec boilerplate
 # key: rspec
 # --
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ${1:`(let ((fn (replace-regexp-in-string "Spec$" "" (capitalize (file-name-nondirectory
 		       (file-name-sans-extension

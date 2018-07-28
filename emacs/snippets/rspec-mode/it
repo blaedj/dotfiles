@@ -2,6 +2,6 @@
 # name: it "does something" do ... end
 # key: it
 # --
-it '${1:does something}' do
+it "${1:does something}" do
   $0
 end

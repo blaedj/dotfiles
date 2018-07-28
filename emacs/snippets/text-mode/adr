@@ -1,0 +1,22 @@
+# name: architecture decision record template
+# key: adr
+# --
+ # Title
+
+ ## Author
+
+ ## Status
+
+ ## Context
+
+ **TL;DR**
+
+ **Detail**
+
+ ## Decision
+
+ ## Consequences
+
+ ## Tags
+ ```
+ ```
