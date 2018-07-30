@@ -15,10 +15,10 @@
     (shell-command (concat " prettier --write " filename ))
     ))
 
-(add-hook 'rjxs-mode-hook
+(add-hook 'rjsx-mode-hook
           (lambda ()
+            (js2-mode-hide-warnings-and-errors)
             (add-hook 'after-save-hook 'bcj/run-prettier-autocorrect nil 'make-it-local)))
-
 
 (provide 'rjsx-mode-config)
 ;;; rjsx-mode.el ends here
