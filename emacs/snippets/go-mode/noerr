@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: require no error
+# key: noerr
+# --
+require.NoError(t, err)
