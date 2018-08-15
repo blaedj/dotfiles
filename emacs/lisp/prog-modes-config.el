@@ -17,8 +17,8 @@
 
 (defun bcj/prog-mode-hook ()
     "Custom configuration for programming modes."
-    (fci-mode t)
-    (setq fci-rule-color "#616d9f")
+    ;; (fci-mode t)
+    ;;(setq fci-rule-color "#616d9f")
     ;; (hl-line-mode)
 
     ;; (use-package nlinum
@@ -42,6 +42,5 @@
               (setq elixir-format-arguments nil))))
 
 (setq go-tab-width 4)
-
 (provide 'prog-modes-config)
 ;;; prog-modes-config.el ends here
