@@ -58,6 +58,7 @@
 (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "tt" 'rspec-verify-single)
 (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode "p" 'bcj/run-prettier-autocorrect)
 
+;; (spacemacs/set-leader-keys-for-major-mode 'go-mode "tt" ')
 
 (with-eval-after-load 'helm
   (define-key helm-map (kbd "C-w") 'backward-kill-word)
