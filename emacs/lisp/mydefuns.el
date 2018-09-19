@@ -13,7 +13,6 @@
   (goto-char (point-min))
   (dired-next-line 2))
 
-(define-key dired-mode-map [remap beginning-of-buffer] 'dired-back-to-top)
 
 (defun dired-jump-to-bottom ()
   "Move the cursor to the last 'file' line in a dired buffer."
@@ -21,7 +20,10 @@
   (goto-char (point-max))
   (dired-next-line -1))
 
-(define-key dired-mode-map [remap end-of-buffer] 'dired-jump-to-bottom)
+(with-eval-after-load 'dired
+  (define-key dired-mode-map [remap beginning-of-buffer] 'dired-back-to-top)
+  (define-key dired-mode-map [remap end-of-buffer] 'dired-jump-to-bottom)
+  )
 
 ;; ;; from seeing-is-believing: https://github.com/JoshCheek/seeing_is_believing
 ;; (defun seeing-is-believing ()
@@ -76,7 +78,7 @@
   )
 
 ;;; from reddit.com/r/emacs/comments/1pkld4/elisp_question_what_does_foo_mean/
-(setq persistent-scratch-file-name "~/.emacs.d/persScratch.el")
+(setq persistent-scratch-file-name "~/persScratch.el")
 
 (defun save-persistent-scratch ()
   "Write the contents of scratch to the file name `persistent-scratch-file-name'."
