@@ -41,6 +41,7 @@ values."
      vimscript
      go
      octave
+     (go :variables godoc-at-point-function 'godoc-gogetdoc)
      javascript
      yaml
      html
@@ -80,8 +81,7 @@ values."
                                       rainbow-mode
                                       rvm
                                       smartscan
-                                      rjsx-mode
-                                      go-autocomplete
+                                      jsx-mode
                                       graphql-mode
                                       (vue-mode
                                        :location
@@ -395,6 +395,10 @@ you should place your code here."
     )
   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
   (spacemacs|disable-company web-mode)
+
+  (with-eval-after-load 'ruby
+    (rvm-use-default))
+
   (setq rspec-spec-command "rspec") ;;should change per-project...
   (setq rspec-use-spring-when-possible t) ;
   (setq rspec-use-bundler-when-possible nil)

@@ -53,6 +53,10 @@
   "gg" 'dumb-jump-go
   )
 
+(spacemacs/set-leader-keys
+  "ad" 'ido-dired
+  )
+
 ;; Mode-specific keybinds
 
 (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "tt" 'rspec-verify-single)
