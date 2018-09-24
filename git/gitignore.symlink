@@ -50,3 +50,6 @@ tramp
 
 # AUCTeX auto folder
 /auto/
+
+# .env files used to set potentially sensitive env vars & credentials
+/.env

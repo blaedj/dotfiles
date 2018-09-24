@@ -20,7 +20,7 @@ lgstat =log --color --stat --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
 	co = checkout
 	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy | less --tabs=4 -RFX; }; f"
 [core]
-	excludesfile = /Users/blaed/.gitignore_global
+	excludesfile = /Users/blaed/.gitignore
 [push]
 	default = current
 [github]
