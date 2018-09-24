@@ -1,161 +1,309 @@
-"use Vim settings, rather then Vi settings. This setting must be as early as"N
-" possible, as it has side effects."
-set nocompatible
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins                                                                     "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Leader
-let mapleader = " "
+set nocompatible " be iMproved, required
+filetype off " required
 
-set backspace=2   " Backspace deletes like most programs in insert mode
-set nobackup
-set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=50
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
+" Plugins
+Plugin 'fatih/vim-go'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'morhetz/gruvbox'
+Plugin 'junegunn/goyo.vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'mhinz/vim-mix-format'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'liuchengxu/vim-which-key'
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
-
-" Set the cursor shape for various modes, this is macOS and iTerm2 specific
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
+call vundle#end()
 filetype plugin indent on
 
-augroup vimrcEx
-  autocmd!
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General viewing                                                             "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+" colors
+try
+  colorscheme gruvbox
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 
-  " Cucumber navigation commands
-  autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
-  autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
+" use the mouse
+set mouse=a
 
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+" fix backspace
+set backspace=start,eol,indent
 
-  " Enable spellchecking for Markdown
-  autocmd FileType markdown setlocal spell
+" make it prettier
+set background=dark
 
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-augroup END
+" makes sure the status line displays automatically
+set laststatus=2
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
+" turn on syntax highlighting
+syntax on
 
-" Display extra whitespace
-" set list listchars=trail:·
+" set terminal title to file name
+set title
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" Set to auto read when a file is changed from the outside
+set autoread
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+" Ignore case when searching
+set ignorecase
 
-" Color scheme
-"colorscheme github
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+" Highlight search results
+set hlsearch
 
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+" Search each letter as you type
+set incsearch
 
-" Numbers
+" Automatically display line number
 set number
-set numberwidth=5
 
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
+" word wrapping
+set wrap
+set linebreak
 
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General code writing                                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
+" fold based on indent
+set foldmethod=indent
 
-" Switch between the last two files
-nnoremap <leader><b> <Tab>
+" dont fold by default
+set nofoldenable
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" set commentary comment types
+autocmd FileType python set commentstring=#\ %s
+autocmd FileType ruby set commentstring=#\ %s
 
-" vim-rspec mappings
-"nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-"nnoremap <Leader>s :call RunNearestSpec()<CR>
-"nnoremap <Leader>l :call RunLastSpec()<CR>
+" auto close the omnicomplete window
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
+" Show and clear all extraneous whitespace automatically
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+autocmd BufWritePre * :%s/\s\+$//e
 
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key maps                                                                    "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
+" set the leader to the Space key
+let mapleader = " "
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
+" map ; to be the same thing as : in normal mode
+nnoremap ; :
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" write on capital W
+command! W  write
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" toggle spell checking
+map <leader>s <nop>
+map <leader>s :set spell!<CR>
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" toggle line numbers
+map <leader>l :set number!<CR> :set foldcolumn=0<CR>
+
+" turn on spell checking
+map <leader>p :set paste!<CR>
+
+set smartindent
+
+" autoindent copies the indentation from the previous line,
+set autoindent
+
+" tabstop changes the width of the tab character
+set tabstop=2
+au BufEnter,BufNew *.py set tabstop=4
+
+" expandtab inserts spaces whenever the tab key is pressed
+set expandtab
+autocmd FileType go set noexpandtab
+autocmd FileType markdown set noexpandtab
+
+" shiftwidth changes the number of space characters inserted for indentation
+set shiftwidth=2
+au BufEnter,BufNew *.py set shiftwidth=4
+
+" softtabstop makes the backspace key treat the four spaces like a tab
+set softtabstop=2
+au BufEnter,BufNew *.py set softtabstop=4
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim artifact files                                                          "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" set permanent undo files
+set undofile
+
+" maximum number of changes that can be undone
+set undolevels=1000
+
+" maximum number lines to save for undo on a buffer reload
+set undoreload=10000
+
+" Don't drop swap and undo files all over the place
+set directory=~/.vim/tmp
+set undodir=~/.vim/tmp
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic Settings                                                          "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neocoplete Configuration                                                    "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:neocomplete#enable_at_startup = 1
+
+" use tab to cycle through items
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" use enter to select an item
+inoremap <expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+
+" disable the help preview
+set completeopt-=preview
+
+" use arrows to select completion results
+let g:neocomplete#enable_cursor_hold_i = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP Configuration                                                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" CtrlP keyboard shortcut
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Start search where top-most .git directory is found
+let g:ctrlp_working_path_mode = 'ra'
+
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir': join([
+    \'build$',
+    \'node_modules$',
+    \'third-party$',
+    \'vendor$',
+    \'tmp$',
+  \], '\|')}
+
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree Settings                                                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>n :NERDTreeToggle<CR>
+map <leader>f :NERDTreeFind<CR><C-w><C-w><CR>
+
+" Open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p | endif
+
+" Open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeShowHidden = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Goyo Settings                                                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>g :Goyo<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" C++ Settings                                                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:syntastic_cpp_checkers = []
+let g:syntastic_c_checkers = []
+
+let g:syntastic_cpp_include_dirs = [
+  \"/usr/local/osquery/include",
+\]
+
+let g:syntastic_cpp_compiler_options = join([
+  \"-std=c++17",
+  \"-DOSQUERY_BUILD_SDK_VERSION=syntastic",
+  \"-DOSQUERY_BUILD_PLATFORM=syntastic",
+  \"-DOSQUERY_BUILD_DISTRO=syntastic",
+  \], " ")
+
+:autocmd BufWritePre *.cpp,*.cc,*.h,*.hpp :Autoformat
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Elixir Settings                                                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:mix_format_on_save = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Go Settings                                                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" https://github.com/fatih/vim-go/wiki/FAQ-Troubleshooting says this is required
+filetype plugin indent on
+
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+let g:go_list_type = "quickfix"
+
+" enabled syntax highlighting for more symbol types in Go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" run goimports instead of go fmt on save
+let g:go_fmt_command = "goimports"
+
+" build the code on save
+autocmd BufWritePre *.go :GoBuild
+
+" keyboard shortcuts
+map <leader>b :GoBuild<CR>
+map <leader>d :GoDef<CR>
