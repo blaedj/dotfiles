@@ -361,7 +361,7 @@ you should place your code here."
   (require 'web-mode-config)
   (require 'css-mode-config)
   (require 'js-mode-config)
-  (require 'rjsx-mode-config)
+  (require 'jsx-mode-config)
 
   (rvm-use-default)
   (setq-default js2-basic-offset 2)
