@@ -408,6 +408,13 @@ you should place your code here."
   (spaceline-toggle-minor-modes-off)
   (spaceline-toggle-version-control-on)
 
+  (setq flycheck-idle-change-delay 4) ;; given the line below, this *should* have no effect
+  (setq flycheck-display-errors-function 'flycheck-display-error-messages)
+  ;; only run flycheck when the file is saved or flycheck is enabled
+  (setq flycheck-check-syntax-automatically '(save))
+
+  ;; don't know yet if this is effective or not
+  (setq-default flycheck-disabled-checkers '(go-errcheck go-unconvert go-megacheck))
 
   ;; workaround for https://github.com/syl20bnr/spacemacs/issues/9608
   (require 'helm-bookmark)

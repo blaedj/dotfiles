@@ -41,6 +41,5 @@
                              ".formatter.exs")))
               (setq elixir-format-arguments nil))))
 
-(setq go-tab-width 4)
 (provide 'prog-modes-config)
 ;;; prog-modes-config.el ends here
