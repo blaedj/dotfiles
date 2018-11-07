@@ -353,6 +353,7 @@ you should place your code here."
   (add-to-load-path "~/.dotfiles/emacs/vendor")
   (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
   (require 'mydefuns)
+  (require 'display-config)
   (require 'magit-config)
   (require 'org-mode-settings)
   (require 'keymaps)
@@ -501,78 +502,82 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(custom-safe-themes
-     (quote
-      ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
-   '(evil-want-Y-yank-to-eol nil)
-   '(fci-rule-color "#2e2e2e" t)
-   '(fci-rule-width 1 t)
-   '(flycheck-display-errors-function (quote flycheck-display-error-messages))
-   '(flycheck-emacs-lisp-load-path (quote inherit))
-   '(flycheck-global-modes
-     (quote
-      (go-mode json-mode js2-mode coffee-mode yaml-mode web-mode slim-mode scss-mode sass-mode pug-mode less-mode haml-mode enh-ruby-mode ruby-mode)))
-   '(flycheck-pos-tip-mode nil)
-   '(flycheck-sass-executable nil)
-   '(flycheck-standard-error-navigation nil)
-   '(global-flycheck-mode t)
-   '(helm-org-format-outline-path t t)
-   '(org-agenda-files (quote ("~/Dropbox/org/todo.org" "~/Dropbox/org/gcal.org")))
-   '(org-agenda-restore-windows-after-quit t)
-   '(org-default-notes-file "~/Dropbox/org/todo.org")
-   '(org-default-priority 68)
-   '(org-directory "~/Dropbox/org")
-   '(org-ellipsis "↴")
-   '(org-image-actual-width nil)
-   '(org-imenu-depth 8)
-   '(org-link-translation-function (quote toc-org-unhrefify))
-   '(org-log-done t)
-   '(org-projectile:per-repo-filename "TODOs.org")
-   '(org-return-follows-link t)
-   '(org-startup-with-inline-images t)
-   '(org-todo-keywords
-     (quote
-      ((sequence "TODO" "IN-PROGRESS" "DONE")
-       (sequence "ON-HOLD"))))
-   '(package-selected-packages
-     (quote
-      (yasnippet-snippets edit-indirect symon string-inflection spaceline-all-the-icons seeing-is-believing ruby-refactor ruby-hash-syntax prettier-js pippel pipenv password-generator overseer orgit org-category-capture org-brain nameless magit-svn json-navigator hierarchy importmagic epc ctable concurrent impatient-mode helm-xref helm-purpose window-purpose imenu-list helm-git-grep godoctor go-tag go-rename go-impl go-gen-test go-fill-struct gitignore-templates evil-org graphql evil-lion evil-cleverparens paredit editorconfig doom-modeline eldoc-eval shrink-path all-the-icons memoize centered-cursor-mode browse-at-remote font-lock+ dotenv-mode org-mime org-present org-plus-contrib jsx-mode graphql-mode treepy company-ycmd ycmd request-deferred deferred go-autocomplete go-complete rjsx-mode alchemist flycheck-mix flycheck-credo elixir-mode magit-gh-pulls gh marshal logito pcache ghub+ apiwrap ghub magithub enh-ruby-mode tide typescript-mode protobuf-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell csv-mode company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode dockerfile-mode slack emojify circe oauth2 websocket vimrc-mode flyspell-correct-helm flyspell-correct dactyl-mode auto-dictionary racer cargo toml-mode flycheck-rust seq rust-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic nlinum sql-indent magit-popup git-commit with-editor js2-mode go-guru go-eldoc company-go go-mode ledger-mode flycheck-ledger helpful evil-goggles pandoc-mode ox-pandoc ht origami web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js-doc company-tern dash-functional tern coffee-mode vue-mode ssass-mode vue-html-mode rainbow-mode ag git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl smartscan ample-zen-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy yaml-mode flycheck-pos-tip pos-tip flycheck web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-projectile org-pomodoro alert log4e gntp org-download htmlize gnuplot rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby smeargle magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
-   '(paradox-github-token t)
-   '(ruby-align-chained-calls t)
-   '(spacemacs-theme-org-agenda-height nil)
-   '(spacemacs-theme-org-height nil)
-   '(toc-org-max-depth 10 t)
-   '(vc-annotate-background "#3b3b3b")
-   '(vc-annotate-color-map
-     (quote
-      ((20 . "#dd5542")
-       (40 . "#CC5542")
-       (60 . "#fb8512")
-       (80 . "#baba36")
-       (100 . "#bdbc61")
-       (120 . "#7d7c61")
-       (140 . "#6abd50")
-       (160 . "#6aaf50")
-       (180 . "#6aa350")
-       (200 . "#6a9550")
-       (220 . "#6a8550")
-       (240 . "#6a7550")
-       (260 . "#9b55c3")
-       (280 . "#6CA0A3")
-       (300 . "#528fd1")
-       (320 . "#5180b3")
-       (340 . "#6380b3")
-       (360 . "#DC8CC3"))))
-   '(vc-annotate-very-old-color "#DC8CC3"))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+ '(ansi-term-color-vector
+   [unspecified "#002b36" "#dc322f" "#859900" "#b58900" "#268bd2" "#6c71c4" "#268bd2" "#93a1a1"])
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "819d24b9aba8fcb446aecfb59f87d1817a6d3eb07de7fdec67743ef32194438b" "0c3b1358ea01895e56d1c0193f72559449462e5952bded28c81a8e09b53f103f" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
+ '(evil-want-Y-yank-to-eol nil)
+ '(fci-rule-color "#2e2e2e")
+ '(fci-rule-width 1)
+ '(flycheck-display-errors-function (quote flycheck-display-error-messages))
+ '(flycheck-emacs-lisp-load-path (quote inherit))
+ '(flycheck-global-modes
+   (quote
+    (go-mode json-mode js2-mode coffee-mode yaml-mode web-mode slim-mode scss-mode sass-mode pug-mode less-mode haml-mode enh-ruby-mode ruby-mode)))
+ '(flycheck-pos-tip-mode nil)
+ '(flycheck-sass-executable nil)
+ '(flycheck-standard-error-navigation nil)
+ '(global-flycheck-mode t)
+ '(helm-org-format-outline-path t t)
+ '(org-agenda-files (quote ("~/Dropbox/org/todo.org" "~/Dropbox/org/gcal.org")))
+ '(org-agenda-restore-windows-after-quit t t)
+ '(org-default-notes-file "~/Dropbox/org/todo.org")
+ '(org-default-priority 68)
+ '(org-directory "~/Dropbox/org")
+ '(org-ellipsis "↴")
+ '(org-image-actual-width nil)
+ '(org-imenu-depth 8)
+ '(org-link-translation-function (quote toc-org-unhrefify))
+ '(org-log-done t)
+ '(org-projectile:per-repo-filename "TODOs.org")
+ '(org-return-follows-link t)
+ '(org-startup-with-inline-images t)
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO" "IN-PROGRESS" "DONE")
+     (sequence "ON-HOLD"))))
+ '(package-selected-packages
+   (quote
+    (org-mime org-present org-plus-contrib jsx-mode graphql-mode treepy company-ycmd ycmd request-deferred deferred go-autocomplete go-complete rjsx-mode alchemist flycheck-mix flycheck-credo elixir-mode magit-gh-pulls gh marshal logito pcache ghub+ apiwrap ghub magithub enh-ruby-mode tide typescript-mode protobuf-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell csv-mode company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode dockerfile-mode slack emojify circe oauth2 websocket vimrc-mode flyspell-correct-helm flyspell-correct dactyl-mode auto-dictionary racer cargo toml-mode flycheck-rust seq rust-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic nlinum sql-indent magit-popup git-commit with-editor js2-mode go-guru go-eldoc company-go go-mode ledger-mode flycheck-ledger helpful evil-goggles pandoc-mode ox-pandoc ht origami web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js-doc company-tern dash-functional tern coffee-mode vue-mode ssass-mode vue-html-mode rainbow-mode ag git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl smartscan ample-zen-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy yaml-mode flycheck-pos-tip pos-tip flycheck web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-projectile org-pomodoro alert log4e gntp org-download htmlize gnuplot rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby smeargle magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+ '(paradox-github-token t)
+ '(ruby-align-chained-calls t)
+ '(spacemacs-theme-org-agenda-height nil)
+ '(spacemacs-theme-org-height nil)
+ '(toc-org-max-depth 10)
+ '(vc-annotate-background "#3b3b3b")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dd5542")
+     (40 . "#CC5542")
+     (60 . "#fb8512")
+     (80 . "#baba36")
+     (100 . "#bdbc61")
+     (120 . "#7d7c61")
+     (140 . "#6abd50")
+     (160 . "#6aaf50")
+     (180 . "#6aa350")
+     (200 . "#6a9550")
+     (220 . "#6a8550")
+     (240 . "#6a7550")
+     (260 . "#9b55c3")
+     (280 . "#6CA0A3")
+     (300 . "#528fd1")
+     (320 . "#5180b3")
+     (340 . "#6380b3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
