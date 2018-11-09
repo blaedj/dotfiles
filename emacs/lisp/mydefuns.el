@@ -205,5 +205,38 @@ terminal buffer will be 'terminal-PROJECTNAME'."
               (format-time-string "%d.%m.%Y")
             (format-time-string "%Y-%m-%d"))))
 
+
+;; Turn
+;;
+;;   T{foo: bar, baz: qux{}}
+;;
+;; into
+;;
+;;   T{
+;;   	foo: bar,
+;;   	baz: qux{},
+;;   }
+;;
+;; Point needs to be anywhere before, or on, the opening {
+;; thanks to Dominik Honnef from gophers slack
+(defun go-neat-struct ()
+  (interactive)
+  (save-excursion
+    (search-forward "{")
+    (let ((start-level (go-paren-level))
+          (start-pos (point)))
+      (reindent-then-newline-and-indent)
+      (while (and (>= (go-paren-level) start-level)
+                  (search-forward "," nil t))
+        (if (= (go-paren-level) start-level)
+            (reindent-then-newline-and-indent)))
+      (goto-char (1- start-pos))
+      (forward-list)
+      (backward-char)
+      (insert ",")
+      (reindent-then-newline-and-indent))))
+
+
+
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
