@@ -8,6 +8,7 @@
   (unless (display-graphic-p frame)
     (set-face-background 'default "unspecified-bg" frame)))
 
+(set-face-background 'font-lock-comment-face "unspecified-bg")
 (add-hook 'after-make-frame-functions 'check-if-bg-color-needed)
 
 

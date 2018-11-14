@@ -511,6 +511,17 @@ This function is called at the very end of Spacemacs initialization."
    ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(ansi-term-color-vector
    [unspecified "#002b36" "#dc322f" "#859900" "#b58900" "#268bd2" "#6c71c4" "#268bd2" "#93a1a1"])
+ '(company-dabbrev-code-modes
+   (quote
+    (enh-ruby-mode ruby-mode prog-mode batch-file-mode csharp-mode css-mode erlang-mode haskell-mode jde-mode lua-mode python-mode)))
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case nil)
+ '(company-idle-delay 0.8)
+ '(company-minimum-prefix-length 2)
+ '(company-require-match nil)
+ '(company-transformers
+   (quote
+    (spacemacs//company-transformer-cancel company-sort-by-occurrence)))
  '(custom-safe-themes
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "819d24b9aba8fcb446aecfb59f87d1817a6d3eb07de7fdec67743ef32194438b" "0c3b1358ea01895e56d1c0193f72559449462e5952bded28c81a8e09b53f103f" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
@@ -529,17 +540,17 @@ This function is called at the very end of Spacemacs initialization."
  '(helm-org-format-outline-path t t)
  '(org-agenda-files (quote ("~/Dropbox/org/todo.org" "~/Dropbox/org/gcal.org")))
  '(org-agenda-restore-windows-after-quit t t)
- '(org-default-notes-file "~/Dropbox/org/todo.org")
+ '(org-default-notes-file "~/Dropbox/org/todo.org" t)
  '(org-default-priority 68)
- '(org-directory "~/Dropbox/org")
+ '(org-directory "~/Dropbox/org" t)
  '(org-ellipsis "↴")
- '(org-image-actual-width nil)
- '(org-imenu-depth 8)
+ '(org-image-actual-width nil t)
+ '(org-imenu-depth 8 t)
  '(org-link-translation-function (quote toc-org-unhrefify))
- '(org-log-done t)
+ '(org-log-done t t)
  '(org-projectile:per-repo-filename "TODOs.org")
  '(org-return-follows-link t)
- '(org-startup-with-inline-images t)
+ '(org-startup-with-inline-images t t)
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "IN-PROGRESS" "DONE")
@@ -551,7 +562,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ruby-align-chained-calls t)
  '(spacemacs-theme-org-agenda-height nil)
  '(spacemacs-theme-org-height nil)
- '(toc-org-max-depth 10)
+ '(toc-org-max-depth 10 t)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
    (quote
@@ -579,5 +590,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-comment-face ((t (:foreground "#008787" :slant normal)))))
 )
