@@ -1,0 +1,10 @@
+#!/bin/sh
+
+matches=$(git diff-index --patch HEAD | grep '^+' | grep 'DEBUG: REMOVE ME')
+
+if [ ! -z "$matches" ]
+then
+    echo "Error: found debug printing statements in the diff:\n"
+    echo $matches
+    exit 1
+fi

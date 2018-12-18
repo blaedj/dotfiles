@@ -47,3 +47,5 @@ lgstat =log --color --stat --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
 	pushInsteadOf = https://github.com/
 [commit]
 	template = /Users/blaed/.gitmessage
+[init]
+	templatedir = ~/.git-templates
