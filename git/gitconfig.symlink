@@ -49,3 +49,5 @@ lgstat =log --color --stat --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
 	template = /Users/blaed/.gitmessage
 [init]
 	templatedir = ~/.git-templates
+[credential]
+	helper = osxkeychain
