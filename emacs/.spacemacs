@@ -400,10 +400,10 @@ you should place your code here."
     (rvm-use-default))
 
   (setq rspec-spec-command "rspec") ;;should change per-project...
-  (setq rspec-use-spring-when-possible t) ;
-  (setq rspec-use-bundler-when-possible nil)
+  (setq rspec-use-spring-when-possible nil) ;
+  (setq rspec-use-bundler-when-possible t)
   (setq rspec-use-rvm t) ;
-  (global-hl-line-mode -1)
+  (global-hl-line-mode 1) ;
 
   (setq powerline-default-separator 'bar)
   (spaceline-toggle-minor-modes-off)

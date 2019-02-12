@@ -3,4 +3,5 @@
 # name: pink
 # key: pink
 # --
+ # DEBUG: REMOVE ME
 puts "\033[35m#{$0}\033[0m"
