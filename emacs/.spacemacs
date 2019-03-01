@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(typescript
      ;;elixir
      ;; typescript
      csv
@@ -362,6 +362,7 @@ you should place your code here."
   (require 'css-mode-config)
   (require 'js-mode-config)
   (require 'jsx-mode-config)
+  (require 'path)
 
   (setq-default js2-basic-offset 2)
   (setq js-indent-level 2)
@@ -401,7 +402,7 @@ you should place your code here."
 
   (setq rspec-spec-command "rspec") ;;should change per-project...
   (setq rspec-use-spring-when-possible nil) ;
-  (setq rspec-use-bundler-when-possible t)
+  (setq rspec-use-bundler-when-possible t) ;
   (setq rspec-use-rvm t) ;
   (global-hl-line-mode 1) ;
 
@@ -507,24 +508,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(ansi-term-color-vector
-   [unspecified "#002b36" "#dc322f" "#859900" "#b58900" "#268bd2" "#6c71c4" "#268bd2" "#93a1a1"])
- '(company-dabbrev-code-modes
-   (quote
-    (enh-ruby-mode ruby-mode prog-mode batch-file-mode csharp-mode css-mode erlang-mode haskell-mode jde-mode lua-mode python-mode)))
- '(company-dabbrev-downcase nil)
- '(company-dabbrev-ignore-case nil)
- '(company-idle-delay 0.8)
- '(company-minimum-prefix-length 2)
- '(company-require-match nil)
- '(company-transformers
-   (quote
-    (spacemacs//company-transformer-cancel company-sort-by-occurrence)))
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "819d24b9aba8fcb446aecfb59f87d1817a6d3eb07de7fdec67743ef32194438b" "0c3b1358ea01895e56d1c0193f72559449462e5952bded28c81a8e09b53f103f" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
+    ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#2e2e2e")
  '(fci-rule-width 1)
@@ -540,29 +526,29 @@ This function is called at the very end of Spacemacs initialization."
  '(helm-org-format-outline-path t t)
  '(org-agenda-files (quote ("~/Dropbox/org/todo.org" "~/Dropbox/org/gcal.org")))
  '(org-agenda-restore-windows-after-quit t t)
- '(org-default-notes-file "~/Dropbox/org/todo.org" t)
+ '(org-default-notes-file "~/Dropbox/org/todo.org")
  '(org-default-priority 68)
- '(org-directory "~/Dropbox/org" t)
+ '(org-directory "~/Dropbox/org")
  '(org-ellipsis "↴")
- '(org-image-actual-width nil t)
- '(org-imenu-depth 8 t)
+ '(org-image-actual-width nil)
+ '(org-imenu-depth 8)
  '(org-link-translation-function (quote toc-org-unhrefify))
- '(org-log-done t t)
+ '(org-log-done t)
  '(org-projectile:per-repo-filename "TODOs.org")
  '(org-return-follows-link t)
- '(org-startup-with-inline-images t t)
+ '(org-startup-with-inline-images t)
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "IN-PROGRESS" "DONE")
      (sequence "ON-HOLD"))))
  '(package-selected-packages
    (quote
-    (org-mime org-present org-plus-contrib jsx-mode graphql-mode treepy company-ycmd ycmd request-deferred deferred go-autocomplete go-complete rjsx-mode alchemist flycheck-mix flycheck-credo elixir-mode magit-gh-pulls gh marshal logito pcache ghub+ apiwrap ghub magithub enh-ruby-mode tide typescript-mode protobuf-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell csv-mode company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode dockerfile-mode slack emojify circe oauth2 websocket vimrc-mode flyspell-correct-helm flyspell-correct dactyl-mode auto-dictionary racer cargo toml-mode flycheck-rust seq rust-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic nlinum sql-indent magit-popup git-commit with-editor js2-mode go-guru go-eldoc company-go go-mode ledger-mode flycheck-ledger helpful evil-goggles pandoc-mode ox-pandoc ht origami web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js-doc company-tern dash-functional tern coffee-mode vue-mode ssass-mode vue-html-mode rainbow-mode ag git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl smartscan ample-zen-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy yaml-mode flycheck-pos-tip pos-tip flycheck web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-projectile org-pomodoro alert log4e gntp org-download htmlize gnuplot rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby smeargle magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (add-node-modules-path org-mime org-present org-plus-contrib jsx-mode graphql-mode treepy company-ycmd ycmd request-deferred deferred go-autocomplete go-complete rjsx-mode alchemist flycheck-mix flycheck-credo elixir-mode magit-gh-pulls gh marshal logito pcache ghub+ apiwrap ghub magithub enh-ruby-mode tide typescript-mode protobuf-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell csv-mode company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode dockerfile-mode slack emojify circe oauth2 websocket vimrc-mode flyspell-correct-helm flyspell-correct dactyl-mode auto-dictionary racer cargo toml-mode flycheck-rust seq rust-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic nlinum sql-indent magit-popup git-commit with-editor js2-mode go-guru go-eldoc company-go go-mode ledger-mode flycheck-ledger helpful evil-goggles pandoc-mode ox-pandoc ht origami web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js-doc company-tern dash-functional tern coffee-mode vue-mode ssass-mode vue-html-mode rainbow-mode ag git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl smartscan ample-zen-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy yaml-mode flycheck-pos-tip pos-tip flycheck web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-projectile org-pomodoro alert log4e gntp org-download htmlize gnuplot rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby smeargle magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(paradox-github-token t)
  '(ruby-align-chained-calls t)
  '(spacemacs-theme-org-agenda-height nil)
  '(spacemacs-theme-org-height nil)
- '(toc-org-max-depth 10 t)
+ '(toc-org-max-depth 10)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
    (quote
@@ -590,5 +576,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:foreground "#008787" :slant normal)))))
+ )
 )
