@@ -1,5 +1,5 @@
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
+# Path to your zsh configuration.
+export ZSH=$HOME/.dotfiles/zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -7,59 +7,67 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="blaed"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="ls -lh"
-alias -s pdf=evince
-
-alias gls="git ls"
-
-alias rpsec="rspec"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# add a function path
+fpath=($ZSH/functions $ZSH/completions $fpath)
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git themes bundler)
+# Load all of the config files in $ZSH/lib that end in .zsh
+# lib is loaded first so that all files in $ZSH/ can depend
+# on the helper functions defined in them.
+for config_file ($ZSH/lib/*.zsh); do
+    custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
+    [ -f "${custom_config_file}" ] && config_file=${custom_config_file}
+    source $config_file
+done
+unset config_file
 
-source $ZSH/oh-my-zsh.sh
+# Load all of the config files in ~/oh-my-zsh that end in .zsh
+# TIP: Add files you don't want in git to .gitignore
+for config_file ($ZSH/*.zsh); do
+    custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
+    [ -f "${custom_config_file}" ] && config_file=${custom_config_file}
+    source $config_file
+done
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+
+is_plugin() {
+    local base_dir=$1
+    local name=$2
+    test -f $base_dir/plugins/$name/$name.plugin.zsh \
+        || test -f $base_dir/plugins/$name/_$name
+}
+
+plugins=(git themes bundler fast-syntax-highlighting)
+# Add all defined plugins to fpath. This must be done
+# before running compinit.
+for plugin ($plugins); do
+    if is_plugin $ZSH_CUSTOM $plugin; then
+        fpath=($ZSH_CUSTOM/plugins/$plugin $fpath)
+    elif is_plugin $ZSH $plugin; then
+        fpath=($ZSH/plugins/$plugin $fpath)
+    fi
+done
+
+# grc (a log colorizer) has built-in support for some commands.
+# the following automatically sets some aliases to colorize those commands
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
+
+
+# for bat: https://github.com/sharkdp/bat
+export BAT_THEME="TwoDark"
+
+
+
+# source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-
-ulimit -c unlimited
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### Set the default editor to emacs, runs emacsclient
-export EDITOR="/usr/local/bin/ec"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#PATH=$PATH:$HOME/idea/bin # Add intellij IDEA to path
