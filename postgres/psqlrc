@@ -1,0 +1,3 @@
+\timing
+\pset null 'ø'
+\set HISTFILE ~/.psql_history- :DBNAME
