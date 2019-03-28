@@ -41,6 +41,7 @@
         "/Users/blaed/.dotfiles/bin"
         "/Users/blaed/code/go/bin"
         "/Users/blaed/.rvm/bin"
+        "./bin"
         ))
       )
 
