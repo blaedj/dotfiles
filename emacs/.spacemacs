@@ -82,6 +82,7 @@ values."
                                       smartscan
                                       jsx-mode
                                       graphql-mode
+                                      exec-path-from-shell
                                       (vue-mode
                                        :location
                                        (recipe
@@ -420,6 +421,8 @@ you should place your code here."
 
   ;; workaround for https://github.com/syl20bnr/spacemacs/issues/9608
   (require 'helm-bookmark)
+
+  (exec-path-from-shell-initialize)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
