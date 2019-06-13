@@ -82,6 +82,7 @@ values."
                                       jsx-mode
                                       graphql-mode
                                       exec-path-from-shell
+                                      coffee-mode
                                       (vue-mode
                                        :location
                                        (recipe
