@@ -368,6 +368,7 @@ you should place your code here."
   (require 'css-mode-config)
   (require 'js-mode-config)
   (require 'jsx-mode-config)
+  (require 'ruby-mode-config)
   (require 'path)
 
   (setq-default js2-basic-offset 2)
@@ -401,11 +402,6 @@ you should place your code here."
     (add-to-list 'dumb-jump-language-file-exts '((:language "ruby" :ext "erb" :agtype "ruby" :rgtype "ruby")))
     )
   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
-
-  (setq rspec-spec-command "bin/rspec") ;;should change per-project...
-  (setq rspec-use-spring-when-possible nil) ;
-  ;; (setq rspec-use-bundler-when-possible nil) ;
-  ;; (setq rspec-use-rvm t) ;
 
   (global-hl-line-mode 1) ;
 
