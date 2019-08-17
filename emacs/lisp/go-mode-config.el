@@ -13,7 +13,7 @@
 
 (add-hook 'go-mode-hook #'lsp-deferred)
 
-optional - provides fancier overlays. remove if it turns out to be slow
+;; optional - provides fancier overlays. remove if it turns out to be slow
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
