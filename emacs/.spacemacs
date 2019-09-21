@@ -513,8 +513,8 @@ This function is called at the very end of Spacemacs initialization."
    (quote
     ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" default)))
  '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#2e2e2e" t)
- '(fci-rule-width 1 t)
+ '(fci-rule-color "#2e2e2e")
+ '(fci-rule-width 1)
  '(flycheck-display-errors-function (quote flycheck-display-error-messages))
  '(flycheck-emacs-lisp-load-path (quote inherit))
  '(flycheck-global-modes
@@ -526,7 +526,7 @@ This function is called at the very end of Spacemacs initialization."
  '(global-flycheck-mode t)
  '(helm-org-format-outline-path t t)
  '(org-agenda-files (quote ("~/Dropbox/org/todo.org" "~/Dropbox/org/gcal.org")))
- '(org-agenda-restore-windows-after-quit t)
+ '(org-agenda-restore-windows-after-quit t t)
  '(org-default-notes-file "~/Dropbox/org/todo.org")
  '(org-default-priority 68)
  '(org-directory "~/Dropbox/org")

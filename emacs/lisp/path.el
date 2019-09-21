@@ -8,12 +8,10 @@
 (let (
       (custom-exec-paths
       '(
-        "/Users/blaed/.rvm/gems/ruby-2.6.1/bin"
-        "/Users/blaed/.rvm/gems/ruby-2.6.1@global/bin"
-        "/Users/blaed/.rvm/rubies/ruby-2.6.1/bin"
         "/Users/blaed/google-cloud-sdk/bin"
         "/Users/blaed/.yarn/bin"
         "/Applications/Postgres.app/Contents/Versions/9.4/bin"
+        "/Users/blaed/.rbenv/shims"
         "/usr/local/heroku/bin"
         "/usr/local/bin"
         "/usr/bin"
@@ -40,7 +38,6 @@
         "/usr/games"
         "/Users/blaed/.dotfiles/bin"
         "/Users/blaed/code/go/bin"
-        "/Users/blaed/.rvm/bin"
         "./bin"
         ))
       )
