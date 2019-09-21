@@ -1,11 +1,11 @@
 #!/bin/sh
 
-## Need to change this to rvm
-# if test ! $(which rbenv)
-# then
-#   echo "  Installing rbenv for you."
-#   brew install rbenv > /tmp/rbenv-install.log
-# fi
+# Need to change this to rbenv
+if test ! $(which rbenv)
+then
+  echo "  Installing rbenv for you."
+  brew install rbenv > /tmp/rbenv-install.log
+fi
 
 # if test ! $(which ruby-build)
 # then
