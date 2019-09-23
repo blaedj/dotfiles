@@ -15,7 +15,7 @@ brew install heroku
 
 brew cask install dropbox iterm2 1password dash firefox alfred bartender \
      spectacle tripmode slack emacs bitbar ngrok licecap suspicious-package \
-     watch
+     watch wtfutil
 
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install

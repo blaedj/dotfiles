@@ -1,0 +1,81 @@
+wtf:
+  colors:
+    background: black
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+    checked: yellow
+    highlight:
+      fore: black
+      back: gray
+    rows:
+      even: yellow
+      odd: white
+  grid:
+    # How _wide_ the columns are, in terminal characters. In this case we have
+    # four columns, each of which are 35 characters wide.
+    columns: [35, 35, 35, 35]
+    # How _high_ the rows are, in terminal lines.
+    rows: [3, 2, 5, 7, 7, 7, 4]
+  refreshInterval: 1
+  openFileUtil: "open"
+  mods:
+    prettyweather:
+      title: "Weather"
+      enabled: true
+      city: "DLH"
+      position:
+        top: 0
+        left: 0
+        height: 4
+        width: 2
+      refreshInterval: 600
+      unit: "u"
+      view: "1nQF"
+      language: "en"
+    # You can have multiple widgets of the same type.
+    # The "key" is the name of the widget and the type is the actual
+    # widget you want to implement.
+    battery:
+      type: power
+      title: "⚡️"
+      enabled: true
+      position:
+        top: 1
+        left: 2
+        height: 2
+        width: 1
+      refreshInterval: 15
+
+    resources:
+      type: resourceusage
+      enabled: true
+      position:
+        top: 4
+        left: 0
+        height: 3
+        width: 1
+      refreshInterval: 4
+    git:
+      commitCount: 7
+      enabled: true
+      position:
+        top: 4
+        left: 1
+        height: 3
+        width: 3
+      refreshInterval: 30
+      repositories:
+        - "/Users/blaed/code/rails/k2"
+    count:
+      title: Counts
+      type: cmdrunner
+      cmd: "counts" # see dotfiled/bin/counts
+      enabled: true
+      refreshInterval: 300
+      position:
+        top: 0
+        left: 2
+        height: 1
+        width: 1
