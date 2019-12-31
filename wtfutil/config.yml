@@ -15,14 +15,14 @@ wtf:
   grid:
     # How _wide_ the columns are, in terminal characters. In this case we have
     # four columns, each of which are 35 characters wide.
-    columns: [35, 35, 35, 35]
+    columns: [35, 31, 39, 35]
     # How _high_ the rows are, in terminal lines.
-    rows: [3, 2, 5, 7, 7, 7, 4]
+    rows: [2, 2, 5, 7, 8, 7, 4]
   refreshInterval: 1
   openFileUtil: "open"
   mods:
     prettyweather:
-      title: "Weather"
+      title: "Weather (DLH)"
       enabled: true
       city: "DLH"
       position:
@@ -30,7 +30,7 @@ wtf:
         left: 0
         height: 4
         width: 2
-      refreshInterval: 600
+      refreshInterval: 1200
       unit: "u"
       view: "1nQF"
       language: "en"
@@ -42,24 +42,24 @@ wtf:
       title: "⚡️"
       enabled: true
       position:
-        top: 1
-        left: 2
+        top: 4
+        left: 0
         height: 2
         width: 1
-      refreshInterval: 15
+      refreshInterval: 60
 
     resources:
       type: resourceusage
       enabled: true
       position:
-        top: 4
-        left: 0
-        height: 3
-        width: 1
+        top: 2
+        left: 2
+        height: 5
+        width: 2
       refreshInterval: 4
     git:
       commitCount: 7
-      enabled: true
+      enabled: false
       position:
         top: 4
         left: 1
@@ -77,5 +77,5 @@ wtf:
       position:
         top: 0
         left: 2
-        height: 1
+        height: 2
         width: 1
