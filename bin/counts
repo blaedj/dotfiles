@@ -4,13 +4,4 @@ storepath=~/.counts
 
 count=$(curl 'https://k2.kolide.com/api/public/count' | jq .count)
 
-prev_count=$(< $storepath)
-if [ $count -gt $prev_count ]
-then
-    say "woohoo"
-fi
-
-echo $count > $storepath
-
-
 echo Devices: $count

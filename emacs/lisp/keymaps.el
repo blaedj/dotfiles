@@ -54,7 +54,7 @@
   )
 
 (spacemacs/set-leader-keys
-  "ad" 'ido-dired
+  "ad" 'dired
   )
 
 ;; Mode-specific keybinds
@@ -74,6 +74,10 @@
   (define-key company-active-map (kbd "C-w") 'backward-kill-word)
   )
 
+(use-package dired-git-info
+  :ensure t
+  :bind (:map dired-mode-map
+              (")" . dired-git-info-mode)))
 
 ;; Unset default keybinds
 
