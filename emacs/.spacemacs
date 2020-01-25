@@ -177,11 +177,22 @@ values."
    ;;                             :powerline-scale 1.5)
    ;;dotspacemacs-default-font '("Share Tech Mono"
    ;;
-   dotspacemacs-default-font '("source code pro"
+   dotspacemacs-default-font '("Jetbrains Mono"
                                :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)
+
+   ;; To dynamically set the font:
+   ;; (spacemacs/set-default-font
+   ;;  '("Jetbrains Mono"
+   ;;    :size 13
+   ;;    :weight normal
+   ;;    :width normal
+   ;;    :powerline-scale 1.5)
+   ;;  )
+
+
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).

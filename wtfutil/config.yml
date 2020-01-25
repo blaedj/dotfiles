@@ -30,7 +30,7 @@ wtf:
         left: 0
         height: 4
         width: 2
-      refreshInterval: 1200
+      refreshInterval: 3600
       unit: "u"
       view: "1nQF"
       language: "en"
