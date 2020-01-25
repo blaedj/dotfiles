@@ -1,0 +1,2 @@
+Pry.config.pager = false
+Pry.config.editor = '/usr/local/bin/emacsclient -t'

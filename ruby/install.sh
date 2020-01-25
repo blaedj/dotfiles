@@ -13,4 +13,5 @@ fi
 #   brew install ruby-build > /tmp/ruby-build-install.log
 # fi
 ln -s ~/.dotfiles/ruby/rspec.symlink ~/.rspec
+ln -s ~/.dotfiles/ruby/pryrc.symlink ~/.pryrc
 ln -s ~/.dotfiles/ruby/rubocop.yml.symlink ~/.rubocop.yml
