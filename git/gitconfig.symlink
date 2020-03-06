@@ -25,7 +25,7 @@ lgstat =log --color --stat --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
   stat = !git diff --stat $(git merge-base HEAD master)
 
 [core]
-	excludesfile = /Users/blaed/.gitignore
+	excludesfile = ~/.gitignore
 [push]
 	default = current
 [github]
@@ -51,7 +51,7 @@ lgstat =log --color --stat --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 [commit]
-	template = /Users/blaed/.gitmessage
+	template = ~/.gitmessage
 [init]
 	templatedir = ~/.git-templates
 [credential]
