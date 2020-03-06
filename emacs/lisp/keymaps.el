@@ -75,10 +75,10 @@
   (define-key company-active-map (kbd "C-w") 'backward-kill-word)
   )
 
-(use-package dired-git-info
-  :ensure t
-  :bind (:map dired-mode-map
-              (")" . dired-git-info-mode)))
+;; (use-package dired-git-info
+;;   :ensure t
+;;   :bind (:map dired-mode-map
+;;               (")" . dired-git-info-mode)))
 
 ;; Unset default keybinds
 

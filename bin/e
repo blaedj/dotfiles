@@ -21,4 +21,5 @@
 # fi
 
 #exec /usr/local/cellar/emacs/25.1/bin/emacsclient -t -a "vim" $*
-exec /usr/local/bin/emacsclient -t -a "vim" $*
+#exec /usr/local/bin/emacsclient -t -a "vim" $*
+exec /usr/bin/emacsclient26 -t -a "vim" $*
