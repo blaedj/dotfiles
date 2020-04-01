@@ -1,7 +1,15 @@
-#!/bin/bash
+#!/bin/zsh
 
 storepath=~/.counts
 
-count=$(curl 'https://k2.kolide.com/api/public/count' | jq .count)
+deviceCount=$(curl -s 'https://k2.kolide.com/api/public/count' | jq .count)
+connections=( ${(ps:\n\n:)"$(heroku pg:info -a kolide2)"} )
 
-echo Devices: $count
+primary=$(echo ${connections[1]} | ag 'Connections:.*$' | tr -s ' ')
+replica=$(echo ${connections[2]} | ag 'Connections:.*$' | tr -s ' ')
+
+cat <<-EOF
+ Devices: $deviceCount
+ Primary PG: $primary
+ Replica PG: $replica
+EOF
