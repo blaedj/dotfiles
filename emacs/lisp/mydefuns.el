@@ -236,6 +236,16 @@ terminal buffer will be 'terminal-PROJECTNAME'."
       (insert ",")
       (reindent-then-newline-and-indent))))
 
+;; thanks to Xah Lee
+;; http://ergoemacs.org/emacs/emacs_jump_to_previous_position.html
+;; Version 2016-04-04
+(defun pop-local-mark-ring ()
+  "Move cursor to last mark position of current buffer.
+Call this repeatedly will cycle all positions in `mark-ring'."
+  (interactive)
+  (set-mark-command t)
+  )
+
 
 
 (provide 'mydefuns)
