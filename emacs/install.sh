@@ -1,4 +1,14 @@
 #!/bin/bash
+
+if [ "$(uname -s)" = "Linux" ]
+then 
+ echo "Installing emacs26..."
+
+ sudo add-apt-repository ppa:kelleyk/emacs
+ sudo apt install emacs26
+fi
+
+
 if [ ! -d "~/code/elisp/spacemacs" ]; then
     git clone https://github.com/syl20bnr/spacemacs ~/code/elisp/spacemacs
 fi

@@ -4,7 +4,19 @@
 if test ! $(which rbenv)
 then
   echo "  Installing rbenv for you."
-  brew install rbenv > /tmp/rbenv-install.log
+
+  if [ "$(uname -s)" = "Linux" ]
+  then
+     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+
+     # dependencies needed by ruby-build
+     sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+  fi
+
+  if [ "$(uname -s)" = "Darwin" ]
+  then
+     brew install rbenv > /tmp/rbenv-install.log
+  fi
 fi
 
 # if test ! $(which ruby-build)
