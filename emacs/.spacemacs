@@ -86,6 +86,7 @@ values."
                                       coffee-mode
                                       lsp-mode
                                       lsp-ui
+                                      format-sql
                                       (vue-mode
                                        :location
                                        (recipe
