@@ -17,7 +17,7 @@ wtf:
     # four columns, each of which are 35 characters wide.
     columns: [35, 31, 39, 35]
     # How _high_ the rows are, in terminal lines.
-    rows: [2, 2, 5, 7, 8, 7, 4]
+    rows: [2, 2, 2, 5, 7, 8, 7, 4]
   refreshInterval: 1
   openFileUtil: "open"
   mods:
@@ -28,7 +28,7 @@ wtf:
       position:
         top: 0
         left: 0
-        height: 4
+        height: 5
         width: 2
       refreshInterval: 3600
       unit: "u"
@@ -42,7 +42,7 @@ wtf:
       title: "⚡️"
       enabled: true
       position:
-        top: 4
+        top: 5
         left: 0
         height: 2
         width: 1
@@ -52,7 +52,7 @@ wtf:
       type: resourceusage
       enabled: true
       position:
-        top: 2
+        top: 3
         left: 2
         height: 5
         width: 2
@@ -77,5 +77,5 @@ wtf:
       position:
         top: 0
         left: 2
-        height: 2
+        height: 3
         width: 1
