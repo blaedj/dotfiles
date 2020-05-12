@@ -158,5 +158,11 @@
               (flyspell-mode 1)
               (yas-minor-mode 1)
               )))
+
+;; setup better org-mode-to-markdown exporter
+(use-package ox-gfm
+  :defer 3
+  :after org)
+
 (provide 'org-mode-settings)
 ;;; org-mode-settings.el ends here
