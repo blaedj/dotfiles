@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+cat <<-EOF
+$(istats fan speed | tr -s ' ')
+$(istats battery charge)
+EOF

@@ -15,9 +15,9 @@ wtf:
   grid:
     # How _wide_ the columns are, in terminal characters. In this case we have
     # four columns, each of which are 35 characters wide.
-    columns: [35, 31, 39, 35]
+    columns: [26, 15, 15, 15]
     # How _high_ the rows are, in terminal lines.
-    rows: [2, 2, 2, 5, 7, 8, 7, 4]
+    rows: [2, 2, 2, 2, 2, 4, 4, 4, 4]
   refreshInterval: 1
   openFileUtil: "open"
   mods:
@@ -28,46 +28,37 @@ wtf:
       position:
         top: 0
         left: 0
-        height: 5
-        width: 2
+        height: 4
+        width: 1
       refreshInterval: 3600
       unit: "u"
-      view: "1nQF"
+      view: "0nQF"
       language: "en"
+
     # You can have multiple widgets of the same type.
     # The "key" is the name of the widget and the type is the actual
     # widget you want to implement.
-    battery:
-      type: power
+    istats:
+      type: cmdrunner
+      cmd: combined-stats
       title: "⚡️"
       enabled: true
       position:
-        top: 5
-        left: 0
-        height: 2
-        width: 1
-      refreshInterval: 60
+        top: 4
+        left: 2
+        height: 3
+        width: 2
+      refreshInterval: 90
 
     resources:
       type: resourceusage
       enabled: true
       position:
-        top: 3
-        left: 2
+        top: 4
+        left: 0
         height: 5
         width: 2
-      refreshInterval: 4
-    git:
-      commitCount: 7
-      enabled: false
-      position:
-        top: 4
-        left: 1
-        height: 3
-        width: 3
-      refreshInterval: 30
-      repositories:
-        - "/Users/blaed/code/rails/k2"
+      refreshInterval: 10
     count:
       title: Counts
       type: cmdrunner
@@ -76,6 +67,6 @@ wtf:
       refreshInterval: 300
       position:
         top: 0
-        left: 2
-        height: 3
-        width: 1
+        left: 1
+        height: 4
+        width: 3
