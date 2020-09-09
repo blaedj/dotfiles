@@ -1,5 +1,5 @@
 alias reload!='. ~/.zshrc'
-alias tails="tail -n 75 -f"
+alias tails="tail -n 5 -f"
 
 alias l='ls -lah'
 alias ll='ls -lh'
