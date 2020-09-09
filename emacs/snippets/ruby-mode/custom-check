@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: custom check
+# key: customcheck
+# --
+
+# organization id <>
+
+title = ""
+
+rationale = "--"
+
+remediation = "--"
+
+osquery_sql = <<~SQL
+SQL
+
+new_check = OsqueryCheck.create!(
+  name: title,
+  failure_title: title,
+  description: rationale,
+  rationale_template: rationale,
+  fix_instructions_template: remediation,
+  check_category_id: ${0:123}, # Basic Device Security
+  osquery_platforms: ['$1'],
+  osquery_sql: osquery_sql,
+)

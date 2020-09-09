@@ -4,5 +4,6 @@
 # --
 Rails.logger.debug(
   event: 'BCJ_',
+  location: "#{__FILE__}:#{__LINE__}",
   $0
 )

@@ -153,30 +153,6 @@ terminal buffer will be 'terminal-PROJECTNAME'."
 ;;       (switch-to-buffer (window-buffer (smartwin--get-smart-window)))
 ;;       )))
 
-(defun bcj-window-setup ()
-  "Automate window & buffer setup."
-  (interactive)
-  (delete-other-windows)            ; clear all windows
-  (org-agenda nil "b")
-  (other-window 1)                  ; get out of agenda window
-  (delete-other-windows)
-  (split-window-right 110)         ; split window @ 120 chars, creating 2nd col.
-  (split-window-below 65)          ; create 2nd row for terminals in 1st column
-  (other-window 1)                 ; jump to 1st column, 2nd row
-  (ansi-term "/bin/zsh")
-  (toggle-window-dedicated)        ; make the window for terminal 'dedicated'
-  (other-window 1)                 ; jump to 2nd column
-  (split-window-right 95)          ; split 2nd col at 85 cols, creating 3rd col.
-  (other-window 1)                 ; jump to 3rd column
-  (split-window-below)             ; create 2nd row in 3rd col for agenda.
-  (other-window 1)                 ; jump to 2nd row in 3rd col
-  (switch-to-buffer "*Org Agenda*"); open agenda buffer
-  (toggle-window-dedicated)        ; make window for agenda dedicated
-  (other-window -1)                ; jump back to 1st row, 3rd col
-  (switch-to-buffer "todo.org")    ; open todo file
-  (toggle-window-dedicated)        ; make window for todo.org dedicated
-  )
-
 ;; thanks to Frank Klotz
 ;; http://stackoverflow.com/users/9668/frank-klotz
 ;; http://stackoverflow.com/a/65992/1050853
@@ -245,8 +221,6 @@ Call this repeatedly will cycle all positions in `mark-ring'."
   (interactive)
   (set-mark-command t)
   )
-
-
 
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
