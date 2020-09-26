@@ -181,7 +181,7 @@ values."
    ;;                             :powerline-scale 1.5)
    ;;dotspacemacs-default-font '("Share Tech Mono"
    ;;
-   dotspacemacs-default-font '("Jetbrains Mono"
+   dotspacemacs-default-font '("Anonymous Pro"
                                :size 13
                                :weight normal
                                :width normal
@@ -189,8 +189,8 @@ values."
 
    ;; To dynamically set the font:
    ;; (spacemacs/set-default-font
-   ;;  '("Jetbrains Mono"
-   ;;    :size 13
+   ;;  '("Ubuntu Mono"
+   ;;    :size 15
    ;;    :weight normal
    ;;    :width normal
    ;;    :powerline-scale 1.5)
@@ -302,6 +302,11 @@ values."
    dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
    dotspacemacs-mode-line-unicode-symbols t
+   ;; not sure what this is for, but apparently I need it to pass dotfile-tsts?
+   ;; one of: 'spacemacs, 'all-the-icons, 'custom, 'vim-powerline or 'vanilla or
+   ;; a list with `car' one of the previous values and properties one of the
+   ;; following: `:separator' or `:separator-scale'
+   dotspacemacs-mode-line-theme 'spacemacs
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -407,6 +412,9 @@ you should place your code here."
   (setq helm-buffers-fuzzy-matching t)
   (setq helm-recentf-fuzzy-matching t)
   (setq helm-always-two-windows nil)
+  (setq helm-M-x-fuzzy-match t)
+  (setq helm-imenu-fuzzy-match t)
+  (setq helm-semantic-fuzzy-match t)
 
   (with-eval-after-load 'helm-projectile
     (setq helm-source-projectile-files-and-dired-list '(helm-source-projectile-files-list))
