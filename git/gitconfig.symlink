@@ -26,6 +26,7 @@ lgstat =log --color --stat --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d
 
 [core]
 	excludesfile = ~/.gitignore
+	attributesfile = /Users/blaed/.gitattributes
 [push]
 	default = current
 [github]
