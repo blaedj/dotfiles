@@ -21,5 +21,6 @@
 # fi
 
 #exec /usr/local/cellar/emacs/25.1/bin/emacsclient -t -a "vim" $*
-#exec /usr/local/bin/emacsclient -t -a "vim" $*
-exec /usr/bin/emacsclient26 -t -a "vim" $*
+exec /usr/local/bin/emacsclient -t -a "vim" $*
+# TODO: should set up an alias from emacsclient<VERSION> to emacsclient in the emacs install script
+# exec /usr/bin/emacsclient26 -t -a "vim" $*
