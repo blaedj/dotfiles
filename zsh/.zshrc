@@ -1,16 +1,7 @@
 # Path to your zsh configuration.
 export ZSH=$HOME/.dotfiles/zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="blaed"
-
 alias ll="ls -lh"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -46,7 +37,7 @@ is_plugin() {
         || test -f $base_dir/plugins/$name/_$name
 }
 
-plugins=(git themes bundler fast-syntax-highlighting)
+plugins=(git bundler fast-syntax-highlighting)
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
@@ -66,7 +57,10 @@ done
 export BAT_THEME="TwoDark"
 
 
-
+# Set name of the theme to load.
+# Look in /themes/
+ZSH_THEME="blaed"
+source "$ZSH/themes/$ZSH_THEME.zsh"
 # source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...

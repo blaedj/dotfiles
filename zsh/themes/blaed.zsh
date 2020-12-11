@@ -1,4 +1,5 @@
 autoload colors && colors
+
 # ZSH theme based on 'intheloop' by James Smith (http://loopj.com)
 # A multiline prompt with username, hostname, full path, return status, git branch, git dirty status, git remote status
 
@@ -9,12 +10,13 @@ if [ -n "$SSH_CLIENT" ]; then
   local host_color="red"
 fi
 
-PROMPT="
+PROMPT='
 %{$fg_bold[grey]%}[%{$reset_color%}%{$fg_bold[${host_color}]%}%n@%m%{$reset_color%}%{$fg_bold[grey]%}]%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%} $(git_prompt_info) $(git_remote_status)
-%{$fg[cyan]%}›%{$reset_color%} "
+%{$fg[cyan]%}›%{$reset_color%} '
 #%{$fg_bold[cyan]%}❯%{$reset_color%} '
 
-RPROMPT="${return_status}%{$reset_color%}${time}"
+
+RPROMPT='${return_status}%{$reset_color%}${time}'
 
 # local time, color coded by last return code
 #time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}" # time: timestamp style
