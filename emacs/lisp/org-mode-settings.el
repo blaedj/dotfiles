@@ -18,10 +18,10 @@
   (setq org-ellipsis "↴")
 
   ;; show prettier bullet points instead of asterisks
-  (require 'org-bullets)
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (org-bullets-mode 1)))
+  ;; (require 'org-bullets)
+  ;; (add-hook 'org-mode-hook
+  ;;           (lambda ()
+  ;;             (org-bullets-mode 1)))
 
 
   (setq org-return-follows-link t)
@@ -163,6 +163,16 @@
 (use-package ox-gfm
   :defer 3
   :after org)
+
+;; golang support for org-babel
+(use-package ob-go
+  :defer 3
+  :after org-babel
+  :init
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((go . t)))
+  )
 
 (provide 'org-mode-settings)
 ;;; org-mode-settings.el ends here

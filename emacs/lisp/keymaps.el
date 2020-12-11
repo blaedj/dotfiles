@@ -8,7 +8,7 @@
   (kbd "\C-w") 'backward-kill-word
   (kbd "\C-x\C-k") 'kill-region)
 
-(require 'mydefuns ) ;; so we can move these defuns out of the keymap file...
+(require 'mydefuns) ;; so we can move these defuns out of the keymap file...
 (global-set-key (kbd "<f5>") 'bcj-revert-buffer-no-confirm)
 (global-set-key (kbd "<f6>") 'bcj-window-setup)
 (global-set-key (kbd "<f7>") 'pop-local-mark-ring)

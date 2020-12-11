@@ -2,6 +2,7 @@
 # name: rails debug logger
 # key: debug
 # --
+ # DEBUG: REMOVE ME
 Rails.logger.debug(
   event: 'BCJ_',
   location: "#{__FILE__}:#{__LINE__}",
