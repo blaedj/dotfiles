@@ -1,5 +1,7 @@
 autoload colors && colors
 
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+
 # ZSH theme based on 'intheloop' by James Smith (http://loopj.com)
 # A multiline prompt with username, hostname, full path, return status, git branch, git dirty status, git remote status
 
@@ -32,3 +34,5 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[grey]%}]"
 ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE="%{$fg_bold[magenta]%}↓%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE="%{$fg_bold[magenta]%}↑%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg_bold[magenta]%}↕%{$reset_color%}"
+
+setopt prompt_subst

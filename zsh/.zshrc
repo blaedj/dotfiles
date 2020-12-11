@@ -19,7 +19,7 @@ for config_file ($ZSH/lib/*.zsh); do
 done
 unset config_file
 
-# Load all of the config files in ~/oh-my-zsh that end in .zsh
+# Load all of the config files in $ZSH that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
 for config_file ($ZSH/*.zsh); do
     custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
@@ -37,16 +37,22 @@ is_plugin() {
         || test -f $base_dir/plugins/$name/_$name
 }
 
-plugins=(git bundler fast-syntax-highlighting)
+# To install the fast-highlighting plugin:
+#   git clone https://github.com/zdharma/fast-syntax-highlighting.git \
+#       ~/.dotfiles/zsh/plugins/custom/fast-syntax-highlighting
+[ -f "$ZSH/plugins/custom/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ] && source "$ZSH/plugins/custom/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+
+# plugins=(git fast-syntax-highlighting)
+plugins=(git)
+
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
-    if is_plugin $ZSH_CUSTOM $plugin; then
-        fpath=($ZSH_CUSTOM/plugins/$plugin $fpath)
-    elif is_plugin $ZSH $plugin; then
+    if is_plugin $ZSH $plugin; then
         fpath=($ZSH/plugins/$plugin $fpath)
     fi
 done
+
 
 # grc (a log colorizer) has built-in support for some commands.
 # the following automatically sets some aliases to colorize those commands

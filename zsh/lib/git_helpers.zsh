@@ -7,7 +7,6 @@ function git_prompt_info() {
   fi
 }
 
-
 # Checks if working tree is dirty
 parse_git_dirty() {
   local STATUS=''
@@ -174,3 +173,8 @@ function git_compare_version() {
 POST_1_7_2_GIT=$(git_compare_version "1.7.2")
 #clean up the namespace slightly by removing the checker function
 unset -f git_compare_version
+
+
+alias gsb='git status -sb'
+alias gst='git status'
+alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
