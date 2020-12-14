@@ -128,6 +128,22 @@ klaunch() {
                 -with_initial_runner \
                 -disable_control_tls \
                 2>&1 | tee ~/tmp/local.log ;;
+
+        "local")
+            sudo ~/code/go/src/github.com/kolide/launcher/build/launcher \
+                 -root_directory $(mktemp -d) \
+                 -hostname blaedj.ngrok.io \
+                 -enroll_secret_path ~/Dropbox/Temp/lnchrscrt.txt \
+                 --insecure \
+                 --insecure_transport \
+                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                 -transport jsonrpc \
+                 -autoupdate false\
+                 -debug \
+                 -with_initial_runner \
+                 -disable_control_tls \
+                 2>&1 | tee ~/tmp/local.log ;;
+
         "ubuntu" )
             docker run -i -t gcr.io/kolide-public-containers/launcher-fakedata-ubuntu18:latest \
                    -debug \
