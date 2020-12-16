@@ -54,20 +54,55 @@ for plugin ($plugins); do
 done
 
 
+
+# Figure out the SHORT hostname
+if [[ "$OSTYPE" = darwin* ]]; then
+    # OS X's $HOST changes with dhcp, etc. Use ComputerName if possible.
+    SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST=${HOST/.*/}
+else
+    SHORT_HOST=${HOST/.*/}
+fi
+
+# Save the location of the current completion dump file.
+if [ -z "$ZSH_COMPDUMP" ]; then
+    ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+fi
+
+# Load and run compinit
+autoload -U compinit
+compinit -i -d "${ZSH_COMPDUMP}"
+
 # grc (a log colorizer) has built-in support for some commands.
 # the following automatically sets some aliases to colorize those commands
 [[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
+# fuzzy search/completion utility
+# TODO: the install script should install fzf..
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.secrets.sh
+
+export EMAIL="blaed@hey.com"
+export NAME="Blaed Johnston"
 
 # for bat: https://github.com/sharkdp/bat
 export BAT_THEME="TwoDark"
 
+# I've given up on the spring preloader for rails
+export DISABLE_SPRING=true
 
-# Set name of the theme to load.
-# Look in /themes/
+# turn on erlang/elixir shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+export PATH="$PATH:$HOME/.rbenv/bin"
+eval "$(rbenv init -)"
+
+# Set the default editor to a custom command, that first tries to use emacsclient, but falls back to vim
+export EDITOR="e"
+
 ZSH_THEME="blaed"
 source "$ZSH/themes/$ZSH_THEME.zsh"
-# source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+# add dotifiles bin/ folder to path
+export PATH=$PATH:~/.dotfiles/bin
