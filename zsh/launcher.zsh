@@ -38,7 +38,7 @@ k1launch() {
 klaunch() {
     case $1 in
         "help")
-            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,macold}" ;;
+            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,macold,local,sudomac,sudomac-persistent}" ;;
         "sudomac" )
             sudo launchctl asuser 0 \
                 ~/code/go/src/github.com/kolide/launcher/build/launcher \
@@ -166,5 +166,7 @@ klaunch() {
                    -insecure_transport \
                    -insecure \
                    -disable_control_tls ;;
+        *)
+            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,macold,local,sudomac,sudomac-persistent}" ;;
     esac
 }
