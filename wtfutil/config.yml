@@ -62,7 +62,7 @@ wtf:
     count:
       title: Counts
       type: cmdrunner
-      cmd: "counts" # see dotfiled/bin/counts
+      cmd: "counts" # see dotfiles/bin/counts
       enabled: true
       refreshInterval: 300
       position:
