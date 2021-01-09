@@ -6,6 +6,7 @@
 #+TITLE: $1
 #+AUTHOR: Blaed Johnston
 #+EMAIL: blaedj@gmail.com
+#+DATE: `(calendar-date-string ( calendar-current-date ))`
 #+STARTUP: indent
 #+STARTUP: inlineimages
 #+OPTIONS: toc:1
