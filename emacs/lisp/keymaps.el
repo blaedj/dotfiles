@@ -48,14 +48,9 @@
 
 (spacemacs/set-leader-keys
   "bt" 'bcj/switch-to-todo-buffer
-  )
-
-(spacemacs/set-leader-keys
   "gg" 'dumb-jump-go
-  )
-
-(spacemacs/set-leader-keys
-  "ad" 'dired
+  "ad" 'dired-jump
+  "aD" 'dired
   )
 
 ;; Mode-specific keybinds
