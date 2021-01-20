@@ -13,7 +13,7 @@ alias 1='cd -'
 alias 2='cd -2'
 
 # List directory contents
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -Ah'
+alias ls="ls --color"
+alias l='ls --color -l --all --human-readable'
+alias ll='ls --color -l --human-readable'
+alias la='ls --color --almost-all --human-readable'
