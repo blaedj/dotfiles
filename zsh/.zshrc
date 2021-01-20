@@ -106,3 +106,5 @@ source "$ZSH/themes/$ZSH_THEME.zsh"
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 # add dotifiles bin/ folder to path
 export PATH=$PATH:~/.dotfiles/bin
+# add go to the path
+export PATH=$PATH:/usr/local/go/bin
