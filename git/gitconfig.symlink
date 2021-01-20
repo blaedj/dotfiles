@@ -28,6 +28,13 @@
 [core]
 	excludesfile = ~/.gitignore
 	attributesfile = /Users/blaed/.gitattributes
+  pager = delta
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+[interactive]
+    diffFilter = delta --color-only
 [push]
 	default = current
 [pull]
