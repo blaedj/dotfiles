@@ -28,7 +28,6 @@
 [core]
 	excludesfile = ~/.gitignore
 	attributesfile = /Users/blaed/.gitattributes
-  pager = delta
 [delta]
     plus-color = "#012800"
     minus-color = "#340001"
