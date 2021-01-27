@@ -1,0 +1,20 @@
+{
+ "layer": "top", 
+ "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["clock","sway/window"],
+  "modules-right": ["tray", "network", "battery"],
+ "sway/window": {
+	 "max-length": 50
+ }, 
+ "clock": {
+    "format": "{:%a, %d. %b  %l:%M}" 
+ },
+
+	"network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "󰤮 Disconnected",
+        	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	}
+}
