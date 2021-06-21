@@ -600,6 +600,15 @@ This function is called at the very end of Spacemacs initialization."
  '(ruby-align-chained-calls t)
  '(rustic-ansi-faces
    ["#1D252C" "#D95468" "#8BD49C" "#EBBF83" "#5EC4FF" "#E27E8D" "#70E1E8" "#A0B3C5"])
+ '(safe-local-variable-values
+   '((whitespace-line-column . 80)
+     (typescript-backend . tide)
+     (typescript-backend . lsp)
+     (javascript-backend . tide)
+     (javascript-backend . tern)
+     (javascript-backend . lsp)
+     (go-backend . go-mode)
+     (go-backend . lsp)))
  '(spacemacs-theme-org-agenda-height nil)
  '(spacemacs-theme-org-height nil)
  '(toc-org-max-depth 10)
