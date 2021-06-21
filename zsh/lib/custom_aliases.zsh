@@ -1,0 +1,1 @@
+alias tails='tail -f'

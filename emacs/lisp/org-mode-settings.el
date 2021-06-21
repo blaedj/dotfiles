@@ -91,7 +91,7 @@
   (setq org-mobile-inbox-for-pull (concat org-mobile-directory "/inbox.org"))
 
   ;;google calendar and org-mode syncing
-  (setq org-gcal-file-alist '(("blaedj@gmail.com" .  "~/Dropbox/org/gcal.org")))
+  (setq org-gcal-file-alist '(("blaedj@gmail.com" . "~/Dropbox/org/gcal.org")))
 
 
   (setq org-capture-templates
@@ -103,7 +103,7 @@
            (file+headline "~/Dropbox/org/todo.org" "Contingency") "** %?")
 
           ("j" "Journal Entry"
-           entry (file+weektree (concat org-directory "/personal/journal.org"))
+           entry (file+weektree "~/Dropbox/org/personal/journal.org")
            "* %U %?" :empty-lines 1)
 
           ("p" "tracking"

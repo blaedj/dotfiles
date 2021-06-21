@@ -34,9 +34,5 @@
   "Pulse the current line."
   (pulse-momentary-highlight-one-line (point)))
 
-(dolist (command '(scroll-up-command scroll-down-command
-                                     recenter-top-bottom other-window))
-  (advice-add command :after #'pulse-line))
-
 (provide 'display-config)
 ;;; display-config.el ends here

@@ -17,9 +17,6 @@
 
 (defun bcj/prog-mode-hook ()
     "Custom configuration for programming modes."
-    ;;(fci-mode t)
-    ;;(setq fci-rule-color "#353639")
-
     ;; (hl-line-mode)
     ;; (use-package nlinum
     ;;   :init

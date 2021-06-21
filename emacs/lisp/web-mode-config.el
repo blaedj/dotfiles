@@ -10,8 +10,7 @@
 
 (defun bcj/web-mode-hook ()
   (company-mode nil)
-  (fci-mode 0)
-  )
+)
 
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 (add-hook 'web-mode-hook 'bcj/web-mode-hook)
