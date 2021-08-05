@@ -430,6 +430,9 @@ you should place your code here."
 
   ;; (spacemacs/set-evil-cursor-color 'normal "chartreuse")
 
+  ;; open liquid-markdown files in markdown mode. Imperfect, but better than using fundamental-mode
+  (add-to-list 'auto-mode-alist '("\\.liqmd$" . markdown-mode))
+
   (setq projectile-switch-project-action 'projectile-dired)
   (with-eval-after-load 'dumb-jump
     (add-to-list 'dumb-jump-language-file-exts '((:language "ruby" :ext "erb" :agtype "ruby" :rgtype "ruby")))
