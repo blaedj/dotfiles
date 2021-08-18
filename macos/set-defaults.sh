@@ -829,6 +829,11 @@ defaults write org.m0k.transmission WarningLegal -bool false
 defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
+# Rectangle.app
+defaults write com.knollsoft.Rectangle screenEdgeGapTop -int 1
+defaults write com.knollsoft.Rectangle screenEdgeGapBottom -int 1
+defaults write com.knollsoft.Rectangle screenEdgeGapLeft -int 1
+defaults write com.knollsoft.Rectangle screenEdgeGapRight -int 1
 
 
 ###############################################################################
