@@ -6,7 +6,7 @@
 (setq go-tab-width 4)
 ;; (setq gofmt-command "goimports")
 (setq go-format-before-save t)
-(gofmt-before-save)
+;; (gofmt-before-save)
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred))

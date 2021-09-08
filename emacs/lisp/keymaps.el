@@ -8,14 +8,16 @@
   (kbd "\C-w") 'backward-kill-word
   (kbd "\C-x\C-k") 'kill-region)
 
+(define-key evil-visual-state-map (kbd "u") 'undo)
+
 (require 'mydefuns) ;; so we can move these defuns out of the keymap file...
 (global-set-key (kbd "<f5>") 'bcj-revert-buffer-no-confirm)
 (global-set-key (kbd "<f6>") 'bcj-window-setup)
 (global-set-key (kbd "<f7>") 'pop-local-mark-ring)
 
-(global-set-key (kbd "\C-x m") 'smex) ; smarter M-x
-(global-set-key "\C-x\C-m" 'smex)     ; smarter M-x
-(global-set-key (kbd "<menu>") 'smex)
+;; (global-set-key (kbd "\C-x m") 'smex) ; smarter M-x
+;; (global-set-key "\C-x\C-m" 'smex)     ; smarter M-x
+;; (global-set-key (kbd "<menu>") 'smex)
 
 (global-set-key (kbd "M-l") 'expand-region)
 
