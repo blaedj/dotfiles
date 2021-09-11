@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+CLIPHISTPATH=~/.dotfiles/sway/bin/wl-clipboard-history
+
+$CLIPHISTPATH -p "$($CLIPHISTPATH -l 20 | dmenu | cut -d ',' -f1)" | wl-copy

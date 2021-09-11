@@ -18,7 +18,8 @@ set $term x-terminal-emulator
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi --show run | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -156,8 +157,8 @@ input "type:touchpad" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+b splith
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -175,6 +176,15 @@ input "type:touchpad" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    #
+    # clipboard
+    #
+    exec wl-paste -t text --watch clipman store
+    exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+    bindsym $mod+v clipman pick -t wofi
+
+
 #
 # Scratchpad:
 #
@@ -242,5 +252,7 @@ gaps inner 8
 #gaps horizontal 8
 
 font pango:SourceCodePro 11
+
+exec ~/.dotfiles/sway/bin/wl-clipboard-manager -t
 
 include /etc/sway/config.d/*
