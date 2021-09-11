@@ -138,7 +138,9 @@ klaunch() {
                  --insecure_transport \
                  --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                  -transport jsonrpc \
-                 -autoupdate false\
+                 -autoupdate \
+                 -autoupdater_initial_delay 0 \
+                 -update_channel beta\
                  -debug \
                  -with_initial_runner \
                  -disable_control_tls \
