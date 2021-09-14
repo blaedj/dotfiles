@@ -82,5 +82,13 @@
 ;;sick of accidentally downcasing regions instead of commenting them.
 (global-set-key (kbd "C-x C-l") 'comment-dwim)
 
+;; evil-collection is a set of eveil keybindings for additional modes
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init 'nov))
+
 (provide 'keymaps)
 ;;; keymaps.el ends here.
