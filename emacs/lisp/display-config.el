@@ -8,17 +8,24 @@
   (unless (display-graphic-p frame)
     (set-face-background 'default "unspecified-bg" frame)))
 
-(set-face-background 'font-lock-comment-face "unspecified-bg")
+;; commented out the below line because it causes errors, "unspecified-bg" is not a valid color.
+;; (set-face-background 'font-lock-comment-face "unspecified-bg")
 (add-hook 'after-make-frame-functions 'check-if-bg-color-needed)
 
 (setq spacemacs-theme-comment-bg nil)
+
+(setq custom-theme-directory "~/.dotfiles/emacs/themes" )
 
 (use-package doom-themes
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-Iosvkem) ;
+        doom-themes-enable-italic t  ; if nil, italics is universally disabled
+        custom-doom-tomorrow-night-brighter-comments t ; if non-nil, comments are brighter
+        )
+  ;; (load-theme 'doom-Iosvkem) ;
+  ;; (load-theme 'doom-tomorrow-night) ;
+  (load-theme 'custom-doom-tomorrow-night) ; has more visible comments
 
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   ;; (doom-themes-neotree-config)

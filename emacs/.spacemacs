@@ -259,7 +259,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
                          doom-Iosvkem
-                         doom-tomorrow-night-theme
+                         custom-doom-tomorrow-night
                          )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
