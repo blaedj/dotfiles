@@ -611,6 +611,7 @@ you should place your code here."
   (require 'path)
 
   (require 'highlight)
+  (require 'liquid-mode)
 
   (setq-default js2-basic-offset 2)
   (setq js-indent-level 2)
@@ -640,8 +641,9 @@ you should place your code here."
     (setq helm-source-projectile-files-and-dired-list '(helm-source-projectile-files-list))
     )
 
-  ;; open liquid-markdown files in markdown mode. Imperfect, but better than using fundamental-mode
-  (add-to-list 'auto-mode-alist '("\\.liqmd$" . markdown-mode))
+  ;; open liquid-markdown files in liquid mode.
+  (add-to-list 'auto-mode-alist '("\\.liqmd$" . liquid-mode))
+  (add-to-list 'auto-mode-alist '("\\.liquid$" . liquid-mode))
 
   (setq projectile-switch-project-action 'projectile-dired)
   (with-eval-after-load 'dumb-jump
