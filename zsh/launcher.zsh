@@ -56,6 +56,31 @@ klaunch() {
                 -disable_control_tls \
                 2>&1 | tee /Users/blaed/tmp/local_sudomac.log ;;
 
+        # for testing permission errors & handling of said errors
+        "sudomac-perms" )
+            chown blaed ~/tmp/launcher_root_bad_perms
+            sudo rm /Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/launcher
+            sudo rm /Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/osquery-extension.ext
+
+            cp ~/code/go/src/github.com/kolide/launcher/build/launcher /Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/
+            cp ~/code/go/src/github.com/kolide/launcher/build/osquery-extension.ext /users/blaed/tmp/launcher_root_bad_perms/kolide/bin/
+
+            sudo launchctl asuser 0 \
+                 /Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/launcher \
+                 -root_directory "/Users/blaed/tmp/launcher_root_bad_perms/kolide" \
+                 -hostname localhost:5000 \
+                 -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
+                 --osqueryd_path "/Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/osqueryd" \
+                 --insecure \
+                 --insecure_transport \
+                 -transport jsonrpc \
+                 -autoupdate \
+                 -update_channel="beta" \
+                 -debug \
+                 -with_initial_runner \
+                 -disable_control_tls \
+                 2>&1 | tee /Users/blaed/tmp/sudomac-perms.log ;;
+
         "sudomac-persistent" )
             sudo launchctl asuser 0 \
                  ~/code/go/src/github.com/kolide/launcher/build/launcher \
