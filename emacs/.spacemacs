@@ -92,6 +92,7 @@ This function should only modify configuration layer settings."
                                       ox-gfm ;; gfm = github-flavored-markdown
                                       ob-go ;; golang support for org-babel
                                       seeing-is-believing
+                                      undo-fu
                                       (vue-mode
                                        :location
                                        (recipe
@@ -589,6 +590,12 @@ you should place your code here."
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
   (add-to-list 'load-path "~/.dotfiles/emacs/lisp")
   (add-to-list 'load-path "~/.dotfiles/emacs/vendor")
+
+
+  ;; I _think_ undo-tree might be causing hangs. We'll see if this reduces how
+  ;; often it happens
+  (global-undo-tree-mode -1)
+  (evil-set-undo-system 'undo-fu)
 
   (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
   (require 'mydefuns)
