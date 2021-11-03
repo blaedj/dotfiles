@@ -38,5 +38,19 @@
                              ".formatter.exs")))
               (setq elixir-format-arguments nil))))
 
+(use-package blamer
+  ;; :quelpa (blamer :fetcher github :repo "artawower/blamer.el")
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                   :background nil
+                   :height 140
+                   :italic t)))
+  :custom
+  (blamer-idle-time 0.8)
+  (blamer-min-offset 70)
+  :config
+  (global-blamer-mode 0)
+  )
+
 (provide 'prog-modes-config)
 ;;; prog-modes-config.el ends here

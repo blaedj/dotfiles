@@ -2,6 +2,6 @@
 # name: context "modifier" do ... end
 # key: context
 # --
-context '${1:modifier}' do
+context "${1:modifier}" do
   $0
 end
