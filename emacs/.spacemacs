@@ -624,7 +624,7 @@ you should place your code here."
   (with-eval-after-load 'flycheck-mode
     (flycheck-add-mode 'javascript-eslint 'web-mode)
     ;; assumes that ruby-standard is installed, and will be used instead
-    (setq-default flycheck-disabled-checkers '(ruby-rubocop))
+    (setq-default flycheck-disabled-checkers '(ruby-rubocop ruby-reek))
     )
 
   ;; I don't want <bleeping> ESC-ESC-ESC to close all my windows!

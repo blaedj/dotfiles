@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: check frontmatter
+# key: check
+# --
+
+title: ${1:Require Full Disk Encryption}
+name: ${2:Primary Disk Encruption Not Enabled}
+slug: ${3:linux_encryption}
+failure_title: ${4:Primary Disk Unencrypted}
+check_category: ${5:basic-device-security}
+topics:
+ - disk-encryption
+osquery_platforms:
+ - linux
+klass: AttestableOsqueryCheck
+---
+
+# Kolide Internal
+
+# Description
+
+# Rationale
+
+# Fix Instructions
+
+# Privacy Info
