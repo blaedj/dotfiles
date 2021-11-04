@@ -38,9 +38,9 @@ wtf:
     # You can have multiple widgets of the same type.
     # The "key" is the name of the widget and the type is the actual
     # widget you want to implement.
-    istats:
-      type: cmdrunner
-      cmd: combined-stats
+    power:
+      # type: cmdrunner
+      # cmd: combined-stats
       title: "⚡️"
       enabled: true
       position:
