@@ -13,11 +13,10 @@ brew install ag curl nodejs diff-so-fancy ispell protobuf bat \
 brew tap heroku/brew
 brew install heroku
 
-brew cask install dropbox iterm2 1password dash firefox alfred bartender \
-     spectacle tripmode slack emacs bitbar ngrok licecap suspicious-package \
-     watch wtfutil fd rectangle \
-     # spectacle RIP
-
+brew install dropbox homebrew/cask/iterm2 homebrew/cask/1password \
+     homebrew/cask/dash firefox alfred bartender \
+     spectacle tripmode slack ngrok licecap suspicious-package \
+     watch wtfutil fd rectangle
 
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install

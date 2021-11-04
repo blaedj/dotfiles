@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Need to change this to rbenv
 if test ! $(which rbenv)
 then
   echo "  Installing rbenv for you."
@@ -28,3 +27,5 @@ ln -s ~/.dotfiles/ruby/rspec.symlink ~/.rspec
 ln -s ~/.dotfiles/ruby/pryrc.symlink ~/.pryrc
 ln -s ~/.dotfiles/ruby/rubocop.yml.symlink ~/.rubocop.yml
 ln -s ~/.dotfiles/ruby/reek.yml.symlink ~/.reek.yml
+
+gem install standard
