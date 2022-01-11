@@ -1,5 +1,6 @@
 # Path to your zsh configuration.
 export ZSH=$HOME/.dotfiles/zsh
+export GOPATH=$HOME/code/go
 
 alias ll="ls -lh"
 
