@@ -13,7 +13,7 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 
 PROMPT='
-%{$fg_bold[grey]%}[%{$reset_color%}%{$fg_bold[${host_color}]%}%n@%m%{$reset_color%}%{$fg_bold[grey]%}]%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%} $(git_prompt_info) $(git_remote_status)
+%{$fg_bold[grey]%}[%{$reset_color%}%{$fg_bold[${host_color}]%}%n@%m%{$reset_color%}%{$fg_bold[grey]%}]%{$reset_color%} %{$fg_bold[cyan]%}%2~%{$reset_color%} $(git_prompt_info) $(git_remote_status)
 %{$fg[cyan]%}›%{$reset_color%} '
 #%{$fg_bold[cyan]%}❯%{$reset_color%} '
 
