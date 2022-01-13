@@ -109,3 +109,4 @@ export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/s
 export PATH=$PATH:~/.dotfiles/bin
 # add go to the path
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
