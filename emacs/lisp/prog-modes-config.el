@@ -39,17 +39,20 @@
               (setq elixir-format-arguments nil))))
 
 (use-package blamer
-  ;; :quelpa (blamer :fetcher github :repo "artawower/blamer.el")
+  :ensure t
+  :defer 20
   :custom-face
   (blamer-face ((t :foreground "#7a88cf"
                    :background nil
-                   :height 140
+                   :height 130
                    :italic t)))
   :custom
   (blamer-idle-time 0.8)
-  (blamer-min-offset 70)
+  (blamer-min-offset 10)
+  (blamer-view 'overlay)
+  (blamer-commit-formatter "-- %s")
   :config
-  (global-blamer-mode 0)
+  (global-blamer-mode 1)
   )
 
 (provide 'prog-modes-config)
