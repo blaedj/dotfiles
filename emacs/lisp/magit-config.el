@@ -3,7 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(setq magit-push-always-verify nil)
+(setq magit-push-always-verify t)
 (setq magit-display-buffer-function
       (quote magit-display-buffer-same-window-except-diff-v1))
 (setq git-commit-fill-column 70)
