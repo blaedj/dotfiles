@@ -29,12 +29,23 @@ wtf:
         top: 0
         left: 0
         height: 4
-        width: 1
-      refreshInterval: 3600
+        width: 2
+      refreshInterval: 7200
       unit: "u"
       view: "0nQF"
       language: "en"
 
+    count:
+      title: Counts
+      type: cmdrunner
+      cmd: "counts" # see dotfiles/bin/counts
+      enabled: true
+      refreshInterval: 300
+      position:
+        top: 0
+        left: 2
+        height: 4
+        width: 3
     # You can have multiple widgets of the same type.
     # The "key" is the name of the widget and the type is the actual
     # widget you want to implement.
@@ -59,14 +70,3 @@ wtf:
         height: 5
         width: 2
       refreshInterval: 10
-    count:
-      title: Counts
-      type: cmdrunner
-      cmd: "counts" # see dotfiles/bin/counts
-      enabled: true
-      refreshInterval: 300
-      position:
-        top: 0
-        left: 1
-        height: 4
-        width: 3
