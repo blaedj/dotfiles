@@ -21,6 +21,10 @@ then
     mv ./temp/fontawesome-free-5.15.2-desktop/otfs/*.otf ~/.fonts/
     rm -r ./temp
 
+    unzip AnonymousPro.zip -d ./temp/
+    mv ./temp/AnonymousPro-1.002.001/*.ttf ~/.fonts/
+    rm -r ./temp
+
     sudo cp ./Inconsolata/*.ttf /usr/share/fonts/truetype
     sudo cp ./Source_Code_Pro/*.ttf /usr/share/fonts/truetype
 
