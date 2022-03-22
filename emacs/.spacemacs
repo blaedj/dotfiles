@@ -290,7 +290,7 @@ It should only modify the values of Spacemacs settings."
    ;;dotspacemacs-default-font '("Share Tech Mono"
    ;;
    dotspacemacs-default-font '("Anonymous Pro"
-                               :size 15
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)

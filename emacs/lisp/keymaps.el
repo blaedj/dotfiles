@@ -61,6 +61,9 @@
 (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "q" 'fill-paragraph)
 (spacemacs/set-leader-keys-for-major-mode 'go-mode "q" 'fill-paragraph)
 (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode "p" 'bcj/run-prettier-autocorrect)
+;; Org mode
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "ot" 'org-todo)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "oo" 'org-todo)
 
 ;; (spacemacs/set-leader-keys-for-major-mode 'go-mode "tt" ')
 
