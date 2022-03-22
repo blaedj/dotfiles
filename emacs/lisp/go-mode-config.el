@@ -14,14 +14,15 @@
 (add-hook 'go-mode-hook #'lsp-deferred)
 
 ;; optional - provides fancier overlays. remove if it turns out to be slow
-;; (use-package lsp-ui
-;;   :after lsp-mode
-;;   :commands lsp-ui-mode
-;;   :init
-;;   (setq lsp-ui-doc-border "orange"
-;;         lsp-ui-doc-use-childframe nil
-;;    )
-;;   )
+(use-package lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode
+  :init
+  (setq lsp-ui-doc-border "orange"
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-show-with-cursor t
+   )
+  )
 
 ;; some experimental go pls configs for controlling where documentation/type info is displayed
 ;; this _should_ make the docs etc show up in the minibuffer instead of an overlay
