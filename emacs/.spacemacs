@@ -611,6 +611,14 @@ you should place your code here."
   (yas-global-mode)
 
   (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
+
+  ;; put auto-saves into a tmp dir
+  (let ((auto-saves-dir "~/tmp/emacs/auto-saves/"))
+    (when (not (file-directory-p auto-saves-dir))
+      (make-directory dir t))
+    (setq auto-save-file-name-transforms `((".*", auto-saves-dir t))
+          auto-save-list-file-prefix (concat auto-saves-dir ".saves-")))
+
   (require 'mydefuns)
   (require 'display-config)
   (require 'magit-config)
