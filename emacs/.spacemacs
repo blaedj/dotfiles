@@ -615,7 +615,7 @@ you should place your code here."
   ;; put auto-saves into a tmp dir
   (let ((auto-saves-dir "~/tmp/emacs/auto-saves/"))
     (when (not (file-directory-p auto-saves-dir))
-      (make-directory dir t))
+      (make-directory auto-saves-dir t))
     (setq auto-save-file-name-transforms `((".*", auto-saves-dir t))
           auto-save-list-file-prefix (concat auto-saves-dir ".saves-")))
 
