@@ -11,6 +11,7 @@ The token should be from an app installed in your workspace that has
 the following User Token OAuth scopes:
  - users.profile:read
  - users.profile:write
+ - users:write
 "
         return;
     fi
@@ -24,6 +25,15 @@ the following User Token OAuth scopes:
                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
                                   --data '{"profile": {"status_text": "", "status_emoji": ""}}'
                     )
+            typeset output2=$(curl https://slack.com/api/users.setPresence \
+                                  --silent \
+                                  --request POST \
+                                  --header "Content-Type: application/json; charset=utf-8" \
+                                  --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+                                  --data '{"presence": "auto"}'
+                    )
+
+            output="${output}\n${output2}"
             ;;
         "lunch" )
             typeset output=$(curl https://slack.com/api/users.profile.set \
@@ -34,7 +44,6 @@ the following User Token OAuth scopes:
                                   --data '{"profile": {"status_text": "lunchtime", "status_emoji": ":chompy:"}}'
                     )
             ;;
-
         "away" )
             typeset output=$(curl https://slack.com/api/users.profile.set \
                                   --silent \
@@ -43,6 +52,15 @@ the following User Token OAuth scopes:
                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
                                   --data '{"profile": {"status_text": "afk", "status_emoji": ":away:"}}'
                     )
+
+            typeset output2=$(curl https://slack.com/api/users.setPresence \
+                                   --silent \
+                                   --request POST \
+                                   --header "Content-Type: application/json; charset=utf-8" \
+                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+                                   --data '{"presence": "away"}'
+                    )
+            output="${output}\n${output2}"
             ;;
         "errand" )
             typeset output=$(curl https://slack.com/api/users.profile.set \
