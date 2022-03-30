@@ -1,19 +1,17 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-# on macos, sends a native notification if the following command fails
-# needs the 'terminal-notifier' gem installed globally
+# on macos, sends a notification informing you of the program's exit status.
+
+# Needs 'terminal-notifier' installed, either as a global gem or via homebrew.
 
 # example usage:
 # bang rspec spec/models/post_spec.rb
-#
-# if rspec exits with a non-zero code, then you'll see a macos notification
-# alerting you of the fact.
 
-command="$1"
-shift
-args="$@"
-
-if $command $args ; then
+if "$@"; then
+	  terminal-notifier -message "Done $*"
+	  exit 0
 else
-    terminal-notifier -message "$command $args" -title "A command failed before completion"
+	  exit_code=$?
+	  terminal-notifier -message "Exit $exit_code: $*"
+	  exit "$exit_code"
 fi
