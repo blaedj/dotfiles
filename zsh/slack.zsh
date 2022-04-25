@@ -43,6 +43,14 @@ the following User Token OAuth scopes:
                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
                                   --data '{"profile": {"status_text": "lunchtime", "status_emoji": ":chompy:"}}'
                     )
+            typeset output2=$(curl https://slack.com/api/users.setPresence \
+                                   --silent \
+                                   --request POST \
+                                   --header "Content-Type: application/json; charset=utf-8" \
+                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+                                   --data '{"presence": "away"}'
+                    )
+            output="${output}\n${output2}"
             ;;
         "away" )
             typeset output=$(curl https://slack.com/api/users.profile.set \
