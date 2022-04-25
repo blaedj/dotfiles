@@ -110,4 +110,5 @@ determine the exact padding."
   ;; ()
   )
 
-;;; doom-tomorrow-night-theme.el ends here
+(provide 'custom-doom-tomorrow-night-theme)
+;;; custom-doom-tomorrow-night-theme.el ends here

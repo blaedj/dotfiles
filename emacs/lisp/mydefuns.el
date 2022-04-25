@@ -97,7 +97,6 @@
 (push #'load-persistent-scratch after-init-hook)
 (push #'save-persistent-scratch kill-emacs-hook)
 
-
 (defun create-scratch-buffer ()
   "creates a scratch buffer of specified type"
   (interactive)
@@ -106,7 +105,6 @@
     (setq newbuffer (get-buffer-create (concat mode-type "-scratch")))
     (switch-to-buffer newbuffer)
     (funcall (intern (concat mode-type "-mode")))))
-
 
 ;;show the ouptut of runnin coffee on the current file since I can't get flymake
 ;; to work properly
@@ -221,6 +219,17 @@ Call this repeatedly will cycle all positions in `mark-ring'."
   (interactive)
   (set-mark-command t)
   )
+
+
+;; Thanks to Luca Ferrari
+;; https://fluca1978.github.io/2022/04/13/EmacsPgFormatter.html
+(defun pgformatter-on-region ()
+  "A function to invoke pgFormatter as an external program."
+  (interactive)
+  (let ((b (if mark-active (min (point) (mark)) (point-min)))
+        (e (if mark-active (max (point) (mark)) (point-max)))
+        (pgfrm "pg_format" ) )
+    (shell-command-on-region b e pgfrm (current-buffer) 1)) )
 
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
