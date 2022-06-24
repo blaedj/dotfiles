@@ -6,10 +6,10 @@ deviceCount=$(curl -s 'https://k2.kolide.com/api/public/count' | jq .count)
 echo "$(date)\n$deviceCount" >> $storepath
 
 
-connections=( ${(ps:\n\n:)"$(heroku pg:info -a kolide2)"} )
+connections=( ${(ps:\n\n:)"$(heroku pg:info --app kolide2)"} )
 
 primary=$(echo ${connections[1]} | ag 'Connections:.*$' | tr -s ' ')
-replica=$(echo ${connections[3]} | ag 'Connections:.*$' | tr -s ' ')
+replica=$(echo ${connections[2]} | ag 'Connections:.*$' | tr -s ' ')
 
 cat <<-EOF
  Devices: $deviceCount
