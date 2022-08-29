@@ -71,6 +71,15 @@
   (define-key helm-map (kbd "C-w") 'backward-kill-word)
   )
 
+(with-eval-after-load 'helm-ag
+  ;; this might be better than the evilified-state-evilify thing below?
+  ;;(define-key helm-ag-map (kbd "C-o") 'helm-ag-mode-jump-other-window)
+  (evilified-state-evilify helm-ag-mode helm-ag-mode-map
+    (kbd "gr") 'helm-ag--update-save-results
+    (kbd "C-o") 'helm-ag-mode-jump-other-window
+    (kbd "q") 'quit-window)
+  )
+
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "C-w") 'backward-kill-word)
   )
