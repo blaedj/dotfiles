@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+
+# example usage:
+# timer 90 "get my coffee"
+
+function timer_usage() {
+  cat <<EOF
+Usage: seconds [message] [-h]
+
+set a timer for ARG1 seconds, with optional message ARG2
+
+Currently, onlys works on macos, and needs 'terminal-notifier' installed, either
+as a global gem or via homebrew.
+
+Available options:
+
+-h, --help      Print this help and exit
+EOF
+}
+
+case "$1" in
+    -h|--help)
+        timer_usage
+        exit 0
+        ;;
+    *)
+        ;;
+esac
+
+sleep $1
+terminal-notifier -message "$*"
