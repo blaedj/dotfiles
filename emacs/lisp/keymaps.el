@@ -53,7 +53,9 @@
   "gg" 'dumb-jump-go
   "ad" 'dired-jump
   "aD" 'dired
+  "xh" 'mark-whole-buffer
   )
+
 
 ;; Mode-specific keybinds
 
