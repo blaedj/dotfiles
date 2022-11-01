@@ -7,8 +7,7 @@ fi
 
 brew install ag curl nodejs diff-so-fancy ispell protobuf bat \
      tcpflow htop the_silver_searcher tmux tldr tree jq docker fzf \
-     overmind reattach-to-user-namespace kubernetes-cli
-
+     overmind reattach-to-user-namespace git-delta
 
 brew tap heroku/brew
 brew install heroku
