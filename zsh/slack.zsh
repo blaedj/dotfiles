@@ -70,6 +70,15 @@ the following User Token OAuth scopes:
                     )
             output="${output}\n${output2}"
             ;;
+        "call" )
+            typeset output=$(curl https://slack.com/api/users.profile.set \
+                                  --silent \
+                                  --request POST \
+                                  --header "Content-Type: application/json; charset=utf-8" \
+                                  --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+                                  --data '{"profile": {"status_text": "on a call", "status_emoji": ":phone:"}}'
+                    )
+            ;;
         "errand" )
             typeset output=$(curl https://slack.com/api/users.profile.set \
                                   --silent \
@@ -78,10 +87,18 @@ the following User Token OAuth scopes:
                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
                                   --data '{"profile": {"status_text": "errand", "status_emoji": ":car:"}}'
                     )
+            typeset output2=$(curl https://slack.com/api/users.setPresence \
+                                   --silent \
+                                   --request POST \
+                                   --header "Content-Type: application/json; charset=utf-8" \
+                                   --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+                                   --data '{"presence": "away"}'
+                    )
+            output="${output}\n${output2}"
             ;;
 
         *)
-            echo "please provide a valid command: clear/lunch/errand" ;;
+            echo "please provide a valid command: clear/lunch/errand/call" ;;
     esac
 
     if [[ "$2" == '--debug' ]]; then
