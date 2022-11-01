@@ -1,8 +1,13 @@
-;;; bcj-layouts.el --- custom layouts
+;;; bcj-layouts.el --- custom layouts. and also calendar stuff...
 
 ;;; Commentary:
 
 ;;; Code:
+
+(setq calendar-latitude 46.78)
+(setq calendar-longitude -92.1)
+(setq calendar-location-name "Duluth, MN")
+
 ;; (spacemacs|define-custom-layout "@bcj-default"
 ;;   :binding "d"
 ;;   :body

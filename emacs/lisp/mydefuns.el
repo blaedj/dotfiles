@@ -52,7 +52,7 @@
    (replace-regexp-in-string " " "%20" string-to-encode))
   )
 
-(global-set-key (kbd "C-x g") 'google-web-search)
+;;(global-set-key (kbd "C-x g") 'google-web-search)
 
 ;;inspired by helm-dash, if you aren't on OS X, http://devdocs.io is a decent browser-based alternative to Dash. (http://kapeli.com/dash)
 (defun devdocs-search ()
@@ -230,6 +230,31 @@ Call this repeatedly will cycle all positions in `mark-ring'."
         (e (if mark-active (max (point) (mark)) (point-max)))
         (pgfrm "pg_format" ) )
     (shell-command-on-region b e pgfrm (current-buffer) 1)) )
+
+
+(defun bcj/embiggen-font ()
+  "A function to make the default spacemacs font bigger, useful when screensharing"
+  (interactive)
+ (spacemacs/set-default-font
+  '("Anonymous Pro" ;; or.. "Ubuntu Mono", "Source Code Pro" etc
+    :size 19
+    :weight normal
+    :width normal
+    :powerline-scale 1.5)
+  )
+ )
+
+(defun bcj/make-normal-font ()
+  "A function to set the default spacemacs back to normal size"
+  (interactive)
+  (spacemacs/set-default-font
+   '("Anonymous Pro" ;; or.. "Ubuntu Mono", "Source Code Pro" etc
+     :size 14
+     :weight normal
+     :width normal
+     :powerline-scale 1.5)
+   )
+  )
 
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
