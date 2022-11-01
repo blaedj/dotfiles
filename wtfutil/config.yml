@@ -13,9 +13,8 @@ wtf:
       even: yellow
       odd: white
   grid:
-    # How _wide_ the columns are, in terminal characters. In this case we have
-    # four columns, each of which are 35 characters wide.
-    columns: [26, 15, 15, 15]
+    # How _wide_ the columns are, in terminal characters.
+    columns: [15, 15, 10, 15, 15, 15]
     # How _high_ the rows are, in terminal lines.
     rows: [2, 2, 2, 2, 2, 4, 4, 4, 4]
   refreshInterval: 1
@@ -23,7 +22,7 @@ wtf:
   mods:
     prettyweather:
       title: "Weather (DLH)"
-      enabled: true
+      enabled: false
       city: "DLH"
       position:
         top: 0
@@ -43,7 +42,7 @@ wtf:
       refreshInterval: 300
       position:
         top: 0
-        left: 2
+        left: 0
         height: 4
         width: 3
     # You can have multiple widgets of the same type.
@@ -55,10 +54,10 @@ wtf:
       title: "⚡️"
       enabled: true
       position:
-        top: 4
-        left: 2
-        height: 3
-        width: 2
+        top: 0
+        left: 3
+        height: 4
+        width: 3
       refreshInterval: 90
 
     resources:
@@ -68,5 +67,5 @@ wtf:
         top: 4
         left: 0
         height: 5
-        width: 2
+        width: 5
       refreshInterval: 10
