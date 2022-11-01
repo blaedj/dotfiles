@@ -1,6 +1,7 @@
 [user]
 	name = blaedj
 	email = blaedj@gmail.com
+	signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC42XhMO92uXGp75yLG0oCFaMARN7gViHoUWd1PAhOVx7TGCv6abyYegK9Rgr+ohGF0fLxR5vP74xMboya3YGdVwAPVm1kOBlTjw9UQNFg2mUS104iG+z3wjeZWnhyE0ACWAYQCjhfTskL9TU+9kT0Tx0f7cyto9ViY8gh2tMq5vW2e91kibiJvrpPoz+tHmi3VFgQ4/RvZWmTkpH37gVjR0UxL8BePUS0C2ckyDDSh/dun7UKJbMecC7gpkh/djhyEwXaennEKK8qatCpLxGvQnQJiacrA1zLBSsecykX4QaZehC26MYLFz5Bi5SXpsfgONOLQX1Tm/x6roYifJtJTC++m9h13NRYI9fOLKppID3biuCBi6jfKoT4bzZpgciIABekDCalNxRAEKs4qkNDDhlb+NP6hapQMbfrJ8PLPUV/K52qxkkJFN6tbQfW0NfKtoqNvE9e8s484iuUlAvW2bJuxTT8SZYqHeAudDnz/FbAn1UCIDVZo20W4vo2gYY8="
 [alias]
 	last =	show --name-status --color
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -68,7 +69,12 @@
 	insteadOf = https://github.com/
 [commit]
 	template = ~/.gitmessage
+	gpgsign = true
 [init]
 	templatedir = ~/.git-templates
 [credential]
 	helper = osxkeychain
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /Users/blaed/.ssh/allowed_signers
