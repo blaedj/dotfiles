@@ -22,7 +22,11 @@ fi
 # ls on macos seems not to support long flags..?
 if [[ "$(uname -s)" == "Darwin" ]]; then
     alias ls="ls -c"
-    alias l='ls -clah'
-    alias ll='ls -clh'
-    alias la='ls -cAh'
+
+    if [[ "$(command -v exa)" && $? = 0  ]]; then
+        alias ls="exa"
+        alias l='exa --long'
+        alias la='exa --long --all'
+        alias ll='exa --long --all --git'
+    fi
 fi
