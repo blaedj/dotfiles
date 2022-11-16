@@ -53,3 +53,7 @@ tramp
 
 # .env files used to set potentially sensitive env vars & credentials
 /.env
+
+# .log/ directories are typically not something we want to track, e.g. the logs
+# from lsp (language server protocol) servers.
+/.log/
