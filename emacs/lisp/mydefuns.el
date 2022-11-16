@@ -174,7 +174,13 @@ terminal buffer will be 'terminal-PROJECTNAME'."
         (switch-to-buffer (get-buffer "todo.org"))
       (message "couldn't find the todo.org buffer"))))
 
+(defun bcj/switch-to-org-dir ()
+  "Switch to the directory that holds my org notes"
+  (interactive)
+  (dired "~/Dropbox/org"))
+
 (defun bcj/date (&optional arg)
+  (interactive)
   (insert (if arg
               (format-time-string "%d.%m.%Y")
             (format-time-string "%Y-%m-%d"))))

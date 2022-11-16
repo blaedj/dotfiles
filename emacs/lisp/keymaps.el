@@ -50,6 +50,7 @@
 
 (spacemacs/set-leader-keys
   "bt" 'bcj/switch-to-todo-buffer
+  "bo" 'bcj/switch-to-org-dir
   "gg" 'dumb-jump-go
   "ad" 'dired-jump
   "aD" 'dired
