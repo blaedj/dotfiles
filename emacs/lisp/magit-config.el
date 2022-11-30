@@ -51,7 +51,10 @@
 
 ;; like magit-insert-local-branches, but only for a few of the most recent
 ;; branches. `b b' will set you up to hit 'enter' and check out the branch under
-;; point.
+;; point. might be worth looking at
+;; https://magit.vc/manual/magit.html#index-magit_002dvisit_002dref_002dbehavior
+;; which would allow for checking out a branch by 'visiting' (enter) a
+;; ref/branch
 (defun bcj/magit-insert-recent-local-branches ()
   "Insert sections showing 10 of the most recently used local branches."
   (magit-insert-section (local nil)
@@ -69,13 +72,16 @@
     (insert ?\n)
     (magit-make-margin-overlay nil t)))
 
-;; add a list of the 20 most recently used branches to the bottom of magit
-;; status buffers
-(magit-add-section-hook
- 'magit-status-sections-hook
- 'bcj/magit-insert-recent-local-branches
- 'magit-insert-unpulled-from-upstream ;; this is the section that we want to show the branches below.
-)
+
+(with-eval-after-load 'magit
+  ;; add a list of the 20 most recently used branches to the bottom of magit
+  ;; status buffers
+  (magit-add-section-hook
+   'magit-status-sections-hook
+   'bcj/magit-insert-recent-local-branches
+   'magit-insert-unpulled-from-upstream ;; this is the section that we want to show the branches below.
+   )
+  )
 
 ;; use this to remove the functions addded to the hook above
 ;; (remove-hook 'magit-status-sections-hook 'bcj/magit-insert-recent-local-branches)
