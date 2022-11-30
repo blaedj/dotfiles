@@ -682,6 +682,7 @@ you should place your code here."
   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
 
   (global-hl-line-mode 0) ;
+  (set-face-background hl-line-face "#2a2b2a")
 
   (setq powerline-default-separator 'bar)
   (spaceline-toggle-minor-modes-off)

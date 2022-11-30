@@ -25,6 +25,7 @@
     ;; (require 'idle-highlight)
     ;; (idle-highlight t)
     ;(linum-relative-on) ;;makes 400+ line files so laggy to scroll/move!!
+    (if (display-graphic-p) (hl-line-mode t))
   ) ;
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
