@@ -78,3 +78,7 @@
 	format = ssh
 [gpg "ssh"]
 	allowedSignersFile = /Users/blaed/.ssh/allowed_signers
+
+[diff "enc"]
+  textconv = rails encrypted:show
+  cachetextconv = false
