@@ -111,6 +111,9 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 # add dotifiles bin/ folder to path
 export PATH=$PATH:~/.dotfiles/bin
+# ~/.local/bin is sort of a testing ground for tools before moving them to
+# ~/.dotfiles/bin
+export PATH=$PATH:~/.local/bin
 
 # add go to the path
 export PATH=$PATH:/usr/local/go/bin
