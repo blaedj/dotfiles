@@ -1,3 +1,2 @@
 Pry.config.pager = false
 Pry.config.editor = '/usr/local/bin/emacsclient -t'
-Reline.basic_word_break_characters = " \t\n_`><=\.;|&{("
