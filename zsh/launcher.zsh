@@ -36,6 +36,8 @@ k1launch() {
 }
 
 klaunch() {
+    supplied_host=$2
+    host=${supplied_host:-"localhost:3443"}
     case $1 in
         "help")
             echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,macold,local,sudomac,sudomac-persistent}" ;;
@@ -43,7 +45,7 @@ klaunch() {
             sudo launchctl asuser 0 \
                 ~/code/go/src/launcher/build/launcher \
                 -root_directory $(mktemp -d) \
-                -hostname localhost:3000 \
+                -hostname $host \
                 -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 --insecure \
@@ -68,7 +70,7 @@ klaunch() {
             sudo launchctl asuser 0 \
                  /Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/launcher \
                  -root_directory "/Users/blaed/tmp/launcher_root_bad_perms/kolide" \
-                 -hostname localhost:3000 \
+                 -hostname $host \
                  -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
                  --osqueryd_path "/Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/osqueryd" \
                  --insecure \
@@ -85,7 +87,7 @@ klaunch() {
             sudo launchctl asuser 0 \
                  ~/code/go/src/launcher/build/launcher \
                  -root_directory ~/tmp/launcherroot-sudo \
-                 -hostname localhost:3000 \
+                 -hostname $host \
                  -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
                  --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                  --insecure \
@@ -98,34 +100,31 @@ klaunch() {
                  -disable_control_tls \
                  2>&1 | tee /Users/blaed/tmp/local_sudomac.log ;;
         "persistentmac" )
-            ~/code/go/src/launcher/build/launcher \
+            /usr/local/kolide-k2/bin/launcher \
                 -root_directory ~/tmp/launcherroot \
-                -hostname localhost:3000 \
+                -hostname $host \
                 -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --insecure \
-                --insecure_transport \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 -transport jsonrpc \
-                -autoupdate \
                 -debug \
-                -with_initial_runner \
-                -disable_control_tls \
+                -control \
+                -control_hostname $host \
+                -control_request_interval 5s \
+                -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local.log ;;
 
         "mac" )
             ~/code/go/src/launcher/build/launcher \
-                -root_directory $(mktemp -d) \
-                -hostname localhost:3000 \
-                -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --insecure \
-                --insecure_transport \
+                --root_directory $(mktemp -d) \
+                --hostname $host \
+                --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
-                -transport jsonrpc \
-                -autoupdate \
-                -update_channel="beta" \
-                -debug \
-                -with_initial_runner \
-                -disable_control_tls \
+                --transport jsonrpc \
+                --debug \
+                --control \
+                --control_hostname $host \
+                --control_request_interval 5s \
+                -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local.log ;;
         "macproxied" )
             ~/code/go/launcher/build/launcher \
