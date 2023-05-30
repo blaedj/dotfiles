@@ -50,8 +50,9 @@
 
 (spacemacs/set-leader-keys
   "bt" 'bcj/switch-to-todo-buffer
-  "bo" 'bcj/switch-to-org-dir
-  "gg" 'dumb-jump-go
+  "bi" 'bcj/switch-to-org-index
+  "gf" 'dumb-jump-go
+  "gg" 'xref-find-references
   "ad" 'dired-jump
   "aD" 'dired
   "xh" 'mark-whole-buffer
@@ -67,6 +68,10 @@
 ;; Org mode
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "ot" 'org-todo)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "oo" 'org-todo)
+;; this wipes out a 'toggle' keymap set by spacemacs or something, but that
+;; toggle keymap only gives access to 'toggle-table-formula..something' and
+;; 'toggle-table-coordingates...something'
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "tt" 'org-todo)
 
 ;; (spacemacs/set-leader-keys-for-major-mode 'go-mode "tt" ')
 

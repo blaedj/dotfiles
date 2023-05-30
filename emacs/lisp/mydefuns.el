@@ -174,10 +174,16 @@ terminal buffer will be 'terminal-PROJECTNAME'."
         (switch-to-buffer (get-buffer "todo.org"))
       (message "couldn't find the todo.org buffer"))))
 
-(defun bcj/switch-to-org-dir ()
-  "Switch to the directory that holds my org notes"
+(defun bcj/switch-to-org-index ()
+  "Switch to the indec file for the directory that holds my org notes"
   (interactive)
-  (dired "~/Dropbox/org"))
+  ;; (let ((exists (get-buffer "todo.org")))
+  ;;   (if exists
+  ;;       (switch-to-buffer (get-buffer "todo.org"))
+  ;;     (message "couldn't find the todo.org buffer")))
+  ;;(dired "~/Dropbox/org")
+  (display-buffer-in-side-window (find-file "~/Dropbox/org/index.org") '((side . left)))
+  )
 
 (defun bcj/date (&optional arg)
   (interactive)
