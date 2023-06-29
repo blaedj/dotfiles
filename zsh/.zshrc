@@ -118,3 +118,7 @@ export PATH=$PATH:~/.local/bin
 # add go to the path
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
+
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
