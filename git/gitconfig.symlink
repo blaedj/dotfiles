@@ -69,7 +69,7 @@
 	insteadOf = https://github.com/
 [commit]
 	template = ~/.gitmessage
-	gpgsign = true
+	gpgsign = false
 [init]
 	templatedir = ~/.git-templates
 [credential]
