@@ -68,6 +68,9 @@
 ;; Org mode
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "ot" 'org-todo)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "oo" 'org-todo)
+
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "oa" 'org-archive-subtree)
+
 ;; this wipes out a 'toggle' keymap set by spacemacs or something, but that
 ;; toggle keymap only gives access to 'toggle-table-formula..something' and
 ;; 'toggle-table-coordingates...something'

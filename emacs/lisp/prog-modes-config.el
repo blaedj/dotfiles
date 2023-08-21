@@ -39,22 +39,22 @@
                              ".formatter.exs")))
               (setq elixir-format-arguments nil))))
 
-;; (use-package blamer
-;;   :ensure t
-;;   :defer 20
-;;   :custom-face
-;;   (blamer-face ((t :foreground "#7a88cf"
-;;                    :background nil
-;;                    :height 130
-;;                    :italic t)))
-;;   :custom
-;;   (blamer-idle-time 0.8)
-;;   (blamer-min-offset 10)
-;;   (blamer-view 'overlay)
-;;   (blamer-commit-formatter "-- %s")
-;;   :config
-;;   (global-blamer-mode 1)
-;;   )
+(use-package blamer
+  :ensure t
+  :defer 20
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                   :background nil
+                   :height 130
+                   :italic t)))
+  :custom
+  (blamer-idle-time 0.8)
+  (blamer-min-offset 10)
+  (blamer-view 'overlay)
+  (blamer-commit-formatter "-- %s")
+  :config
+  (global-blamer-mode 0)
+  )
 
 (provide 'prog-modes-config)
 ;;; prog-modes-config.el ends here
