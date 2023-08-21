@@ -17,6 +17,8 @@ brew install dropbox homebrew/cask/iterm2 homebrew/cask/1password \
      spectacle tripmode slack ngrok licecap suspicious-package \
      watch wtfutil fd rectangle
 
+brew install --cask 1password/tap/1password-cli
+
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
 
