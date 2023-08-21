@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: factorybot file
+# key: factorybot
+# --
+
+
+FactoryBot.define do
+  factory :$1 do
+    $0attribute { value }
+  end
+end

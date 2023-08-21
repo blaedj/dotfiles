@@ -634,7 +634,8 @@ you should place your code here."
   (require 'js-mode-config)
   (require 'jsx-mode-config)
   (require 'ruby-mode-config)
-  (require 'path)
+  (require 'ruby-mode-config)
+  (require 'bcj-buffers)
 
   ;; libs in vendor/
   (require 'highlight)

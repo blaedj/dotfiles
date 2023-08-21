@@ -16,7 +16,9 @@ the following User Token OAuth scopes:
         return;
     fi
 
-    case $1 in
+    message=$1
+
+    case $message in
         "clear")
             typeset output=$(curl https://slack.com/api/users.profile.set \
                                   --silent \
@@ -98,7 +100,7 @@ the following User Token OAuth scopes:
             ;;
 
         *)
-            echo "please provide a valid command: clear/lunch/errand/call" ;;
+            echo "please provide a valid command: clear/lunch/away/call/errand or use the -m flag to specify a custom message" ;;
     esac
 
     if [[ "$2" == '--debug' ]]; then

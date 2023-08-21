@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: set current org
+# key: currorg
+# --
+
+Current.organization = Organization.find(1)

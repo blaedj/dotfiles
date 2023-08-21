@@ -2,8 +2,6 @@
 export ZSH=$HOME/.dotfiles/zsh
 export GOPATH=$HOME/code/go
 
-alias ll="ls -lh"
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
@@ -54,8 +52,6 @@ for plugin ($plugins); do
     fi
 done
 
-
-
 # Figure out the SHORT hostname
 if [[ "$OSTYPE" = darwin* ]]; then
     # OS X's $HOST changes with dhcp, etc. Use ComputerName if possible.
@@ -83,7 +79,7 @@ compinit -i -d "${ZSH_COMPDUMP}"
 
 source ~/.secrets.sh
 
-export EMAIL="blaed@hey.com"
+export EMAIL="blaed@blaed.org"
 export NAME="Blaed Johnston"
 
 # for bat: https://github.com/sharkdp/bat
