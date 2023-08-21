@@ -1,0 +1,24 @@
+#compdef klaunch
+
+# -*- mode: sh -*-
+
+
+_klaunch() {
+    local -a commands
+    commands=(
+        'help:enroll a launcher agent using one of several templates'
+        'sudomac:a non-persistent mac launcher running as root'
+        'persistentmac:launcher on mac that persists data/identity after restart'
+        'persistentmac-prod-binary:like persistentmac, but using the production binary, not the locally built launcher'
+        'mac:run launcher on a local mac. uses prod binary'
+        'mac-localbuild:mac launcher, with locally built launcher'
+        'ubuntu:run launcher on ubuntu, via docker'
+        'centos:run launcher on centos, via docker'
+    )
+
+    _describe 'command' commands
+}
+
+_klaunch "$@"
+
+compdef _klaunch klaunch

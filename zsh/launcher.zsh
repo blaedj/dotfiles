@@ -99,8 +99,23 @@ klaunch() {
                  -with_initial_runner \
                  -disable_control_tls \
                  2>&1 | tee /Users/blaed/tmp/local_sudomac.log ;;
+
+        "persistentmac-prod-binary" )
+                /usr/local/kolide-k2/bin/launcher \
+                    -root_directory ~/tmp/launcherroot \
+                    -hostname $host \
+                    -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                    --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                    -transport jsonrpc \
+                    -debug \
+                    -control \
+                    -control_hostname $host \
+                    -control_request_interval 5s \
+                    -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
+                    2>&1 | tee ~/tmp/local_persistent.log ;;
+
         "persistentmac" )
-            /usr/local/kolide-k2/bin/launcher \
+            ~/code/go/src/launcher/build/launcher \
                 -root_directory ~/tmp/launcherroot \
                 -hostname $host \
                 -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
@@ -111,9 +126,38 @@ klaunch() {
                 -control_hostname $host \
                 -control_request_interval 5s \
                 -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
-                2>&1 | tee ~/tmp/local.log ;;
+                2>&1 | tee ~/tmp/local_persistent.log ;;
 
         "mac" )
+            /usr/local/kolide-k2/bin/launcher \
+                --root_directory $(mktemp -d) \
+                --hostname $host \
+                --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                --transport jsonrpc \
+                --debug \
+                --control \
+                --control_hostname $host \
+                --control_request_interval 5s \
+                --root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
+            2>&1 | tee ~/tmp/local.log ;;
+
+        "mac-localbuild" )
+            !/code/go/src/launcher/build/launcher \
+                --root_directory $(mktemp -d) \
+                --hostname $host \
+                --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                --transport jsonrpc \
+                --debug \
+                --i-am-breaking-ee-license
+                --control \
+                --control_hostname $host \
+                --control_request_interval 5s \
+                --root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
+                2>&1 | tee ~/tmp/local.log ;;
+
+        "ngrok-mac" )
             ~/code/go/src/launcher/build/launcher \
                 --root_directory $(mktemp -d) \
                 --hostname $host \
@@ -124,8 +168,8 @@ klaunch() {
                 --control \
                 --control_hostname $host \
                 --control_request_interval 5s \
-                -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
-                2>&1 | tee ~/tmp/local.log ;;
+                --i-am-breaking-ee-license true
+                2>&1 | tee ~/tmp/local_ngrok.log ;;
         "macproxied" )
             ~/code/go/launcher/build/launcher \
                 -root_directory $(mktemp -d) \
