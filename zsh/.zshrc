@@ -109,6 +109,10 @@ export PATH=$PATH:~/.dotfiles/bin
 # ~/.dotfiles/bin
 export PATH=$PATH:~/.local/bin
 
+# flyctl!
+export FLYCTL_INSTALL="/home/blaed/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
 # add go to the path
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
