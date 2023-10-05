@@ -10,9 +10,13 @@ connections=( ${(ps:\n\n:)"$(heroku pg:info --app kolide2)"} )
 
 primary=$(echo ${connections[1]} | ag 'Connections:.*$' | tr -s ' ')
 replica=$(echo ${connections[2]} | ag 'Connections:.*$' | tr -s ' ')
+third=$(echo ${connections[3]} | ag 'Connections:.*$' | tr -s ' ')
+fourth=$(echo ${connections[4]} | ag 'Connections:.*$' | tr -s ' ')
 
 cat <<-EOF
  DT People: $dtCount
  Primary PG: $primary
  Replica PG: $replica
+ 3rd PG: $third
+ 4th PG: $fourth
 EOF
