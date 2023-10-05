@@ -276,7 +276,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator bar :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -416,7 +416,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 96
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
@@ -668,6 +668,7 @@ you should place your code here."
 
   (with-eval-after-load 'helm-projectile
     (setq helm-source-projectile-files-and-dired-list '(helm-source-projectile-files-list))
+    (setq projectile-switch-project-action 'projectile-dired)
     )
 
   ;; open liquid-markdown files in liquid mode.
@@ -676,7 +677,6 @@ you should place your code here."
   ;; if we find #!/usr/bin/env rails runner at the beginning of a file, it's a ruby file
   (add-to-list 'magic-mode-alist '("^#!.* rails runner" . ruby-mode) )
 
-  (setq projectile-switch-project-action 'projectile-dired)
   (with-eval-after-load 'dumb-jump
     (add-to-list 'dumb-jump-language-file-exts '((:language "ruby" :ext "erb" :agtype "ruby" :rgtype "ruby")))
     )
@@ -685,9 +685,10 @@ you should place your code here."
   (global-hl-line-mode 0) ;
   (set-face-background hl-line-face "#2a2b2a")
 
-  (setq powerline-default-separator 'bar)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-version-control-on)
+  ;; (setq powerline-default-separator 'bar)
+  (setq spaceline-minor-modes-p nil)
+  (spacemacs/toggle-mode-line-minor-modes-off)
+  (spacemacs/toggle-mode-line-version-control-on)
 
   (setq flycheck-idle-change-delay 4) ;; given the line below, this *should* have no effect
   (setq flycheck-display-errors-function 'flycheck-display-error-messages)
