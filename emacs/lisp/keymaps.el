@@ -82,17 +82,25 @@
   (define-key helm-map (kbd "C-w") 'backward-kill-word)
   )
 
+(use-package helm-ag
+  :ensure t
+ )
+
 (with-eval-after-load 'helm-ag
   ;; this might be better than the evilified-state-evilify thing below?
   ;;(define-key helm-ag-map (kbd "C-o") 'helm-ag-mode-jump-other-window)
-  (evilified-state-evilify helm-ag-mode helm-ag-mode-map
+  (evilified-state-evilify-map helm-ag-mode helm-ag-mode-map
     (kbd "gr") 'helm-ag--update-save-results
     (kbd "C-o") 'helm-ag-mode-jump-other-window
     (kbd "q") 'quit-window)
   )
 
 (with-eval-after-load 'company
+  ;; not sure which define key should work here, they don't seem to
+  ;; automatically apply though, and C-w doesn't exit me out of the company
+  ;; popup since I last upgraded spacemacs :/
   (define-key company-active-map (kbd "C-w") 'backward-kill-word)
+  ;; (evil-define-key 'insert company-active-map (kbd "c-w") 'backward-kill-word)
   )
 
 ;; (use-package dired-git-info
@@ -102,8 +110,11 @@
 
 ;; Unset default keybinds
 
+;; Not sure why, but this isn't taking effect. Spacemacs is maybe not loading this file? or I need to do things differently.
+;;(global-unset-key (kbd "C-x C-l"))
+
 ;;sick of accidentally downcasing regions instead of commenting them.
-(global-set-key (kbd "C-x C-l") 'comment-dwim)
+;; (global-set-key (kbd "C-x C-l") 'comment-dwim)
 
 ;; evil-collection is a set of eveil keybindings for additional modes
 

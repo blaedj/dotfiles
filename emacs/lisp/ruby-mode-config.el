@@ -9,7 +9,7 @@
 
 ;; this defaults to 'lsp if lsp layer is used. Since I don't have lsp set up for
 ;; ruby, change back to the old robe default.
-(setq ruby-backend 'robe)
+;;(setq ruby-backend 'robe)
 
 (require 'seeing-is-believing)
 (add-hook 'ruby-mode-hook 'seeing-is-believing)
