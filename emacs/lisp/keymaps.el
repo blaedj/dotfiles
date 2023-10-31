@@ -88,11 +88,12 @@
 
 (with-eval-after-load 'helm-ag
   ;; this might be better than the evilified-state-evilify thing below?
-  ;;(define-key helm-ag-map (kbd "C-o") 'helm-ag-mode-jump-other-window)
-  (evilified-state-evilify-map helm-ag-mode helm-ag-mode-map
-    (kbd "gr") 'helm-ag--update-save-results
-    (kbd "C-o") 'helm-ag-mode-jump-other-window
-    (kbd "q") 'quit-window)
+  (define-key helm-ag-map (kbd "C-o") 'helm-ag-mode-jump-other-window)
+
+  ;; (evilified-state-evilify-map helm-ag-mode helm-ag-mode-map
+  ;;   (kbd "gr") 'helm-ag--update-save-results
+  ;;   (kbd "C-o") 'helm-ag-mode-jump-other-window
+  ;;   (kbd "q") 'quit-window)
   )
 
 (with-eval-after-load 'company
@@ -102,6 +103,17 @@
   (define-key company-active-map (kbd "C-w") 'backward-kill-word)
   ;; (evil-define-key 'insert company-active-map (kbd "c-w") 'backward-kill-word)
   )
+
+
+;;; copilot package configuration
+(with-eval-after-load 'copilot
+  ;; (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  ;; (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-<return>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion))
+
+
 
 ;; (use-package dired-git-info
 ;;   :ensure t

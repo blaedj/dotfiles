@@ -25,7 +25,8 @@
         )
   ;; (load-theme 'doom-Iosvkem) ;
   ;; (load-theme 'doom-tomorrow-night) ;
-  (load-theme 'custom-doom-tomorrow-night) ; has more visible comments
+  ;;(load-theme 'custom-doom-tomorrow-night) ; has more visible comments
+
 
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   ;; (doom-themes-neotree-config)
@@ -35,6 +36,8 @@
 
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config));
+
+(load-theme 'doom-peacock)
 
 ;; thanks to https://karthinks.com/software/batteries-included-with-emacs/
 (defun pulse-line (&rest _)

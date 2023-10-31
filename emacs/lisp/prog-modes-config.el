@@ -29,6 +29,8 @@
   ) ;
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
+(add-hook 'prog-mode-hook 'copilot-mode)
+
 (add-hook 'elixir-format-hook
           (lambda ()
             (if (projectile-project-p)
