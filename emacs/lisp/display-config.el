@@ -22,6 +22,7 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t  ; if nil, italics is universally disabled
         custom-doom-tomorrow-night-brighter-comments t ; if non-nil, comments are brighter
+        doom-peacock-brighter-comments t
         )
   ;; (load-theme 'doom-Iosvkem) ;
   ;; (load-theme 'doom-tomorrow-night) ;
@@ -36,7 +37,6 @@
 
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config));
-
 (load-theme 'doom-peacock)
 
 ;; thanks to https://karthinks.com/software/batteries-included-with-emacs/

@@ -74,6 +74,12 @@
 
 
 (with-eval-after-load 'magit
+
+  ;; I like this old version, that fills in the completion buffer with a prefix lile:
+  ;; On <branchname>: ...
+  ;; and then you can add your stash message after that
+  (setq magit-stash-read-message-function #'magit-stash-read-message-traditional)
+
   ;; add a list of the 20 most recently used branches to the bottom of magit
   ;; status buffers
   (magit-add-section-hook

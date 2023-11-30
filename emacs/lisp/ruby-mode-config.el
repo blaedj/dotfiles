@@ -11,6 +11,14 @@
 ;; ruby, change back to the old robe default.
 ;;(setq ruby-backend 'robe)
 
+;; install the yas snippets for minitest
+(with-eval-after-load 'minitest
+  '(minitest-install-snippets))
+
+;; this may be better in a directory-local variable per-project
+(setq minitest-use-rails t)
+
+
 (require 'seeing-is-believing)
 (add-hook 'ruby-mode-hook 'seeing-is-believing)
 
