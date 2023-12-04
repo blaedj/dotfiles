@@ -1,19 +1,18 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 3.2
+  # don't actually want rubocop running by default
+  DisabledByDefault: true
   Exclude: 
     - 'db/schema.rb'
 
-Style/FrozenStringLiteralComment:
-    Enabled: false
+# see https://github.com/standardrb/standard#running-standards-rules-via-rubocop
+require:
+  - standard
+  - standard-custom
+  - standard-performance
+  - rubocop-performance
 
-Layout/SpaceAroundEqualsInParameterDefault:
-  EnforcedStyle: no_space
-
-Layout/AccessModifierIndentation:
-  EnforcedStyle: outdent
-
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
-Style/WordArray:
-  EnforcedStyle: brackets
+inherit_gem:
+  standard: config/base.yml
+  standard-custom: config/base.yml
+  standard-performance: config/base.yml
