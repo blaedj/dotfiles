@@ -94,28 +94,14 @@ klaunch() {
                  --insecure_transport \
                  -transport jsonrpc \
                  -autoupdate \
-                 -update_channel="beta" \
+                 -update_channel="stable" \
+                 -i-am-breaking-ee-license \
                  -debug \
-                 -with_initial_runner \
                  -disable_control_tls \
                  2>&1 | tee /Users/blaed/tmp/local_sudomac.log ;;
 
         "persistentmac-prod-binary" )
-                /usr/local/kolide-k2/bin/launcher \
-                    -root_directory ~/tmp/launcherroot \
-                    -hostname $host \
-                    -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                    --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
-                    -transport jsonrpc \
-                    -debug \
-                    -control \
-                    -control_hostname $host \
-                    -control_request_interval 5s \
-                    -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
-                    2>&1 | tee ~/tmp/local_persistent.log ;;
-
-        "persistentmac" )
-            ~/code/go/src/launcher/build/launcher \
+            /usr/local/kolide-k2/bin/launcher \
                 -root_directory ~/tmp/launcherroot \
                 -hostname $host \
                 -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
@@ -128,12 +114,26 @@ klaunch() {
                 -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local_persistent.log ;;
 
+        "persistentmac" )
+            ~/code/go/src/launcher/build/launcher \
+                -root_directory ~/tmp/launcherroot \
+                -hostname $host \
+                -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                -transport jsonrpc \
+                -debug \
+                -control \
+                -control_hostname $host \
+                -control_request_interval 10s \
+                -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
+                2>&1 | tee ~/tmp/local_persistent.log ;;
+
         "mac" )
             /usr/local/kolide-k2/bin/launcher \
                 --root_directory $(mktemp -d) \
                 --hostname $host \
                 --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd-updates/1698153717/osqueryd" \
                 --transport jsonrpc \
                 --debug \
                 --control \
