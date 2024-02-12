@@ -3,6 +3,11 @@
 ;;;
 ;;; Code:
 
+;; the following lines in the 'with-eval-after-load' don't seem to take effect automatically...
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset   2)
+(setq web-mode-script-padding 0)
+
 (spacemacs|disable-company web-mode)
 (with-eval-after-load 'web
   (setq web-mode-markup-indent-offset 2)
