@@ -643,6 +643,14 @@ you should place your code here."
   (require 'ruby-mode-config)
   (require 'bcj-buffers)
 
+  (use-package nvm
+  ;;  :straight (:host github :repo "blaedj/nvm.el")
+    ;; :load-path "vendor/"
+    :config
+    ;; Optionally set a default node version
+    (nvm-use "20.9")
+  )
+
   ;; libs in vendor/
   (require 'highlight)
   (require 'liquid-mode)
