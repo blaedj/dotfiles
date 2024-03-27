@@ -1,0 +1,9 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "jq 'select(.event == \"BCJ_\")' ",
+    "dontautoexpand" : true,
+    "uid" : "8AAEDB1F-63BE-44E5-85C4-82066158B06E",
+    "name" : "jq log filter",
+    "keyword" : "jqdebug"
+  }
+}

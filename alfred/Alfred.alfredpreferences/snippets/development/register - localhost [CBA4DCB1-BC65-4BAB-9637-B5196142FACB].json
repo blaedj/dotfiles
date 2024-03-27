@@ -1,0 +1,9 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "http:\/\/localhost:3000\/saml?email=ghost@kolide.co&idp_type=factor_only",
+    "dontautoexpand" : true,
+    "uid" : "CBA4DCB1-BC65-4BAB-9637-B5196142FACB",
+    "name" : "register - localhost",
+    "keyword" : "register-launcher-localhost"
+  }
+}

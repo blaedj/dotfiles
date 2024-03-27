@@ -1,0 +1,9 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "[^1]:",
+    "dontautoexpand" : true,
+    "uid" : "72D7B2C1-1FAC-451E-90C0-A73B1CCF49E6",
+    "name" : "GFM footnote",
+    "keyword" : "footnote"
+  }
+}

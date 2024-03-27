@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "select * from os_version;",
+    "uid" : "68C79CBE-F50A-47A8-BE11-B15BDC56E67D",
+    "name" : "Live Query Example",
+    "keyword" : "!osq"
+  }
+}

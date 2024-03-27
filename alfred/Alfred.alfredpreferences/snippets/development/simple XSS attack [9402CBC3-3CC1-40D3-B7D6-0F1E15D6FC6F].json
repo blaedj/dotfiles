@@ -1,0 +1,9 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "<script>alert('XSS Vulnerability')<\/script>",
+    "dontautoexpand" : true,
+    "uid" : "9402CBC3-3CC1-40D3-B7D6-0F1E15D6FC6F",
+    "name" : "simple XSS attack",
+    "keyword" : "xss"
+  }
+}

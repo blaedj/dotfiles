@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Reminders</name>
+  <version>51</version>
+  <bundle>com.surrealroad.alfred-reminder</bundle>
+  <updated>1406398812</updated>
+  <file>reminders.alfredworkflow</file>
+</workflow>

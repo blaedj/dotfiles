@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 5,
+      "subtext" : {
+        "size" : 12,
+        "colorSelected" : "#C57923D4",
+        "font" : "System",
+        "color" : "#FEFFFF65"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#C57923FF",
+        "font" : "System",
+        "color" : "#C57923FF"
+      },
+      "backgroundSelected" : "#00000029",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#C57923FF",
+        "font" : "System",
+        "color" : "#FEFFFFAB"
+      },
+      "iconPaddingHorizontal" : 4,
+      "paddingVertical" : 3,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 5,
+      "background" : "#00000028",
+      "spacing" : 8,
+      "text" : {
+        "size" : 34,
+        "colorSelected" : "#000000FF",
+        "font" : "System Light",
+        "color" : "#FEFFFFFF"
+      },
+      "backgroundSelected" : "#B2D7FFFF"
+    },
+    "window" : {
+      "color" : "#0A3C21BD",
+      "paddingHorizontal" : 9,
+      "width" : 572,
+      "borderPadding" : 8,
+      "borderColor" : "#0A3C2156",
+      "blur" : 30,
+      "roundness" : -13,
+      "paddingVertical" : 8
+    },
+    "credit" : "Vero Pepperrell",
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#C57923FF",
+      "thickness" : 2
+    },
+    "name" : "Festive Fir"
+  }
+}

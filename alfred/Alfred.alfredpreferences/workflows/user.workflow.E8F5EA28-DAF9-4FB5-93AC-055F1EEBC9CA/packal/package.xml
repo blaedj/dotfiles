@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Alfred Emoji Workflow</name>
+  <version>0.0.1</version>
+  <bundle>carlosgaldino.emoji-codes</bundle>
+  <updated>1417004815</updated>
+  <file>emoji-codes.alfredworkflow</file>
+</workflow>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>org.blaed.pinggoogle</string>
+	<key>connections</key>
+	<dict>
+		<key>2D047DBD-4CE6-44A5-B10B-510661067484</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6BF92F8E-354A-48D5-ABAD-189C363BF50E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>33C38ACB-CFA6-4D5C-B013-E1E971BB3161</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E4140419-FD96-42E7-AC76-844541B5C479</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>blaed</string>
+	<key>description</key>
+	<string>ping google.com</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Ping google</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>ping -w 3 $c
+RETVAL=$?
+if [ $RETVAL -eq 0 ]; then
+  osascript -e 'display notification "UP" with title "Internets are:"'  
+else
+  osascript -e 'display notification "DOWN" with title "Internets are:"'  
+fi</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.terminalcommand</string>
+			<key>uid</key>
+			<string>33C38ACB-CFA6-4D5C-B013-E1E971BB3161</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<true/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>internets are:</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>E4140419-FD96-42E7-AC76-844541B5C479</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ping</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Ping</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>2D047DBD-4CE6-44A5-B10B-510661067484</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  -- your script here
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>82DCF5E8-6F5D-4101-9239-858BD9C77390</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>ping -t 1 google.com
+RETVAL=$?
+if [ $RETVAL -eq 0 ]; then
+  osascript -e 'display notification "UP" with title "Internets are:"'  
+else
+  osascript -e 'display notification "DOWN" with title "Internets are:"'  
+fi</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>6BF92F8E-354A-48D5-ABAD-189C363BF50E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>2D047DBD-4CE6-44A5-B10B-510661067484</key>
+		<dict>
+			<key>xpos</key>
+			<integer>185</integer>
+			<key>ypos</key>
+			<integer>85</integer>
+		</dict>
+		<key>33C38ACB-CFA6-4D5C-B013-E1E971BB3161</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>6BF92F8E-354A-48D5-ABAD-189C363BF50E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>82DCF5E8-6F5D-4101-9239-858BD9C77390</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>E4140419-FD96-42E7-AC76-844541B5C479</key>
+		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.1</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
