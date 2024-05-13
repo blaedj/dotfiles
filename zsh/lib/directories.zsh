@@ -23,10 +23,10 @@ fi
 if [[ "$(uname -s)" == "Darwin" ]]; then
     alias ls="ls -c"
 
-    if [[ "$(command -v exa)" && $? = 0  ]]; then
-        alias ls="exa"
-        alias l='exa --long'
-        alias la='exa --long --all'
-        alias ll='exa --long --all --git'
+    if [[ "$(command -v eza)" && $? = 0  ]]; then
+        alias ls="eza"
+        alias l='eza --long'
+        alias la='eza --long --all'
+        alias ll='eza --long --all --git'
     fi
 fi
