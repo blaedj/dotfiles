@@ -1,9 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "https:\/\/auth.kolide-blaed.ngrok.io\/saml?email=ghost@kolide.co&idp_type=factor_only",
-    "dontautoexpand" : true,
-    "uid" : "14BDBC12-4E25-4BAF-B7FF-CF91796CBFC8",
-    "name" : "saml backdoor - ngrok, ghost",
-    "keyword" : "saml- backdoor-ngrok"
-  }
-}

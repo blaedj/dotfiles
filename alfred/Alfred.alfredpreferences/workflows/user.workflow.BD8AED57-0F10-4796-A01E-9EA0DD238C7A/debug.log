@@ -1,5 +1,0 @@
-[hue-alfred-workflow: request(put, /groups/0/action, {"on": false}) (2015-07-02-11:22:18)]
-[hue-alfred-workflow: request(put, /groups/0/action, {"on": true}) (2015-07-02-11:22:39)]
-[hue-alfred-workflow: request(put, /groups/0/action, {"xy": [0.29549029060440457, 0.2936900409289772]}) (2015-07-02-11:23:08)]
-[hue-alfred-workflow: request(put, /groups/0/action, {"on": false}) (2015-07-02-11:27:05)]
-[hue-alfred-workflow: request(put, /groups/0/action, {"on": true}) (2015-07-02-11:27:09)]

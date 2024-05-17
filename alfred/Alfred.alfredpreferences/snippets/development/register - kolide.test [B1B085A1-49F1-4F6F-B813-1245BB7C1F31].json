@@ -1,9 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "http:\/\/app.kolide.test:3000\/saml?email=ghost@kolide.co&idp_type=factor_only",
-    "dontautoexpand" : true,
-    "uid" : "B1B085A1-49F1-4F6F-B813-1245BB7C1F31",
-    "name" : "register - kolide.test",
-    "keyword" : ""
-  }
-}

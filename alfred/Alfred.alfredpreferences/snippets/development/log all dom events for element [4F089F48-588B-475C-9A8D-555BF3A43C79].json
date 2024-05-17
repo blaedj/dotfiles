@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "Object.keys(Event.prototype).forEach(function(event){ el.addEventListener(event.toLowerCase(), function(){console.log('event:', event)})})",
-    "uid" : "4F089F48-588B-475C-9A8D-555BF3A43C79",
-    "name" : "log all dom events for element",
-    "keyword" : "laefe!"
-  }
-}

@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Spectacle</name>
-  <version>1.0</version>
-  <bundle>com.apple.alfred2.workflow.spectacle</bundle>
-  <updated>1458073987</updated>
-  <file>spectacle.alfredworkflow</file>
-</workflow>

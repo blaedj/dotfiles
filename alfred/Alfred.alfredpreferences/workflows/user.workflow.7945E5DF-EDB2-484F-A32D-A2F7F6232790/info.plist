@@ -1,164 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>bundleid</key>
-	<string>com.apple.alfred2.workflow.spectacle</string>
-	<key>connections</key>
-	<dict>
-		<key>AF87B1D6-CBD5-40EB-8244-28D63D6C32BE</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>884CCBDD-3714-4E44-8B2A-B82B9CF26AA1</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-	</dict>
-	<key>createdby</key>
-	<string>Acidham</string>
-	<key>description</key>
-	<string>Control windows with Spectacle</string>
-	<key>disabled</key>
-	<true/>
-	<key>name</key>
-	<string>Spectacle</string>
-	<key>objects</key>
-	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>set theQuery to "{query}"--set theQuery to "Menu:c:command,option"-- get the arg string from previous workflow stepset theCommands to StringSplit(theQuery, ":")set theAction to item 1 of theCommands
-
--- make sure to get integer for later if statementtry	set theKey to item 2 of theCommands as integeron error e	set theKey to item 2 of theCommandsend try
-
--- explode the modifier key string set theMods to StringSplit(item 3 of theCommands, ",")set theKeys to {}
-
--- add missing "...down" for the modifier keysrepeat with theItem in theMods	set theKeys to theKeys &amp; (theItem &amp; " down" as text)end repeat-- build modifier key string for "using" termset theMods to ("{" &amp; joinAList(theKeys, ",") as text) &amp; "}"-- when integer is passed use key code instead of keystrokeif class of theKey is integer then		set theCmd to "(osascript '-e tell application \"System Events\" to key code " &amp; theKey &amp; " using " &amp; theMods &amp; "')"
-	do shell script theCmd	else
-
-	-- special key to restore window 
-	if theKey is equal to "-" then
-			-- move to upper left, first step
-			set theKey to 123
-			set theMods to "{control down,command down}"
-			set theCmd to "(osascript '-e tell application \"System Events\" to key code " &amp; theKey &amp; " using " &amp; theMods &amp; "')"
-			do shell script theCmd
-			
-			-- move center, second step
-			set theKey to "c"
-			set theMods to "{option down,command down}"
-			set theCmd to "(osascript '-e tell application \"System Events\" to keystroke \"" &amp; theKey &amp; "\" using " &amp; theMods &amp; "')"
-			do shell script theCmd
-
-	-- keystroke in case string was passed from previous wf step
-	else		set theCmd to "(osascript '-e tell application \"System Events\" to keystroke \"" &amp; theKey &amp; "\" using " &amp; theMods &amp; "')"
-		do shell script theCmd
-	end ifend if
----------- Split string functionon StringSplit(theString, theDelimiter)	set oldDelimiters to AppleScript's text item delimiters	set AppleScript's text item delimiters to theDelimiter	set theArray to every text item of theString	set AppleScript's text item delimiters to oldDelimiters	return theArrayend StringSplit-- Join a list and return stringon joinAList(theList, delim)	set newString to ""	set oldDelims to AppleScript's text item delimiters	set AppleScript's text item delimiters to delim	set newString to theList as string	set AppleScript's text item delimiters to oldDelims	return newStringend joinAList</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>884CCBDD-3714-4E44-8B2A-B82B9CF26AA1</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>keyword</key>
-				<string>w</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>------&lt; CONFIG Spectacle Default keystrokes &gt;------------------------set theCommands to {{action:"Next Display", key:124, mods:"control,option,command",icon:"next"}, {action:"Center Window", key:"c", mods:"option,command",icon:"center"},{action:"Move Window Left", key:123, mods:"option,command",icon:"left"},{action:"Move Window Right", key:124, mods:"option,command",icon:"right"},{action:"Fulscreen", key:"f", mods:"option,command",icon:"fullscreen"},{action:"Reset", key:"-", mods:"special",icon:"reset"}}
------------------------------------------------------------------------set theQuery to "{query}"set xml to "&lt;?xml version=\"1.0\"?&gt;&lt;items&gt;"-- get the configuration from Records aboverepeat with theCommand in theCommands	set theAction to action of theCommand	set theKey to key of theCommand	set theMods to mods of theCommand
-	set theIcon to icon of theCommand	set theArg to theAction &amp; ":" &amp; theKey &amp; ":" &amp; theMods	
-	-- List all options when user is not entering a command	if theAction contains theQuery or theQuery is equal to "" then		set xml to xml &amp; "&lt;item arg=\"" &amp; theArg &amp; "\" uid=\"ssid\" valid=\"yes\"&gt;
-&lt;title&gt;" &amp; theAction &amp; "&lt;/title&gt;
-&lt;icon&gt;icons/" &amp; theIcon &amp; ".png&lt;/icon&gt;&lt;/item&gt;"	end ifend repeatset xml to xml &amp; "&lt;/items&gt;"return xml
-
----
--- backup
----&lt;subtitle&gt;" &amp; theAction &amp; "&lt;/subtitle&gt;</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Move window with Spectacle</string>
-				<key>type</key>
-				<integer>6</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>AF87B1D6-CBD5-40EB-8244-28D63D6C32BE</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-	</array>
-	<key>readme</key>
-	<string>https://www.spectacleapp.com</string>
-	<key>uidata</key>
-	<dict>
-		<key>884CCBDD-3714-4E44-8B2A-B82B9CF26AA1</key>
-		<dict>
-			<key>xpos</key>
-			<integer>500</integer>
-			<key>ypos</key>
-			<real>10</real>
-		</dict>
-		<key>AF87B1D6-CBD5-40EB-8244-28D63D6C32BE</key>
-		<dict>
-			<key>xpos</key>
-			<integer>300</integer>
-			<key>ypos</key>
-			<real>10</real>
-		</dict>
-	</dict>
-	<key>webaddress</key>
-	<string></string>
-</dict>
-</plist>
