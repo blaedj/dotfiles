@@ -28,6 +28,8 @@
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
+(setq doom-font (font-spec :family "Anonymous Pro" :size 14))
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -81,9 +83,36 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-;;
 
-(load! "lisp/mydefuns.el" )
+
+;; evil-snipe mode messes with the keybindings I expect: s/S should replace, and I want to use ',' for my localleader
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+;; (setq doom-localleader-key ",")
+
+;;
+;; experiment with loading custom config files
+(add-load-path! "lisp/")
+(require 'mydefuns)
+(require 'magit-config)
+(require 'org-doom-settings)
+;;
+;;
+;;(load! "lisp/mydefuns.el" )
+;;(load! "lisp/magit-config.el" )
+;; /end experiment with loading custom config files
+
+
+(after! web
+  (setq web-mode-enable-current-element-highlight t)
+  )
+
+(after! dired-x
+  ;; I don't actually want to omit files, I like seeing them all turning off
+  ;; dired-omit-mode altogether is tricky, because doom turns it on in places,
+  ;; but we can work around that by telling dired-omit to hide nothing
+  (setq dired-omit-files nil)
+  (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)) )
+)
 
 ;; Custom Keymaps!
 (map!
@@ -92,7 +121,48 @@
  :desc "M-x"
  "<SPC>" #'execute-extended-command
 
+ ;; buffer-related commands
+ :desc "next buffer"
+ "<tab>" #'evil-switch-to-windows-last-buffer
+ ;; "[tab]" #'evil-switch-to-windows-last-buffer
+
+
+ :desc "open org index file"
+ "b i" #'bcj/switch-to-org-index
+ ;; / buffer-related commands
+
+ ;; need to unbind 'a' to avoid error like:
+ ;; error Key sequence a d starts with non-prefix key a
+ ;; afaict, this effectively makes 'a' a prefix key
+ :desc "my shortcuts (dired)"
+ "a" nil
+
+ :desc "dired-jump"
+ "a d" #'dired-jump
+
+ :desc "dired"
+ "a D" #'dired
+
+ :desc "magit status"
+ "g s" #'magit-status
+
+ ;; (figure out how to restrict these to prog-mode based modes..)
+ :desc "copy git link"
+ "g L" #'bcj/git-link-copy-url-only
+
  ;;:code
- ;;:desc "comment dwim" "l" #'comment-dwim
+ :desc "comment dwim"
+ "c l" #'bcj/comment-or-uncomment-lines
 )
-;;(map! :leader (:prefix-map ("a")))
+
+(map! :after org
+      :map org-mode-map
+      "<f8>" #'bcj/org-sort-entries
+      )
+
+(map! "M-/" #'hippie-expand)
+;; or
+;; (map! :prefix "C-x"
+;;       "C-r" #'git-gutter:revert-hunk
+;;       "C-b" #'ibuffer
+;;       "C-l" #'+lookup/file)

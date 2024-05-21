@@ -268,5 +268,23 @@ Call this repeatedly will cycle all positions in `mark-ring'."
    )
   )
 
+;; stolen from the spacemacs project.
+;; requires the git-link package
+(defun bcj/git-link-copy-url-only ()
+  "Only copy the generated link to the kill ring."
+  (interactive)
+  (let (git-link-open-in-browser)
+    (call-interactively 'git-link)))
+
+;; stolen from spacemacs
+;; assumes evilnc has already been loaded (whatever that is)
+(defun bcj/comment-or-uncomment-lines (&optional arg)
+"The DWBM (do What Blaed means) comment-lines. (ARG) is prob a region arg? dunno."
+  (interactive "p")
+  (let ((evilnc-invert-comment-line-by-line nil))
+    (evilnc-comment-or-uncomment-lines arg)))
+
+
+
 (provide 'mydefuns)
 ;;; mydefuns.el ends here

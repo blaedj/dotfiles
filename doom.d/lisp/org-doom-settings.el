@@ -18,7 +18,7 @@
   (setq org-return-follows-link t)
 
   (defun bcj/org-mode-hook ()
-    (turn-on-auto-fill)
+    (auto-fill-mode 1)
     (hl-line-mode -1)
     )
   (add-hook 'org-mode-hook 'bcj/org-mode-hook)
@@ -47,9 +47,52 @@
            (:background "#427"  :foreground "#ddd" :weight normal))
           ))
 
-  (evil-define-key 'normal org-mode-map
-    (kbd "<f8>") 'bcj/org-sort-entries
-    )
+  (setq org-capture-templates
+        '(("t" "To Do Item" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
+           "* %?\n%T :unfiled:" :prepend t)
 
+          ("c" "Contingency ToDo"
+           entry
+           (file+headline "~/Dropbox/org/todo.org" "Contingency") "** %?")
 
-  )
+          ("j" "Journal Entry"
+           entry (file+weektree "~/Dropbox/org/personal/journal.org")
+           "* %U %?" :empty-lines 1)
+
+          ("p" "tracking"
+           entry (file
+                  (concat org-directory "/personal/tracking.org")
+                  "."
+                  ) "* %t .")
+          ))
+
+  (setq org-default-priority 68)
+
+  (defun todo-to-int (todo)
+    "Get the int score of TODO for sorting, based on keyword."
+    (cond ((string= todo "IN-PROGRESS") 1)
+          ((string= todo "TODO") 2)
+          ((string= todo "ON-HOLD") 3)
+          ((string= todo "DONE") 5)
+          (t 4) ; default
+          ))
+
+  (defun bcj/org-sort-key ()
+    "Return the sorting key for the todo at point."
+    (let* ( (todo-max (+ (apply #'max (mapcar #'length org-todo-keywords)) 1))
+            (todo (org-entry-get (point) "TODO"))
+            ;; (todo-int (if todo (todo-to-int todo) todo-max))
+            (todo-int (todo-to-int todo))
+            (priority (org-entry-get (point) "PRIORITY"))
+            (priority-int (if priority (string-to-char priority) org-default-priority)))
+      (format "%03d %03d" todo-int priority-int)
+      ))
+
+  (defun bcj/org-sort-entries ()
+    "Sort the entries at point via my custom sorting function."
+    (interactive)
+    (org-sort-entries nil ?f #'bcj/org-sort-key))
+  ) ;; / after! org
+
+(provide 'org-doom-settings)
+;;; org-doom-settings.el ends here
