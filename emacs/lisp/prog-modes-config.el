@@ -29,12 +29,16 @@
   ) ;
 (add-hook 'prog-mode-hook 'bcj/prog-mode-hook)
 
-(defun bcj/maybe-enable-copilot ()
-  "Enable copilot in prog-mode, except for Lisp Interaction mode."
-  (unless (eq major-mode 'lisp-interaction-mode)
-    (copilot-mode t))
+
+(defun bcj/copilot-mode-maybe ()
+  "Enable copilot-mode only if a specific directory-local variable is not set."
+  (unless (bound-and-true-p bcj-disable-copilot)
+    (unless (eq major-mode 'lisp-interaction-mode) ;; this could probably be it's own unnested condition
+      (copilot-mode 1))
+    )
   )
-(add-hook 'prog-mode-hook 'bcj/maybe-enable-copilot)
+
+(add-hook 'prog-mode-hook 'bcj/copilot-mode-maybe)
 
 (add-hook 'elixir-format-hook
           (lambda ()
