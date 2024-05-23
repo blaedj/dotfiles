@@ -648,7 +648,7 @@ you should place your code here."
     ;; :load-path "vendor/"
     :config
     ;; Optionally set a default node version
-    (nvm-use "20.9")
+    ;; (nvm-use "20.9")
   )
 
   ;; libs in vendor/
@@ -688,6 +688,9 @@ you should place your code here."
     (setq helm-M-x-fuzzy-match t)
     (setq helm-imenu-fuzzy-match t)
     (setq helm-semantic-fuzzy-match t)
+    ;; the following defaults to true, which prevents moving the cursor past the
+    ;; 'command history' section in helm-M-x
+    (setq helm-move-to-line-cycle-in-source nil)
     )
 
   (with-eval-after-load 'helm-projectile
@@ -710,8 +713,8 @@ you should place your code here."
   (set-face-background hl-line-face "#2a2b2a")
 
   ;; (setq powerline-default-separator 'bar)
-  (setq spaceline-minor-modes-p nil)
-  (spacemacs/toggle-mode-line-version-control-on)
+  ;; (setq spaceline-minor-modes-p nil)
+  ;; (spacemacs/toggle-mode-line-version-control-on)
 
   (setq flycheck-idle-change-delay 4) ;; given the line below, this *should* have no effect
   (setq flycheck-display-errors-function 'flycheck-display-error-messages)

@@ -18,6 +18,11 @@
 ;; this may be better in a directory-local variable per-project
 (setq minitest-use-rails t)
 
+(lsp-ensure-server 'ruby-lsp-ls)
+
+;; reminder: figure out how to modify the lsp-ruby-ls to have a higher priority than the rubocop lsp server
+;; or just disable the rubocop lsp
+
 
 (require 'seeing-is-believing)
 (add-hook 'ruby-mode-hook 'seeing-is-believing)
