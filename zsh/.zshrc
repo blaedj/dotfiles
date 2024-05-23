@@ -1,3 +1,12 @@
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>$HOME/tmp/startlog.$$
+    setopt xtrace prompt_subst
+fi
+
+
 # Path to your zsh configuration.
 export ZSH=$HOME/.dotfiles/zsh
 export GOPATH=$HOME/code/go
@@ -73,13 +82,15 @@ compinit -i -d "${ZSH_COMPDUMP}"
 # the following automatically sets some aliases to colorize those commands
 [[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
-# fuzzy search/completion utility
+# fuzzy search/completion utility keeping the fzf config out of this file helps
+# with x-platform compat, since the fzf.* files contain paths to where fzf is
+# installed
 # TODO: the install script should install fzf..
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source ~/.secrets.sh
 
-export EMAIL="blaed@blaed.org"
+export EMAIL="me@blaed.org"
 export NAME="Blaed Johnston"
 
 # for bat: https://github.com/sharkdp/bat
@@ -91,7 +102,19 @@ export DISABLE_SPRING=true
 # turn on erlang/elixir shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export PATH="$PATH:$HOME/.rbenv/bin"
+# flyctl!
+export FLYCTL_INSTALL="/home/blaed/.fly"
+
+################ PATH modification
+
+export PATH="$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.rbenv/bin:$FLYCTL_INSTALL/bin:$HOME/.docker/bin"
+
+# add go to the path
+# export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+
+################ /PATH modification
+
 eval "$(rbenv init -)"
 
 # Set the default editor to a custom command, that first tries to use emacsclient, but falls back to vim
@@ -100,22 +123,6 @@ export EDITOR="e"
 ZSH_THEME="blaed"
 source "$ZSH/themes/$ZSH_THEME.zsh"
 
-source "$ZSH/nvm.zsh"
-
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-# add dotifiles bin/ folder to path
-export PATH=$PATH:~/.dotfiles/bin
-# ~/.local/bin is sort of a testing ground for tools before moving them to
-# ~/.dotfiles/bin
-export PATH=$PATH:~/.local/bin
-
-# flyctl!
-export FLYCTL_INSTALL="/home/blaed/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
-# add go to the path
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
 
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
@@ -125,3 +132,15 @@ if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
 fi
 
+
+# source "$ZSH/nvm.zsh"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# This needs to run at the very end of the ZSH startup file!
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    unsetopt xtrace
+    exec 2>&3 3>&-
+fi
