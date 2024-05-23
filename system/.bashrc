@@ -4,3 +4,5 @@ function git_info_for_prompt {
     echo ""
     return
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
