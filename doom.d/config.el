@@ -95,6 +95,7 @@
 (require 'mydefuns)
 (require 'magit-config)
 (require 'org-doom-settings)
+
 ;;
 ;;
 ;;(load! "lisp/mydefuns.el" )
@@ -105,6 +106,11 @@
 (after! web
   (setq web-mode-enable-current-element-highlight t)
   )
+
+(after! yasnippet
+  (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand)
+  )
+
 
 (after! dired-x
   ;; I don't actually want to omit files, I like seeing them all turning off
