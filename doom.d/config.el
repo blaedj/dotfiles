@@ -48,10 +48,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/org/")
 
-;; when I switch a project, I don't want to open a file, I just want to open a
-;; dired buffer in the project root
-(setq projectile-switch-project-action 'projectile-dired)
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -89,19 +85,17 @@
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; (setq doom-localleader-key ",")
 
-;;
-;; experiment with loading custom config files
 (add-load-path! "lisp/")
 (require 'mydefuns)
 (require 'magit-config)
 (require 'org-doom-settings)
+(require 'prog-modes-config)
 
-;;
-;;
-;;(load! "lisp/mydefuns.el" )
-;;(load! "lisp/magit-config.el" )
-;; /end experiment with loading custom config files
-
+(after! projectile
+  ;; when I switch a project, I don't want to open a file, I just want to open a
+  ;; dired buffer in the project root
+  (setq projectile-switch-project-action 'projectile-dired)
+  )
 
 (after! web
   (setq web-mode-enable-current-element-highlight t)
@@ -166,7 +160,11 @@
       "<f8>" #'bcj/org-sort-entries
       )
 
+(map!
+ :v "s" #'evil-surround-region)
+
 (map! "M-/" #'hippie-expand)
+
 ;; or
 ;; (map! :prefix "C-x"
 ;;       "C-r" #'git-gutter:revert-hunk

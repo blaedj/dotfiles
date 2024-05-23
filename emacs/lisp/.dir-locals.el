@@ -1,1 +1,1 @@
-((nil . ((bcj-disable-copilot . t))))
+((nil . ((bcj-disable-copilot . nil))))
