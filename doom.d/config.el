@@ -33,7 +33,8 @@
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
+;; `load-theme' function.
+;; default: (setq doom-theme 'doom-one)
 
 (setq
  custom-doom-tomorrow-night-brighter-comments t ; if non-nil, comments are brighter
@@ -83,7 +84,8 @@
 
 ;; evil-snipe mode messes with the keybindings I expect: s/S should replace, and I want to use ',' for my localleader
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
-;; (setq doom-localleader-key ",")
+
+(setq doom-localleader-key ",")
 
 (add-load-path! "lisp/")
 (require 'mydefuns)
@@ -145,6 +147,10 @@
 
  :desc "magit status"
  "g s" #'magit-status
+
+ ;; bound to 'remove known project' by default...
+ :desc "projectile-find-dir"
+ "p d" #'projectile-find-dir
 
  ;; (figure out how to restrict these to prog-mode based modes..)
  :desc "copy git link"
