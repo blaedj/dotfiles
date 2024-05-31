@@ -116,6 +116,29 @@
   (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)) )
 )
 
+
+;; mac-specific
+
+;; mac switch meta key
+(defun mac-switch-meta nil
+  "Switch meta between Option and Command."
+  (interactive)
+  (if (eq mac-option-modifier nil)
+      (progn
+        (setq mac-option-modifier 'meta)
+        (setq mac-command-modifier 'hyper)
+        )
+    (progn
+      (setq mac-option-modifier nil)
+      (setq mac-command-modifier 'meta)
+      )
+    )
+  )
+(if (eq system-type 'darwin)
+    (mac-switch-meta))
+
+;; /mac-specific
+
 ;; Custom Keymaps!
 (map!
  :leader
