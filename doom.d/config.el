@@ -194,6 +194,10 @@
 
 (map! "M-/" #'hippie-expand)
 
+(map! :after web-mode
+      :map web-mode-map
+      "M-/" #'hippie-expand)
+
 ;; or
 ;; (map! :prefix "C-x"
 ;;       "C-r" #'git-gutter:revert-hunk
