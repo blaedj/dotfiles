@@ -99,8 +99,9 @@
   (setq projectile-switch-project-action 'projectile-dired)
   )
 
-(after! web
+(after! web-mode
   (setq web-mode-enable-current-element-highlight t)
+  (setq hl-line-mode nil) ;; this can slow down cursor movement in erb templates
   )
 
 (after! yasnippet
@@ -182,6 +183,9 @@
  ;;:code
  :desc "comment dwim"
  "c l" #'bcj/comment-or-uncomment-lines
+
+ :desc "copy and comment lines"
+ "c y" #'evilnc-copy-and-comment-lines
 )
 
 (map! :after org
