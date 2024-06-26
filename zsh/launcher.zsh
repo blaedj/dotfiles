@@ -115,7 +115,7 @@ klaunch() {
                 2>&1 | tee ~/tmp/local_persistent.log ;;
 
         "persistentmac" )
-            ~/code/go/src/launcher/build/launcher \
+            ~/code/go/src/launcher/build/darwin.arm64/launcher \
                 -root_directory ~/tmp/launcherroot \
                 -hostname $host \
                 -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
@@ -133,7 +133,7 @@ klaunch() {
                 --root_directory $(mktemp -d) \
                 --hostname $host \
                 --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd-updates/1698153717/osqueryd" \
+                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 --transport jsonrpc \
                 --debug \
                 --control \
