@@ -207,3 +207,9 @@
 ;;       "C-r" #'git-gutter:revert-hunk
 ;;       "C-b" #'ibuffer
 ;;       "C-l" #'+lookup/file)
+
+(setq copilot-indent-offset-warning-disable t)
+(after! go-mode
+  (add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  )
