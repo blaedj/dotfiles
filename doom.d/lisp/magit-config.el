@@ -85,6 +85,10 @@
    'bcj/magit-insert-recent-local-branches
    'magit-insert-unpulled-from-upstream ;; this is the section that we want to show the branches below.
    )
+
+  ;; this overrides the 50-char length set by doom-emacs, and recommended by https://cbea.ms/git-commit/
+  ;; I like 70 chars, because otherwise I end up abbreviating and dropping words that make the message easily readable
+  (setq git-commit-summary-max-length 70)
   )
 
 ;; use this to remove the functions addded to the hook above
