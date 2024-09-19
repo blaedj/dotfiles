@@ -43,10 +43,10 @@
   "Search google for a user-specified query"
   (interactive)
   (browse-url
-   (concat "http://www.google.com/#q=" (bcj-http-encode (read-from-minibuffer "Query: "))))
+   (concat "http://www.google.com/#q=" (bcj/http-encode (read-from-minibuffer "Query: "))))
   )
 
-(defun bcj-http-encode (string-to-encode)
+(defun bcj/http-encode (string-to-encode)
   (replace-regexp-in-string
    "?" "%3F"
    (replace-regexp-in-string " " "%20" string-to-encode))
@@ -77,26 +77,6 @@
       (replace-match ") {" nil t)))
   )
 
-;;; from reddit.com/r/emacs/comments/1pkld4/elisp_question_what_does_foo_mean/
-(setq persistent-scratch-file-name "~/persScratch.el")
-
-(defun save-persistent-scratch ()
-  "Write the contents of scratch to the file name `persistent-scratch-file-name'."
-  (interactive)
-  (with-current-buffer (get-buffer-create "*scratch*") (write-region (point-min)
-								     (point-max) persistent-scratch-file-name)))
-
-(defun load-persistent-scratch ()
-  "Load the contents of `persistent-scratch-file-name' into the scratch buffer, clearing its contents first."
-  (interactive)
-  (if (file-exists-p persistent-scratch-file-name)
-      (with-current-buffer
-	  (get-buffer "*scratch*") (delete-region (point-min) (point-max))
-	  (insert-file-contents persistent-scratch-file-name))))
-
-(push #'load-persistent-scratch after-init-hook)
-(push #'save-persistent-scratch kill-emacs-hook)
-
 (defun create-scratch-buffer ()
   "creates a scratch buffer of specified type"
   (interactive)
@@ -119,7 +99,7 @@
     )
   )
 
-(defun bcj-open-project-term (orig-fun &rest args)
+(defun bcj/open-project-term (orig-fun &rest args)
   "This is some advice to wrap around ORIG-FUN and ARGS.
 This is advice to rename the term buffer if in a
 projectile-project.  If we are in a project, the name of the
@@ -134,7 +114,7 @@ terminal buffer will be 'terminal-PROJECTNAME'."
       (rename-buffer new-name)
       )))
 
-(defun bcj-revert-buffer-no-confirm ()
+(defun bcj/revert-buffer-no-confirm ()
   "Revert buffer with no confirmation."
   (interactive)
   (revert-buffer nil t))

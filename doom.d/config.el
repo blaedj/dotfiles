@@ -198,6 +198,8 @@
 
 (map! "M-/" #'hippie-expand)
 
+(map! "<f5>" #'bcj-revert-buffer-no-confirm)
+
 (map! :after web-mode
       :map web-mode-map
       "M-/" #'hippie-expand)
