@@ -51,7 +51,7 @@ determine the exact padding."
 
    ;; face categories
    (highlight      blue)
-   (vertical-bar   base0)
+   (vertical-bar   dark-blue)
    (selection      `(,(car (doom-lighten bg 0.2)) ,@(cdr base4)))
    (builtin        blue)
    (comments       (if custom-doom-tomorrow-night-brighter-comments (doom-lighten grey 0.4) grey))
