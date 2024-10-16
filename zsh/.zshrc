@@ -117,6 +117,8 @@ export PATH=$PATH:$GOPATH/bin
 
 eval "$(rbenv init -)"
 
+eval "$(direnv hook zsh)"
+
 # Set the default editor to a custom command, that first tries to use emacsclient, but falls back to vim
 export EDITOR="e"
 
