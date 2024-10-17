@@ -2,7 +2,7 @@
 
 if [ "$(uname -s)" = "Linux" ]
 then 
- echo "Installing emacs26..."
+ echo "edit: NOT Installing emacs26... you'll need to install it yourself"
 
  # sudo add-apt-repository ppa:kelleyk/emacs
  # sudo apt install emacs26
@@ -12,7 +12,7 @@ if test ! $(which emacs)
 then
     echo "installing Emacs from: https://github.com/d12frosted/homebrew-emacs-plus"
     echo "If this fails, try brew tap d12frosted/emacs-plus"
-    brew install emacs-plus@29 --with-native-comp --with-xwidgets --with-modern-pen-icon
+    brew install emacs-plus@29 --with-native-comp --with-xwidgets --with-dragon-icon
     ln -s /opt/homebrew/opt/emacs-plus@28/Emacs.app /Applications
     # make sure emacsclient is in the path
     sudo ln -s /opt/homebrew/bin/emacsclient /usr/local/bin/
@@ -28,7 +28,7 @@ if [ ! -d "~/code/elisp/doom-emacs/" ]; then
 fi
 
 if [ ! -d "~/.doom.d" ]; then
-    ln -s "~/.dotfiles/doom.d" "~/.doom.d"
+    ln -s "~/.dotfiles/doom.d" "~/.doom.d/"
     echo "you probably want to run the following commands: "
     echo "  ~/code/elisp/doom-emacs/bin/doom sync"
     echo "  ~/code/elisp/doom-emacs/bin/doom env "
