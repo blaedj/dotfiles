@@ -51,6 +51,7 @@
 
 (package! git-link)
 (package! blamer)
+(package! helpful) ;; *help* buffers but with more context
 (package! copilot
   :recipe (:host github
            :repo "zerolfx/copilot.el"
