@@ -4,10 +4,12 @@
 if [ "$(uname -s)" = "Darwin" ]
 then
     unzip Share_Tech_Mono.zip -d ./temp/
+    unzip AnonymousPro.zip -d ./temp/
+    mv ./temp/AnonymousPro-1.002.001/* ./temp/
     mv ./temp/*.ttf ~/Library/Fonts/
     rm -r ./temp
-    mv ./Inconsolata/*.ttf ~/Library/Fonts
-    mv ./Source_Code_Pro/*.ttf ~/Library/Fonts
+    cp ./Inconsolata/*.ttf ~/Library/Fonts
+    cp ./Source_Code_Pro/*.ttf ~/Library/Fonts
 fi
 
 if [ "$(uname -s)" = "Linux" ]
