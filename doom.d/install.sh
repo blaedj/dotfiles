@@ -1,3 +1,5 @@
 #!/bin/bash
 
-ln -s ~/.dotfiles/doom.d ~/.doom.d
+if [ ! -d "~/.doom.d" ]; then 
+  ln -s ~/.dotfiles/doom.d ~/.doom.d
+fi

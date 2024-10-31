@@ -24,7 +24,7 @@ fi
 
 if [ ! -d "~/code/elisp/doom-emacs/" ]; then
     echo "cloning doomeamacs..."
-    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/code/elisp/doom-emacs
+    git clone --depth 10 https://github.com/doomemacs/doomemacs ~/code/elisp/doom-emacs
 fi
 
 if [ ! -d "~/.doom.d" ]; then
