@@ -13,7 +13,7 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark eza php
+brew install grc coreutils spark eza php ripgrep shellcheck fd
 
 brew install alfred rectangle tripmode jordanbaird-ice ngrok iterm2 firefox hazel brave-browser --cask
 
