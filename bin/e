@@ -21,8 +21,9 @@
 # fi
 
 #exec /usr/local/cellar/emacs/25.1/bin/emacsclient -t -a "vim" $*
-if [ -f /usr/bin/emacsclient ]
-then
+if command -v emacsclient &> /dev/null; then
+    exec emacsclient -t -a "vim" $*
+elif [ -f /usr/bin/emacsclient ]; then
     exec /usr/bin/emacsclient -t -a "vim" $*
 else
     exec /usr/local/bin/emacsclient -t -a "vim" $*
