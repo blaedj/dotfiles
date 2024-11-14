@@ -6,10 +6,10 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     setopt xtrace prompt_subst
 fi
 
-
 # Path to your zsh configuration.
 export ZSH=$HOME/.dotfiles/zsh
 export GOPATH=$HOME/code/go
+
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -107,11 +107,18 @@ export FLYCTL_INSTALL="/home/blaed/.fly"
 
 ################ PATH modification
 
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
 export PATH="$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.rbenv/bin:$FLYCTL_INSTALL/bin:$HOME/.docker/bin"
 
 # add go to the path
 # export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$GOPATH/bin
+addToPathFront $GOPATH/bin
 
 ################ /PATH modification
 
@@ -123,7 +130,6 @@ export EDITOR="e"
 ZSH_THEME="blaed"
 source "$ZSH/themes/$ZSH_THEME.zsh"
 
-
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
@@ -132,12 +138,10 @@ if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
 fi
 
-
 # source "$ZSH/nvm.zsh"
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # This needs to run at the very end of the ZSH startup file!
 if [[ "$PROFILE_STARTUP" == true ]]; then
