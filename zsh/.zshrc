@@ -143,6 +143,12 @@ fi
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# if the file '~/gcp.rc' exists, load it.
+# this is configuration for the gcloud sdk tools
+if [ -f ~/gcp.rc ]; then
+    source ~/gcp.rc
+fi
+
 # This needs to run at the very end of the ZSH startup file!
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
