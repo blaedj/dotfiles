@@ -13,8 +13,9 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark eza php ripgrep shellcheck fd
+brew install grc coreutils spark eza php ripgrep shellcheck fd terminal-notifier
 
+# install some casks
 brew install alfred rectangle tripmode jordanbaird-ice ngrok iterm2 firefox hazel brave-browser --cask
 
 exit 0
