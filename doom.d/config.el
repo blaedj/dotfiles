@@ -102,6 +102,9 @@
 (after! web-mode
   (setq web-mode-enable-current-element-highlight t)
   (setq hl-line-mode nil) ;; this can slow down cursor movement in erb templates
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset   2)
+  (setq web-mode-script-padding 0)
   )
 
 (after! yasnippet
