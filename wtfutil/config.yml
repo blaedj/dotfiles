@@ -14,9 +14,9 @@ wtf:
       odd: white
   grid:
     # How _wide_ the columns are, in terminal characters.
-    columns: [15, 15, 10, 15, 15, 15]
+    columns: [15, 15, 15, 8, 5, 25]
     # How _high_ the rows are, in terminal lines.
-    rows: [2, 2, 2, 2, 2, 4, 4, 4, 4]
+    rows: [2, 2, 3, 2, 2, 4, 4, 4, 4]
   refreshInterval: 1
   openFileUtil: "open"
   mods:
@@ -44,7 +44,7 @@ wtf:
         top: 0
         left: 0
         height: 4
-        width: 3
+        width: 4
     # You can have multiple widgets of the same type.
     # The "key" is the name of the widget and the type is the actual
     # widget you want to implement.
@@ -55,9 +55,9 @@ wtf:
       enabled: true
       position:
         top: 0
-        left: 3
+        left: 4
         height: 4
-        width: 3
+        width: 2
       refreshInterval: 90
 
     resources:
