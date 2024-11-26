@@ -1,46 +1,12 @@
 #!/bin/zsh
 
-# different secrets need to be generated for diff. envs.
-# use
-# ./build/cloudctl create enroll-secret --tenant dibado >  ~/tmp/master_secret
-# for master,
-# ./build/cloudctl create enroll-secret --tenant dababi >  ~/tmp/pr_secret
-# for PRs, and
-# ./build/cloudctl create enroll-secret --tenant dababi >  ~/tmp/local_secret
-# for local.
-
-k1launch() {
-    case $1 in
-        "master" )
-            ~/code/go/launcher/build/launcher \
-                -root_directory ~/tmp/master \
-                -hostname dibado.launcher.kolide.net:443 \
-                -enroll_secret_path ~/tmp/master_secret \
-                -debug  | tee ~/tmp/master.log ;;
-        [0-9]*)
-            ~/code/go/launcher/build/launcher \
-                -root_directory $(mktemp -d) \
-                -hostname $1.cloud.kolide.net:443 \
-                -enroll_secret_path ~/tmp/pr_secret \
-                -debug | tee ~/tmp/$1.log ;;
-        *)
-            ~/code/go/launcher/build/launcher \
-                -root_directory $(mktemp -d) \
-                -hostname localhost:8800 \
-                -enroll_secret_path ~/tmp/local_secret \
-                -debug \
-                -insecure_transport \
-                -insecure \
-                2>&1 | tee ~/tmp/local.log ;;
-    esac
-}
-
 klaunch() {
     supplied_host=$2
-    host=${supplied_host:-"localhost:3443"}
+    # host=${supplied_host:-"localhost:3443"}
+    host=${supplied_host:-"app.kolide-blaed.ngrok.io"}
     case $1 in
         "help")
-            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,macold,local,sudomac,sudomac-persistent}" ;;
+            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,persistentmac,macold,local,sudomac,sudomac-persistent}" ;;
         "sudomac" )
             sudo launchctl asuser 0 \
                 ~/code/go/src/launcher/build/launcher \
@@ -102,30 +68,27 @@ klaunch() {
 
         "persistentmac-prod-binary" )
             /usr/local/kolide-k2/bin/launcher \
-                -root_directory ~/tmp/launcherroot \
+                -debug \
                 -hostname $host \
                 -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                -i-am-breaking-ee-license \
                 -transport jsonrpc \
-                -debug \
-                -control \
-                -control_hostname $host \
-                -control_request_interval 5s \
+                -osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                -root_directory ~/tmp/launcherroot \
                 -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local_persistent.log ;;
 
         "persistentmac" )
             ~/code/go/src/launcher/build/darwin.arm64/launcher \
-                -root_directory ~/tmp/launcherroot \
+                -debug \
                 -hostname $host \
                 -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                -i-am-breaking-ee-license \
                 -transport jsonrpc \
-                -debug \
-                -control \
-                -control_hostname $host \
+                -osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                -root_directory ~/tmp/launcherroot \
+                -autoupdate false \
                 -control_request_interval 10s \
-                -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local_persistent.log ;;
 
         "mac" )
@@ -139,11 +102,10 @@ klaunch() {
                 --control \
                 --control_hostname $host \
                 --control_request_interval 5s \
-                --root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
             2>&1 | tee ~/tmp/local.log ;;
 
         "mac-localbuild" )
-            !/code/go/src/launcher/build/launcher \
+            ~/code/go/src/launcher/build/launcher \
                 --root_directory $(mktemp -d) \
                 --hostname $host \
                 --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
@@ -154,7 +116,6 @@ klaunch() {
                 --control \
                 --control_hostname $host \
                 --control_request_interval 5s \
-                --root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local.log ;;
 
         "ngrok-mac" )
@@ -181,18 +142,6 @@ klaunch() {
                 -transport jsonrpc \
                 -autoupdate \
                 -debug \
-                -with_initial_runner \
-                -disable_control_tls \
-                2>&1 | tee ~/tmp/local.log ;;
-        "macold" )
-            ~/tmp/oldlauncher \
-                -root_directory $(mktemp -d) \
-                -hostname localhost:3000 \
-                -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
-                --insecure \
-                --insecure_transport \
-                -transport jsonrpc \
-                --debug true \
                 -with_initial_runner \
                 -disable_control_tls \
                 2>&1 | tee ~/tmp/local.log ;;
@@ -246,6 +195,6 @@ klaunch() {
                -update_channel="beta" \
                -debug ;;
         *)
-            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,macold,local,sudomac,sudomac-persistent}" ;;
+            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,local,persistentmac,sudomac,sudomac-persistent}" ;;
     esac
 }
