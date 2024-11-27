@@ -61,9 +61,9 @@
     (dolist (line (bcj/magit-refs--format-recent-local-branches))
       (pcase-let ((`(,branch . ,strings) line))
         (magit-insert-section
-          ((eval (if branch 'branch 'commit))
-           (or branch (magit-rev-parse "HEAD"))
-           t)
+            ((eval (if branch 'branch 'commit))
+             (or branch (magit-rev-parse "HEAD"))
+             t)
           (apply #'magit-insert-heading strings)
           (when (magit-buffer-margin-p)
             (magit-refs--format-margin branch))
@@ -83,9 +83,9 @@
   (magit-add-section-hook
    'magit-status-sections-hook
    'bcj/magit-insert-recent-local-branches
-   'magit-insert-unpulled-from-upstream ;; this is the section that we want to show the branches below.
+   'magit-insert-stashes ;; this is the section that we want to show the branches below.
+   t
    )
-
   ;; this overrides the 50-char length set by doom-emacs, and recommended by https://cbea.ms/git-commit/
   ;; I like 70 chars, because otherwise I end up abbreviating and dropping words that make the message easily readable
   (setq git-commit-summary-max-length 70)
