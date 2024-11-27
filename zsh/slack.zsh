@@ -13,6 +13,7 @@ the following User Token OAuth scopes:
  - users.profile:read
  - users.profile:write
  - users:write
+ - dnd:write
 "
         return;
     fi
@@ -36,8 +37,16 @@ the following User Token OAuth scopes:
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
             --data '{"presence": "auto"}'
                   )
-
           output="${output}\n${output2}"
+
+          typeset output3=$(curl https://slack.com/api/dnd.endSnooze \
+            --silent \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+                  )
+
+          output="${output}\n${output3}"
           ;;
         "lunch" )
           typeset output=$(curl https://slack.com/api/users.profile.set \
@@ -47,6 +56,7 @@ the following User Token OAuth scopes:
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
             --data '{"profile": {"status_text": "lunchtime", "status_emoji": ":chompy:"}}'
                   )
+
           typeset output2=$(curl https://slack.com/api/users.setPresence \
             --silent \
             --request POST \
@@ -55,6 +65,15 @@ the following User Token OAuth scopes:
             --data '{"presence": "away"}'
                   )
           output="${output}\n${output2}"
+
+          typeset output3=$(curl https://slack.com/api/dnd.setSnooze \
+            --silent \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+            --data '{"num_minutes": "90"}'
+                  )
+          output="${output}\n${output3}"
           ;;
         "away" )
           typeset output=$(curl https://slack.com/api/users.profile.set \
@@ -83,6 +102,25 @@ the following User Token OAuth scopes:
             --data '{"profile": {"status_text": "on a call", "status_emoji": ":phone:"}}'
                   )
           ;;
+
+        "busy" )
+          typeset output=$(curl https://slack.com/api/users.profile.set \
+            --silent \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+            --data '{"profile": {"status_text": "heads down", "status_emoji": ":cowboycoding:"}}'
+                  )
+
+          typeset output2=$(curl https://slack.com/api/dnd.setSnooze \
+            --silent \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
+            --data '{"num_minutes": "60"}'
+                  )
+          output="${output}\n${output2}"
+          ;;
         "errand" )
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
@@ -102,7 +140,7 @@ the following User Token OAuth scopes:
           ;;
 
         *)
-          echo "please provide a valid command: clear/lunch/away/call/errand or use the -m flag to specify a custom message" ;;
+          echo "please provide a valid command: clear/lunch/away/call/errand/busy or use the -m flag to specify a custom message" ;;
       esac
     done
 
