@@ -4,6 +4,4 @@
 # key: fwrite
 # --
 
-File.open($1, 'w') do |f|
-  f.write($0)
-end
+File.write($1, $0)
