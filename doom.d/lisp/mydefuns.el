@@ -227,25 +227,13 @@ Call this repeatedly will cycle all positions in `mark-ring'."
 (defun bcj/embiggen-font ()
   "A function to make the default spacemacs font bigger, useful when screensharing"
   (interactive)
- (spacemacs/set-default-font
-  '("Anonymous Pro" ;; or.. "Ubuntu Mono", "Source Code Pro" etc
-    :size 19
-    :weight normal
-    :width normal
-    :powerline-scale 1.5)
-  )
+  (doom-big-font-mode 1)
  )
 
 (defun bcj/make-normal-font ()
   "A function to set the default spacemacs back to normal size"
   (interactive)
-  (spacemacs/set-default-font
-   '("Anonymous Pro" ;; or.. "Ubuntu Mono", "Source Code Pro" etc
-     :size 14
-     :weight normal
-     :width normal
-     :powerline-scale 1.5)
-   )
+  (doom-big-font-mode 0)
   )
 
 ;; stolen from the spacemacs project.
