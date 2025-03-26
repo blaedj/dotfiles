@@ -87,6 +87,7 @@ compinit -i -d "${ZSH_COMPDUMP}"
 # installed
 # TODO: the install script should install fzf..
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
 
 source ~/.secrets.sh
 
