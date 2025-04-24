@@ -17,18 +17,52 @@ the following User Token OAuth scopes:
 "
         return;
     fi
+    # the -m or --message flag sets the "status_text" when provided. It
+    # overwrites the default "status_text" used when one of the out-of-the-box
+    # combos are applied
 
-    message=$1
+    positional_args=()
+    # shift
 
+    message=""
+    while [[ "$#" -gt 0 ]]; do
+      case "$1" in
+        -m)
+          shift
+          message="$1"
+          shift
+          ;;
+        --message=*)
+          message="${1#*=}"
+          shift
+          ;;
+        --message)
+          shift
+          message="$1"
+          shift
+          ;;
+        -*)
+          echo "Unknown option: $1"
+          exit 1
+          ;;
+        *)
+          positional_args+=("$1")
+          shift
+          ;;
+      esac
+    done
+
+    cmd=$positional_args[@]
     for SLACK_STATUS_API_TOKEN in $SLACK_STATUS_API_TOKENS; do
-      case $message in
+      case $cmd in
         "clear")
+          set_default_message "Upcoming OOO: Friday, 4/25"
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data '{"profile": {"status_text": "", "status_emoji": ""}}'
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":fyi:\"}}"
                   )
           typeset output2=$(curl https://slack.com/api/users.setPresence \
             --silent \
@@ -49,12 +83,13 @@ the following User Token OAuth scopes:
           output="${output}\n${output3}"
           ;;
         "lunch" )
+          set_default_message "lunchtime"
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data '{"profile": {"status_text": "lunchtime", "status_emoji": ":chompy:"}}'
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":chompy:\"}}"
                   )
 
           typeset output2=$(curl https://slack.com/api/users.setPresence \
@@ -76,12 +111,13 @@ the following User Token OAuth scopes:
           output="${output}\n${output3}"
           ;;
         "away" )
+          set_default_message "afk"
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data '{"profile": {"status_text": "afk", "status_emoji": ":away:"}}'
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":away:\"}}"
                   )
 
           typeset output2=$(curl https://slack.com/api/users.setPresence \
@@ -94,22 +130,26 @@ the following User Token OAuth scopes:
           output="${output}\n${output2}"
           ;;
         "call" )
+          set_default_message "on a call"
+
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data '{"profile": {"status_text": "on a call", "status_emoji": ":phone:"}}'
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":phone:\"}}"
                   )
           ;;
 
         "busy" )
+          set_default_message "heads down"
+
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data '{"profile": {"status_text": "heads down", "status_emoji": ":cowboycoding:"}}'
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":cowboycoding:\"}}"
                   )
 
           typeset output2=$(curl https://slack.com/api/dnd.setSnooze \
@@ -122,12 +162,14 @@ the following User Token OAuth scopes:
           output="${output}\n${output2}"
           ;;
         "errand" )
+          set_default_message "errand"
+          [[ -z "$message" ]] && message=$default_message
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data '{"profile": {"status_text": "errand", "status_emoji": ":car:"}}'
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":car:\"}}"
                   )
           typeset output2=$(curl https://slack.com/api/users.setPresence \
             --silent \
@@ -147,4 +189,10 @@ the following User Token OAuth scopes:
     if [[ "$2" == '--debug' ]]; then
         echo $output
     fi
+}
+
+# used to set the default message for each command. If a message has already
+# been defined via the -m/--message flag, does NOT override that
+set_default_message() {
+  [[ -z "$message" ]] && message="$1"
 }
