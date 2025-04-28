@@ -56,13 +56,13 @@ the following User Token OAuth scopes:
     for SLACK_STATUS_API_TOKEN in $SLACK_STATUS_API_TOKENS; do
       case $cmd in
         "clear")
-          set_default_message "Upcoming OOO: Friday, 4/25"
+          set_default_message ""
           typeset output=$(curl https://slack.com/api/users.profile.set \
             --silent \
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":fyi:\"}}"
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \"\"}}"
                   )
           typeset output2=$(curl https://slack.com/api/users.setPresence \
             --silent \
