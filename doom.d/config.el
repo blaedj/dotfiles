@@ -92,6 +92,7 @@
 (require 'magit-config)
 (require 'org-doom-settings)
 (require 'prog-modes-config)
+(require 'ruby-mode-config)
 
 (after! projectile
   ;; when I switch a project, I don't want to open a file, I just want to open a
