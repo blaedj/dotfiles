@@ -10,6 +10,7 @@ _klaunch() {
         'sudomac:a non-persistent mac launcher running as root'
         'persistentmac:launcher on mac that persists data/identity after restart'
         'persistentmac-prod-binary:like persistentmac, but using the production binary, not the locally built launcher'
+        'persistentmac-edilok:prod binary, persistant mac launcher enrolled in the "edilok" tenant'
         'mac:run launcher on a local mac. uses prod binary'
         'mac-localbuild:mac launcher, with locally built launcher'
         'ubuntu:run launcher on ubuntu, via docker'

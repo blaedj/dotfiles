@@ -12,7 +12,7 @@ klaunch() {
                 ~/code/go/src/launcher/build/launcher \
                 -root_directory $(mktemp -d) \
                 -hostname $host \
-                -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
+                -enroll_secret_path /Users/blaed/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 --insecure \
                 --insecure_transport \
@@ -37,7 +37,7 @@ klaunch() {
                  /Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/launcher \
                  -root_directory "/Users/blaed/tmp/launcher_root_bad_perms/kolide" \
                  -hostname $host \
-                 -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
+                 -enroll_secret_path /Users/blaed/code/rails/k2/tmp/enroll_secret_nababe.txt \
                  --osqueryd_path "/Users/blaed/tmp/launcher_root_bad_perms/kolide/bin/osqueryd" \
                  --insecure \
                  --insecure_transport \
@@ -54,7 +54,7 @@ klaunch() {
                  ~/code/go/src/launcher/build/launcher \
                  -root_directory ~/tmp/launcherroot-sudo \
                  -hostname $host \
-                 -enroll_secret_path /Users/blaed/code/rails/k2/tmp/secret.txt \
+                 -enroll_secret_path /Users/blaed/code/rails/k2/tmp/enroll_secret_nababe.txt \
                  --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                  --insecure \
                  --insecure_transport \
@@ -70,32 +70,46 @@ klaunch() {
             /usr/local/kolide-k2/bin/launcher \
                 -debug \
                 -hostname $host \
-                -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 -i-am-breaking-ee-license \
                 -transport jsonrpc \
                 -osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 -root_directory ~/tmp/launcherroot \
-                -root_pem /Users/blaed/code/rails/k2/tmp/localhost.crt \
                 2>&1 | tee ~/tmp/local_persistent.log ;;
 
         "persistentmac" )
             ~/code/go/src/launcher/build/darwin.arm64/launcher \
                 -debug \
                 -hostname $host \
-                -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 -i-am-breaking-ee-license \
                 -transport jsonrpc \
                 -osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 -root_directory ~/tmp/launcherroot \
+                 -autoupdater_initial_delay 0 \
                 -autoupdate false \
                 -control_request_interval 10s \
                 2>&1 | tee ~/tmp/local_persistent.log ;;
+
+        "persistentmac-edilok" )
+            # ~/code/go/src/launcher/build/darwin.arm64/launcher \
+            /usr/local/kolide-k2/bin/launcher \
+                -debug \
+                -hostname $host \
+                -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababi.txt \
+                -i-am-breaking-ee-license \
+                -transport jsonrpc \
+                -osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
+                -root_directory ~/tmp/launcherroot-edilok \
+                -autoupdate false \
+                -control_request_interval 10s \
+                2>&1 | tee ~/tmp/edilok_persistent.log ;;
 
         "mac" )
             /usr/local/kolide-k2/bin/launcher \
                 --root_directory $(mktemp -d) \
                 --hostname $host \
-                --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                --enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 --transport jsonrpc \
                 --debug \
@@ -108,7 +122,7 @@ klaunch() {
             ~/code/go/src/launcher/build/launcher \
                 --root_directory $(mktemp -d) \
                 --hostname $host \
-                --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                --enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 --transport jsonrpc \
                 --debug \
@@ -122,7 +136,7 @@ klaunch() {
             ~/code/go/src/launcher/build/launcher \
                 --root_directory $(mktemp -d) \
                 --hostname $host \
-                --enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                --enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 --transport jsonrpc \
                 --debug \
@@ -135,7 +149,7 @@ klaunch() {
             ~/code/go/launcher/build/launcher \
                 -root_directory $(mktemp -d) \
                 -hostname localhost:5500 \
-                -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+                -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 --insecure \
                 --insecure_transport \
                 --osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
@@ -169,7 +183,7 @@ klaunch() {
                    -debug \
                    -hostname host.docker.internal:3000 \
                    -transport jsonrpc \
-                   -enroll_secret $(cat ~/code/rails/k2/tmp/secret.txt) \
+                   -enroll_secret $(cat ~/code/rails/k2/tmp/enroll_secret_nababe.txt) \
                    -insecure_transport \
                    -insecure ;;
         "centos" )
@@ -178,7 +192,7 @@ klaunch() {
                    -debug \
                    -hostname host.docker.internal:3000 \
                    -transport jsonrpc \
-                   -enroll_secret $(cat ~/code/rails/k2/tmp/secret.txt) \
+                   -enroll_secret $(cat ~/code/rails/k2/tmp/enroll_secret_nababe.txt) \
                    -insecure_transport \
                    -insecure \
                    -disable_control_tls ;;
@@ -186,7 +200,7 @@ klaunch() {
            ~/code/go/src/launcher/build/launcher \
                -root_directory $(mktemp -d) \
                -hostname localhost:3443 \
-               -enroll_secret_path ~/code/rails/k2/tmp/secret.txt \
+               -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                -root_pem ~/code/rails/k2/tmp/localhost.crt \
                -osqueryd_path /usr/local/kolide-k2/bin/osqueryd \
                -kolide_hosted \
