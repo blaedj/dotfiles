@@ -15,14 +15,12 @@ primary=$(echo ${connections[6]} | ag 'Connections:.*$' | awk '{print $2}')
 replica=$(echo ${connections[2]} | ag 'Connections:.*$' | awk '{print $2}')
 third=$(echo ${connections[4]} | ag 'Connections:.*$' | awk '{print $2}')
 fourth=$(echo ${connections[8]} | ag 'Connections:.*$' | awk '{print $2}')
-fifth=$(echo ${connections[10]} | ag 'Connections:.*$' | awk '{print $2}')
 
 
 primaryName=$(echo ${connections[6]} | ag 'Add-on:.*$' | awk '{print $2}')
 replicaName=$(echo ${connections[2]} | ag 'Add-on:.*$' | awk '{print $2}')
 thirdName=$(echo ${connections[4]} | ag 'Add-on:.*$' | awk '{print $2}')
 fourthName=$(echo ${connections[8]} | ag 'Add-on:.*$' | awk '{print $2}')
-fifthName=$(echo ${connections[10]} | ag 'Add-on:.*$' | awk '{print $2}')
 
 # Debugging tool: 'Fork/Follow' will show 'unavailable on followers', so this
 # can be used to figure out if I have the right array element for the primary
@@ -35,9 +33,8 @@ fifthName=$(echo ${connections[10]} | ag 'Add-on:.*$' | awk '{print $2}')
 cat <<-EOF
  DT People: $dtCount
  --------+-Conns---+-------------------------------
- Primary | $primary |  $primaryName
- Replica | $replica  |  $replicaName
- 3rd  PG | $third  |  $thirdName
- 4th  PG | $fourth  |  $fourthName
- 5th  PG | $fifth  |  $fifthName
+ Primary | $primary | $primaryName
+ Replica | $replica | $replicaName
+ 3rd  PG | $third  | $thirdName
+ 4th  PG | $fourth  | $fourthName
 EOF
