@@ -253,6 +253,42 @@ Call this repeatedly will cycle all positions in `mark-ring'."
     (evilnc-comment-or-uncomment-lines arg)))
 
 
+;; ruby-constpath.el --- Turn nested module/class headers into a :: path
+;; ( thanks to the robots )
+(defun bcj/ruby-region-to-constpath (beg end)
+  "Make a path like `A::B::C` from a region of Ruby module`/class declarations.
+It replaces the region with the computed path and copies it to the kill ring.
+Example input that should be bounded by the BEG - END region:
+
+  module Foo
+    module Bar
+      class Baz < ParentClass
+
+Output: Foo::Bar::Baz"
+  (interactive "r")
+  (unless (use-region-p)
+    (user-error "No region active"))
+  (let* ((text (buffer-substring-no-properties beg end))
+         (names '()))
+    (with-temp-buffer
+      (insert text)
+      (goto-char (point-min))
+      ;; Match lines starting with module/class and grab the constant part.
+      ;; Allow existing :: in names; ignore inheritance (`< ...`) tail.
+      (while (re-search-forward
+              "^[ \t]*\\(?:module\\|class\\)\\s-+\\([A-Z][A-Za-z0-9_:\\]*\\)" nil t)
+        (let* ((raw (match-string 1))
+               (parts (split-string raw "::")))
+          (dolist (p parts)
+            (when (and (not (string-empty-p p))
+                       (string-match-p "^[A-Z][A-Za-z0-9_]*$" p))
+              (push p names))))))
+    (setq names (nreverse names))
+    (let ((result (mapconcat #'identity names "::")))
+      (delete-region beg end)
+      (insert result)
+      (kill-new result)
+      (message "Ruby const path: %s (copied to kill ring)" result))))
 
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
