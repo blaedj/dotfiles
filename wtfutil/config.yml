@@ -14,7 +14,7 @@ wtf:
       odd: white
   grid:
     # How _wide_ the columns are, in terminal characters.
-    columns: [15, 15, 15, 8, 5, 25]
+    columns: [15, 15, 15, 9, 5, 24]
     # How _high_ the rows are, in terminal lines.
     rows: [2, 2, 3, 2, 2, 4, 4, 4, 4]
   refreshInterval: 1
@@ -59,13 +59,3 @@ wtf:
         height: 4
         width: 2
       refreshInterval: 90
-
-    resources:
-      type: resourceusage
-      enabled: true
-      position:
-        top: 4
-        left: 0
-        height: 5
-        width: 5
-      refreshInterval: 10
