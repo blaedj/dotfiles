@@ -57,3 +57,6 @@
            :repo "zerolfx/copilot.el"
            :files ("*.el" "dist")))
 
+(package! protobuf-mode :recipe (:nonrecursive t))
+
+;; (package! grip-mode) ; this gives markdown (and maybe org-mode?) rendered previews right in emacs
