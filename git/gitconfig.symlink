@@ -80,6 +80,11 @@
 [gpg "ssh"]
 	allowedSignersFile = /Users/blaed/.ssh/allowed_signers
 
+
+[diff "jq"]
+  textconv = jq .
+  cachetextconv = true
+
 [diff "enc"]
   textconv = rails encrypted:show
   cachetextconv = false

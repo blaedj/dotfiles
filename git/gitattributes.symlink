@@ -22,3 +22,4 @@
 *.lisp  diff=lisp
 *.el    diff=lisp
 *.yml.enc diff=enc
+*.json  diff=jq
