@@ -10,6 +10,10 @@ fi
 export ZSH=$HOME/.dotfiles/zsh
 export GOPATH=$HOME/code/go
 
+# with extended history on, zsh will record _when_ (unix timestamp) a command was run
+setopt EXTENDED_HISTORY
+# inc_append_history_time turns on tracking how long it ran for
+setopt inc_append_history_time
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
