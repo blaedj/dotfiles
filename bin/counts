@@ -5,36 +5,6 @@ storepath=~/.counts
 dtCount=$(curl -s 'https://k2.kolide.com/api/public/count' | jq .count)
 echo "$(date)\n$dtCount" >> $storepath
 
-
-connections=( ${(ps:\n\n:)"$(heroku pg:info --app kolide2)"} )
-# info for each pg instance is separated by a `=== HEROKU_POSTREGRES_<...>_URL`, so every other element in the `connections`
-# array is actually a block of text about a single PG
-# TODO: figure out how to better munge the text...
-
-primary=$(echo ${connections[6]} | ag 'Connections:.*$' | awk '{print $2}')
-replica=$(echo ${connections[2]} | ag 'Connections:.*$' | awk '{print $2}')
-third=$(echo ${connections[4]} | ag 'Connections:.*$' | awk '{print $2}')
-fourth=$(echo ${connections[8]} | ag 'Connections:.*$' | awk '{print $2}')
-
-
-primaryName=$(echo ${connections[6]} | ag 'Add-on:.*$' | awk '{print $2}')
-replicaName=$(echo ${connections[2]} | ag 'Add-on:.*$' | awk '{print $2}')
-thirdName=$(echo ${connections[4]} | ag 'Add-on:.*$' | awk '{print $2}')
-fourthName=$(echo ${connections[8]} | ag 'Add-on:.*$' | awk '{print $2}')
-
-# Debugging tool: 'Fork/Follow' will show 'unavailable on followers', so this
-# can be used to figure out if I have the right array element for the primary
-# primary=$(echo ${connections[6]} | ag 'Fork/Follow' | tr -s ' ')
-# replica=$(echo ${connections[2]} | ag 'Fork/Follow' | tr -s ' ')
-# third=$(echo ${connections[4]} | ag 'Fork/Follow' | tr -s ' ')
-# fourth=$(echo ${connections[8]} | ag 'Fork/Follow' | tr -s ' ')
-# fifth=$(echo ${connections[10]} | ag 'Fork/Follow' | tr -s ' ')
-
 cat <<-EOF
  DT People: $dtCount
- --------+-Conns---+-------------------------------
- Primary | $primary | $primaryName
- Replica | $replica | $replicaName
- 3rd  PG | $third  | $thirdName
- 4th  PG | $fourth  | $fourthName
 EOF
