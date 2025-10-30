@@ -114,11 +114,6 @@ terminal buffer will be 'terminal-PROJECTNAME'."
       (rename-buffer new-name)
       )))
 
-(defun bcj/revert-buffer-no-confirm ()
-  "Revert buffer with no confirmation."
-  (interactive)
-  (revert-buffer nil t))
-
 ;; (defun dwim-smartwin-visibility ()
 ;;   "Toggle smartwin window, if not visible make the window visible and switch to it."
 ;;   (interactive)

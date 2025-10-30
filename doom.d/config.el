@@ -202,7 +202,7 @@
 
 (map! "M-/" #'hippie-expand)
 
-(map! "<f5>" #'bcj-revert-buffer-no-confirm)
+(map! "<f5>" #'revert-buffer)
 
 (map! :after web-mode
       :map web-mode-map
