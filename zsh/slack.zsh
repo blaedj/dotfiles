@@ -149,7 +149,7 @@ the following User Token OAuth scopes:
             --request POST \
             --header "Content-Type: application/json; charset=utf-8" \
             --header "Authorization: Bearer $SLACK_STATUS_API_TOKEN" \
-            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":cowboycoding:\"}}"
+            --data "{\"profile\": {\"status_text\": \"$message\", \"status_emoji\": \":bee:\"}}"
                   )
 
           typeset output2=$(curl https://slack.com/api/dnd.setSnooze \
