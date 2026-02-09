@@ -59,4 +59,6 @@
 
 (package! protobuf-mode :recipe (:nonrecursive t))
 
+(package! deadgrep)
+
 ;; (package! grip-mode) ; this gives markdown (and maybe org-mode?) rendered previews right in emacs
