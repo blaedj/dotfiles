@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+#
+# tmux-startup — Create a tmux session with a predefined layout
+#
+# Usage: tmux-startup [--new] [project_dir]
+#
+# If no project_dir is given, defaults to ~/code/rails/k2.
+# Session name is derived from the project directory basename.
+#
+# Flags:
+#   --new   Kill existing session and start fresh (useful for testing)
+#
+
+set -e
+
+FORCE_NEW=false
+PROJECT_DIR=""
+
+for arg in "$@"; do
+  case "$arg" in
+    --new) FORCE_NEW=true ;;
+    *)     PROJECT_DIR="$arg" ;;
+  esac
+done
+
+PROJECT_DIR="${PROJECT_DIR:-$HOME/code/rails/k2}"
+SESSION_NAME=$(basename "$PROJECT_DIR")
+
+# Kill existing session if --new was passed
+if [ "$FORCE_NEW" = true ] && tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+  tmux kill-session -t "$SESSION_NAME"
+fi
+
+# If session already exists, just attach
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+  exec tmux attach-session -t "$SESSION_NAME"
+fi
+
+# ──────────────────────────────────────────────
+# Window 1: "code" — 6 panes
+# ──────────────────────────────────────────────
+#
+# ┌──────────┬──────────┐
+# │  ~       │ project  │  top row (30%)
+# ├──────────┴──────────┤
+# │  project            │  middle row (36%)
+# ├─────────────────────┤
+# │  project            │  lower row (18%)
+# ├──────────┬──────────┤
+# │ project  │ project  │  bottom row (16%)
+# └──────────┴──────────┘
+
+# Create session — first pane lands at home dir
+tmux new-session -d -s "$SESSION_NAME" -n code -c "$HOME"
+
+# Split into top row (30%) and the rest below (70%)
+tmux split-window -v -t "${SESSION_NAME}:1.1" -p 70 -c "$PROJECT_DIR"
+
+# Split the lower portion into middle row and remainder (48% to remainder)
+tmux split-window -v -t "${SESSION_NAME}:1.2" -p 48 -c "$PROJECT_DIR"
+
+# Split the remainder into lower row and bottom row (48% to bottom)
+tmux split-window -v -t "${SESSION_NAME}:1.3" -p 48 -c "$PROJECT_DIR"
+
+# Split top row left/right
+tmux split-window -h -t "${SESSION_NAME}:1.1" -p 50 -c "$PROJECT_DIR"
+
+# Split bottom row left/right
+tmux split-window -h -t "${SESSION_NAME}:1.4" -p 50 -c "$PROJECT_DIR"
+
+# ──────────────────────────────────────────────
+# Window 2: "utilities" — 2 panes (top/bottom split)
+# ──────────────────────────────────────────────
+
+tmux new-window -t "${SESSION_NAME}" -n utilities -c "$HOME"
+tmux split-window -v -t "${SESSION_NAME}:2.1" -p 50 -c "$PROJECT_DIR"
+
+# ──────────────────────────────────────────────
+# Focus window 1, pane 1
+# ──────────────────────────────────────────────
+
+tmux select-window -t "${SESSION_NAME}:1"
+tmux select-pane -t "${SESSION_NAME}:1.1"
+
+exec tmux attach-session -t "$SESSION_NAME"
