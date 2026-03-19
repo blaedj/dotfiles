@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+# Diff prettified JSON between main and the current branch
+# Usage: bin/json-diff <file-path>
+
+set -e
+
+if [ -z "$1" ]; then
+  echo "Usage: bin/json-diff <file-path>" >&2
+  echo "Example: bin/json-diff openapi/openapi2023-05-26.json" >&2
+  exit 1
+fi
+
+FILE_PATH="$1"
+BASE_BRANCH="${2:-main}"
+
+# Check if file exists in current branch
+if ! git show "HEAD:$FILE_PATH" &>/dev/null; then
+  echo "Error: File '$FILE_PATH' not found in current branch" >&2
+  exit 1
+fi
+
+# Check if file exists in base branch
+if ! git show "$BASE_BRANCH:$FILE_PATH" &>/dev/null; then
+  echo "Error: File '$FILE_PATH' not found in $BASE_BRANCH branch" >&2
+  exit 1
+fi
+
+# make sure jq is installed to prettify the json
+if command -v jq &>/dev/null; then
+  prettify() { jq --sort-keys .; }
+else
+  echo "Error: jq not found. Please install jq." >&2
+  exit 1
+fi
+
+# Create temp files for prettified JSON
+TEMP_DIR=$(mktemp -d)
+trap "rm -rf $TEMP_DIR" EXIT
+
+BASE_FILE="$TEMP_DIR/base.json"
+HEAD_FILE="$TEMP_DIR/head.json"
+
+# Extract and prettify JSON from both branches
+git show "$BASE_BRANCH:$FILE_PATH" | prettify > "$BASE_FILE"
+git show "HEAD:$FILE_PATH" | prettify > "$HEAD_FILE"
+
+# Generate diff and pipe through diff-so-fancy if available
+# diff exit codes: 0 = identical, 1 = different, 2+ = error
+run_diff() {
+  diff -u --label "$BASE_BRANCH:$FILE_PATH" --label "HEAD:$FILE_PATH" "$BASE_FILE" "$HEAD_FILE"
+  return $?
+}
+
+set +e  # Temporarily disable exit on error for diff
+if command -v diff-so-fancy &>/dev/null; then
+  run_diff | diff-so-fancy
+  DIFF_EXIT=${PIPESTATUS[0]}
+else
+  run_diff
+  DIFF_EXIT=$?
+fi
+set -e
+
+if [ $DIFF_EXIT -eq 0 ]; then
+  echo "No differences found in prettified JSON."
+elif [ $DIFF_EXIT -ge 2 ]; then
+  echo "Error running diff" >&2
+  exit $DIFF_EXIT
+fi
