@@ -73,6 +73,8 @@ klaunch() {
                 -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
                 -i-am-breaking-ee-license \
                 -transport jsonrpc \
+                -autoupdate \
+                -autoupdater_initial_delay "10s" \
                 -osqueryd_path "/usr/local/kolide-k2/bin/osqueryd" \
                 -root_directory ~/tmp/launcherroot \
                 2>&1 | tee ~/tmp/local_persistent.log ;;
