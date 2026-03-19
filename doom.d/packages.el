@@ -61,4 +61,8 @@
 
 (package! deadgrep)
 
+(package! shell-maker)
+(package! acp)
+(package! agent-shell)
+
 ;; (package! grip-mode) ; this gives markdown (and maybe org-mode?) rendered previews right in emacs
