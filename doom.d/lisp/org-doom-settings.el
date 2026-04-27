@@ -47,6 +47,30 @@
            (:background "#427"  :foreground "#ddd" :weight normal))
           ))
 
+  (defvar bcj/dr-names '("autumn" "caitlin" "chris" "cody" "harlie" "ib" "matt" "me" "micah")
+    "List of direct report names for 1:1 capture templates.")
+
+  (defun bcj/dr-1on1-target ()
+    "Prompt for a DR name and position point in their 1:1 meeting notes file."
+    (let* ((name (completing-read "Direct report: " bcj/dr-names nil t))
+           (file (expand-file-name
+                  (format "work_notes/kolide/drs/%s/1_1_meeting_notes.org" name)
+                  org-directory))
+           (year (format-time-string "%Y")))
+      (set-buffer (org-capture-target-buffer file))
+      (unless (derived-mode-p 'org-mode) (org-mode))
+      (goto-char (point-min))
+      (unless (re-search-forward (format "^\\* %s$" year) nil t)
+        (goto-char (point-max))
+        (unless (bolp) (insert "\n"))
+        (insert (format "* %s\n" year))
+        (goto-char (point-min))
+        (re-search-forward (format "^\\* %s$" year) nil t))
+      (org-narrow-to-subtree)
+      (org-show-subtree)
+      (goto-char (point-min))
+      (end-of-line)))
+
   (setq org-capture-templates
         '(("t" "To Do Item" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
            "* %?\n%T :unfiled:" :prepend t)
@@ -64,6 +88,10 @@
                   (concat org-directory "/personal/tracking.org")
                   "."
                   ) "* %t .")
+
+          ("d" "DR 1:1 Meeting"
+           entry (function bcj/dr-1on1-target)
+           "** %<%Y-%m-%d>\n*** Topics\n- %?\n*** Follow-ups\n- " :prepend t)
           ))
 
   (setq org-default-priority 68)

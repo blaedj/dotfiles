@@ -198,19 +198,7 @@ klaunch() {
                    -insecure_transport \
                    -insecure \
                    -disable_control_tls ;;
-        "mac-osquery" )
-           ~/code/go/src/launcher/build/launcher \
-               -root_directory $(mktemp -d) \
-               -hostname localhost:3443 \
-               -enroll_secret_path ~/code/rails/k2/tmp/enroll_secret_nababe.txt \
-               -root_pem ~/code/rails/k2/tmp/localhost.crt \
-               -osqueryd_path /usr/local/kolide-k2/bin/osqueryd \
-               -kolide_hosted \
-               -transport "osquery" \
-               -autoupdate \
-               -update_channel="beta" \
-               -debug ;;
         *)
-            echo "please provide the operating system of the launcher host: {mac,centos,ubuntu,local,persistentmac,sudomac,sudomac-persistent}" ;;
+            echo "please provide the operating system of the launcher host: {mac,mac-localbuild,ngrok-mac,macproxied,centos,ubuntu,local,persistentmac,persistentmac-prod-binary,persistentmac-edilok,sudomac,sudomac-perms,sudomac-persistent}" ;;
     esac
 }

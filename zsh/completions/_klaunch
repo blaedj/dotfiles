@@ -8,11 +8,15 @@ _klaunch() {
     commands=(
         'help:enroll a launcher agent using one of several templates'
         'sudomac:a non-persistent mac launcher running as root'
+        'sudomac-perms:root launcher with intentionally bad file permissions for testing permission error handling'
+        'sudomac-persistent:root launcher with persistent data directory (stable channel)'
         'persistentmac:launcher on mac that persists data/identity after restart'
         'persistentmac-prod-binary:like persistentmac, but using the production binary, not the locally built launcher'
-        'persistentmac-edilok:prod binary, persistant mac launcher enrolled in the "edilok" tenant'
+        'persistentmac-edilok:prod binary, persistent mac launcher enrolled in the "edilok" tenant'
         'mac:run launcher on a local mac. uses prod binary'
         'mac-localbuild:mac launcher, with locally built launcher'
+        'macproxied:mac launcher connecting through a local proxy on port 5500 (may not work)'
+        'local:sudo launcher via ngrok with Dropbox enroll secret (may not work)'
         'ubuntu:run launcher on ubuntu, via docker'
         'centos:run launcher on centos, via docker'
     )
