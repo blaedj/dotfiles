@@ -61,8 +61,8 @@
 
 (package! deadgrep)
 
-(package! shell-maker)
-(package! acp)
-(package! agent-shell)
+(package! shell-maker :pin "808bede99dc2c2d27c3dc69d5f363aade40e6f87")
+(package! acp :pin "c32fbf8df34ed0095853a8cf55dc783e68b67d90")
+(package! agent-shell :pin "4d7db3ab9480463c63a805cc3239420a00372b1f")
 
 ;; (package! grip-mode) ; this gives markdown (and maybe org-mode?) rendered previews right in emacs
