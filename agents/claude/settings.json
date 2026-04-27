@@ -23,7 +23,8 @@
   },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
   "model": "opus",
