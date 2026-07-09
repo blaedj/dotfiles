@@ -285,5 +285,36 @@ Output: Foo::Bar::Baz"
       (kill-new result)
       (message "Ruby const path: %s (copied to kill ring)" result))))
 
+;; Temporary line/region highlighting via overlays. Overlays are buffer-local
+;; and unsaved, so these highlights last only for the life of the buffer.
+(defface bcj/line-highlight
+  '((t :inherit highlight))
+  "Face for temporary line/region highlights made by `bcj/highlight-region-or-line'.")
+
+(defun bcj/highlight-region-or-line (beg end)
+  "Highlight the active region, or the current line, until the buffer dies.
+With no active region, highlights the whole current line.  Pass BEG and END
+to highlight an arbitrary span."
+  (interactive
+   (if (region-active-p)
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position) (min (point-max) (1+ (line-end-position))))))
+  (let ((ov (make-overlay beg end)))
+    (overlay-put ov 'face 'bcj/line-highlight)
+    (overlay-put ov 'bcj/highlight t))
+  (deactivate-mark))
+
+(defun bcj/unhighlight-at-point ()
+  "Remove temporary highlight overlay(s) at point."
+  (interactive)
+  (dolist (ov (overlays-at (point)))
+    (when (overlay-get ov 'bcj/highlight)
+      (delete-overlay ov))))
+
+(defun bcj/unhighlight-all ()
+  "Remove all temporary highlight overlays in the current buffer."
+  (interactive)
+  (remove-overlays nil nil 'bcj/highlight t))
+
 (provide 'mydefuns)
 ;;; mydefuns.el ends here
