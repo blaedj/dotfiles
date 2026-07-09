@@ -1,22 +1,17 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(gh pr view *)"
+    ]
+  },
   "model": "opus[1m]",
   "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay -v 0.55 /System/Library/Sounds/Blow.aiff"
-          }
-        ]
-      }
-    ],
     "Notification": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "afplay -v 0.55 /System/Library/Sounds/Blow.aiff"
+            "command": "terminal-notifier -message CLAUDE! -sound breeze"
           }
         ]
       }

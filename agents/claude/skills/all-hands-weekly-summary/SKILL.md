@@ -11,14 +11,14 @@ Generate a weekly summary of notable work committed by the team in the past week
 
 ## Team Members
 
-Filter git log to only these authors:
-- Autumn Forsythe
-- Caitlin Cabrera
-- Chris Born
-- Cody Ortiz
-- Matt Thompson
-- Micah-Kolide
-- iamharlie
+Filter git log to only these authors (GitHub usernames in parentheses):
+- Autumn Forsythe (adccb)
+- Caitlin Cabrera (cacab)
+- Chris Born (pelted)
+- Cody Ortiz (codyortiz)
+- Matt Thompson (mjthompsgb-1P)
+- Micah-Kolide (Micah-Kolide)
+- iamharlie (iamharlie)
 
 ## Steps
 
@@ -26,11 +26,9 @@ Filter git log to only these authors:
 
 2. ONLY report on things that merged to `main` (skip unmerged branches) 
 
-3. Analyze the commits and filter for **notable, potentially marketable work**:
-   - New features or meaningful progress on features
-   - Important bug fixes (user-facing or high-impact)
-   - Significant infrastructure or reliability improvements
-   - **Skip**: trivial changes, dependency bumps, linting/formatting, minor refactors, test-only changes, CI config tweaks
+3. Analyze the commits and split them into two buckets:
+   - **Notable, potentially marketable work**: new features or meaningful progress on features, important bug fixes (user-facing or high-impact), significant infrastructure or reliability improvements.
+   - **Trivial**: dependency bumps, linting/formatting, minor refactors, test-only changes, CI config tweaks, flag/dead-code cleanup, docs/changelog-only commits, and other small internal fixes that don't rise to "notable."
 
 4. Where multiple commits relate to the same feature or effort, group them into a single bullet.
 
@@ -39,9 +37,17 @@ Filter git log to only these authors:
 ```markdown
 # Weekly Summary - {date range}
 
-- **{Short title of what shipped}** — {One sentence on why this matters or what it enables.}
-- **{Short title}** — {One sentence context.}
+- **{Short title of what shipped}** — {One sentence on why this matters or what it enables.} ({Author})
+- **{Short title}** — {One sentence context.} ({Author})
+...
+
+## Trivial / Other Changes
+
+- {One-line blurb of what changed} ({Author}) — [{short SHA}](https://github.com/kolide/k2/commit/{full SHA})
+- {One-line blurb} ({Author}) — [{short SHA}](https://github.com/kolide/k2/commit/{full SHA})
 ...
 ```
+
+   The repo's GitHub remote is `kolide/k2` — build commit links from that. Include every commit deemed trivial, not just a sample.
 
 6. Tell the user the file has been written and print the contents.

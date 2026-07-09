@@ -1,0 +1,10 @@
+# Direct reports — kolide/k2
+# Format: <github-login><whitespace><display name>
+# Used by gh_team_activity.rb --roster
+adccb          Autumn Forsythe
+cacab          Caitlin Cabrera
+pelted         Chris Born
+codyortiz      Cody Ortiz
+mjthompsgb-1P  Matt Thompson
+Micah-Kolide   Micah
+iamharlie      Harlie
